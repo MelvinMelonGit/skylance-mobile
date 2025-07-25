@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
   container: {
     borderWidth: 1,
     width: 320,
-    padding: 20,
-    height: 60,
+    height: 48,
+    paddingHorizontal: 20,
     borderRadius: 5,
     borderColor: color.gray,
     color: color.gray
