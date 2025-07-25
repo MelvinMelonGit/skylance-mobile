@@ -15,7 +15,7 @@ export default function ButtonView({children, onClick}) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: color.primary,
-    width: 320,
+    width: '100%',
     alignItems: 'center',
     paddingVertical: 20,
     marginVertical: 20,

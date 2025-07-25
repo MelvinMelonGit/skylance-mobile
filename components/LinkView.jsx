@@ -13,7 +13,7 @@ export default function LinkView({children, href}) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: color.primary,
-    width: 320,
+    width: '100%',
     textAlign: 'center',
     paddingVertical: 20,
     marginVertical: 20,

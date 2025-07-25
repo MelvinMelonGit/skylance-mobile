@@ -19,7 +19,7 @@ export default function EditTextView({placeholder, marginVertical, secure}) {
 const styles = StyleSheet.create({
   container: {
     borderWidth: 1,
-    width: 320,
+    minWidth: '100%',
     height: 48,
     paddingHorizontal: 20,
     borderRadius: 5,

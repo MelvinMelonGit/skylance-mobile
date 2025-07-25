@@ -13,6 +13,7 @@ export default function OTP() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingHorizontal: '10%',
     alignItems: 'center',
     justifyContent: 'center',
   },
