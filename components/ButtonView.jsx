@@ -1,10 +1,10 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { color } from '../styles/color';
 
-export default function ButtonView({children, onClick}) {
+export default function ButtonView({children, onPress}) {
   return (
     <TouchableOpacity
-        onPress={onClick}
+        onPress={onPress}
         style={styles.container}
     >
       <Text style={styles.text}>{children}</Text>

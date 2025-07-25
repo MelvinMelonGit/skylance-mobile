@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet, View } from 'react-native';
-import EditTextView from '../../components/EditTextView';
-import LinkView from '../../components/LinkView';
-import TextView from '../../components/TextView';
+import EditTextView from '../../../components/EditTextView';
+import LinkView from '../../../components/LinkView';
+import TextView from '../../../components/TextView';
 
 export default function Register() {
   return (

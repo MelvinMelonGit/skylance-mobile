@@ -2,14 +2,12 @@ import { FlatList, SafeAreaView, SectionList, StyleSheet, Text, View } from 'rea
 import CardView from '../../components/CardView';
 import H1View from '../../components/H1View';
 import LinkView from '../../components/LinkView';
-import TextView from '../../components/TextView';
 import { color } from '../../styles/color';
 
 export default function Index() {
   return (
       <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.innerView}>
-        <TextView title marginVertical={20}>Hey There!</TextView>
         <H1View>Begin Your Adventure Now!</H1View>
         <LinkView href="/">Search</LinkView>
       </View>
@@ -45,7 +43,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    paddingTop: 50,
     // justifyContent: 'center',
   },
   innerView: {

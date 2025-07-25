@@ -1,13 +1,14 @@
 import { Alert, ScrollView, StyleSheet, View } from 'react-native';
-import ButtonView from '../../components/ButtonView';
-import EditTextView from '../../components/EditTextView';
-import TextView from '../../components/TextView';
+import ButtonView from '../../../components/ButtonView';
+import EditTextView from '../../../components/EditTextView';
+import LinkView from '../../../components/LinkView';
+import TextView from '../../../components/TextView';
 
 function handleClick() {
     Alert.alert('Alert Title', 'This is the alert message');
 }
 
-export default function Login() {
+export default function Index() {
   return (
         <ScrollView
             contentContainerStyle={styles.container}>
@@ -26,8 +27,8 @@ export default function Login() {
                     secure
                 />
             </View>
-            
-            <ButtonView onClick={handleClick}>Login</ButtonView>
+            <LinkView href="/login/register">Register</LinkView>
+            <ButtonView onPress={handleClick}>Login</ButtonView>
         </ScrollView>
   );
 }
