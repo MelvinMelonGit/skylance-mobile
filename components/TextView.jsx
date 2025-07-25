@@ -9,7 +9,8 @@ export default function TextView({children, marginVertical, title}) {
             styles.container,
           { marginVertical: marginVertical ?? 0,
             fontSize: title ? 26 : 14,
-            alignSelf: title ? 'center' : 'flex-start'
+            alignSelf: title ? 'center' : 'flex-start',
+            color: title ? color.primary : 'black'
           }
           ]
         }
