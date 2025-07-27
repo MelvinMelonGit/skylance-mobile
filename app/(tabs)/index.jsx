@@ -8,10 +8,10 @@ import ModalView from '../../components/ModalView';
 import { color } from '../../styles/color';
 
 export default function Index() {
-   const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
-      <SafeAreaView style={styles.container} edges={['top']}>
+      <SafeAreaView style={styles.container}>
       <View style={styles.innerView}>
         <H1View>Begin Your Adventure Now!</H1View>
         <LinkView href="/">Search</LinkView>
