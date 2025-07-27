@@ -1,3 +1,4 @@
+import { Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import { color } from '../../styles/color';
 
@@ -10,7 +11,24 @@ const screenOptions = {
 
 export default function TabLayout() {
   return (
-    <Tabs>
+      <Tabs
+      screenOptions={({ route }) => ({
+        tabBarActiveTintColor: color.primary,     
+        tabBarInactiveTintColor: '#8e8e93',
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: '600',
+        },
+        tabBarIcon: ({ color, size }) => {
+          let iconName = 'home';
+
+          if (route.name === 'trips') iconName = 'home';
+          else if (route.name === 'login') iconName = 'person';
+
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+      })}
+      >
         <Tabs.Screen name="index"
           options={{
             title: 'Home',

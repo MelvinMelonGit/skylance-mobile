@@ -1,11 +1,44 @@
 import { Stack } from 'expo-router';
+import { color } from '../../../styles/color';
+
+const screenOptions = {
+  headerStyle: { backgroundColor: color.white },
+  headerTintColor: color.primary,
+  headerTitleStyle: { fontWeight: 'bold', fontSize: 20 },
+  headerTitleAlign: 'center',
+};
 
 export default function LoginStackLayout() {
   return (
     <Stack>
-      <Stack.Screen name="index" options={{ title: 'Login'}}/>
-      <Stack.Screen name="register" options={{ title: 'Register'}}/>
-      <Stack.Screen name="otp" options={{ title: 'OTP'}}/>
+      <Stack.Screen name="index"
+        options={{
+            title: 'Login',
+            headerTitle: 'Login',
+            headerStyle: screenOptions.headerStyle,
+            headerTitleStyle: screenOptions.headerTitleStyle,
+            headerTintColor: screenOptions.headerTintColor, 
+            headerTitleAlign: screenOptions.headerTitleAlign 
+          }}
+      />
+      <Stack.Screen name="register"
+        options={{
+            title: 'Register',
+            headerTitle: 'Register',
+            headerStyle: screenOptions.headerStyle,
+            headerTitleStyle: screenOptions.headerTitleStyle,
+            headerTintColor: screenOptions.headerTintColor, 
+            headerTitleAlign: screenOptions.headerTitleAlign 
+          }}
+      />
+      <Stack.Screen name="otp" options={{
+            title: 'OTP',
+            headerTitle: 'OTP',
+            headerStyle: screenOptions.headerStyle,
+            headerTitleStyle: screenOptions.headerTitleStyle,
+            headerTintColor: screenOptions.headerTintColor, 
+            headerTitleAlign: screenOptions.headerTitleAlign 
+          }}/>
     </Stack> 
   );
 }
