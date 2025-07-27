@@ -58,7 +58,7 @@ export default function Register() {
                 />
             </View>
             
-            <LinkView href="/otp">Send OTP Via Email</LinkView>
+            <LinkView href="/login/otp">Send OTP Via Email</LinkView>
         </ScrollView>
   );
 }

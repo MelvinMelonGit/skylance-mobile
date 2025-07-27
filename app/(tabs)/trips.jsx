@@ -12,7 +12,7 @@ export default function Trips() {
       <View style={styles.innerView}>
         <CustomNavTabsView activeTab={activeTab} setActiveTab={setActiveTab} />
         <H1View>Begin Your Adventure Now!</H1View>
-        <LinkView href="/">Search</LinkView>
+        <LinkView href="/">Home</LinkView>
       </View>
         {/* Show different content based on tab */}
       {activeTab === 'home' ? (

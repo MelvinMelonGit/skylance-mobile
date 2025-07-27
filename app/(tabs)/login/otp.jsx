@@ -1,10 +1,10 @@
 import { SafeAreaView, StyleSheet, Text } from 'react-native';
-import LinkView from '../../components/LinkView';
+import LinkView from '../../../components/LinkView';
 
 export default function OTP() {
   return (
       <SafeAreaView style={styles.container}>
-          <Text>Hihfffi</Text>
+          <Text>OTP Here</Text>
           <LinkView href="/">Go To Home</LinkView>
       </SafeAreaView>
   );

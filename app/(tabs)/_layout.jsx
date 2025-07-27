@@ -31,8 +31,7 @@ export default function TabLayout() {
             headerTitleAlign: screenOptions.headerTitleAlign 
           }}
         />
-        <Tabs.Screen name="register" options={{ title: 'Register', headerShown: false, href: null }} />
-        <Tabs.Screen name="otp" options={{ title: 'OTP', headerShown: false, href: null }}/>
+        {/* <Tabs.Screen name="otp" options={{ title: 'OTP', headerShown: false, href: null }}/> */}
         <Tabs.Screen name="login" options={{ title: 'Login', headerShown: false }} />
     </Tabs>
   );

@@ -1,15 +1,26 @@
+import { useState } from 'react';
 import { FlatList, SafeAreaView, SectionList, StyleSheet, Text, View } from 'react-native';
+import ButtonView from '../../components/ButtonView';
 import CardView from '../../components/CardView';
 import H1View from '../../components/H1View';
 import LinkView from '../../components/LinkView';
+import ModalView from '../../components/ModalView';
 import { color } from '../../styles/color';
 
 export default function Index() {
+   const [modalVisible, setModalVisible] = useState(false);
+
   return (
       <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.innerView}>
         <H1View>Begin Your Adventure Now!</H1View>
         <LinkView href="/">Search</LinkView>
+        {/* <LinkView href="/_modal/chooseOptionModal">Choose Options</LinkView> */}
+        <ButtonView onPress={() => setModalVisible(true)}>Click Me Modal</ButtonView>
+        <ModalView
+          visible={modalVisible}
+          onClose={() => setModalVisible(false)}
+        />
       </View>
        <SectionList
         style={styles.list}
@@ -23,6 +34,7 @@ export default function Index() {
           <>
             <Text style={{ color: color.gray, fontWeight: 'bold', marginTop: 30, textAlign: 'center' }}>{section.title}</Text>
             <FlatList
+              style= {{ marginHorizontal: '2%'}}
               data={section.data}
               horizontal
               showsHorizontalScrollIndicator={false}
