@@ -22,6 +22,8 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   text: {
-    color: color.white
+    color: color.white,
+    fontSize: 18,
+    fontWeight: 500
   }
 });

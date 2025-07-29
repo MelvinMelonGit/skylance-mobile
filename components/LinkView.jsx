@@ -18,6 +18,8 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     marginVertical: 10,
     borderRadius: 50,
+    fontSize: 18,
+    fontWeight: 500,
     color: color.white
   }
 });

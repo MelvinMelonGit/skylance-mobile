@@ -1,28 +1,17 @@
-import { useState } from 'react';
-import { FlatList, SafeAreaView, SectionList, StyleSheet, Text, View } from 'react-native';
-import ButtonView from '../../components/ButtonView';
+import { FlatList, SectionList, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import CardView from '../../components/CardView';
 import { H1 } from '../../components/HeadingsView';
-import LinkView from '../../components/LinkView';
 import LogoView from '../../components/LogoView';
-import ModalView from '../../components/ModalView';
 import { color } from '../../styles/color';
 
 export default function Index() {
-  const [modalVisible, setModalVisible] = useState(false);
-
   return (
-      <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.innerView}>
         <LogoView>Skylance</LogoView>
         <H1>Begin Your Adventure Now!</H1>
-        <LinkView href="/">Search</LinkView>
         {/* <LinkView href="/_modal/chooseOptionModal">Choose Options</LinkView> */}
-        <ButtonView onPress={() => setModalVisible(true)}>Click Me Modal</ButtonView>
-        <ModalView
-          visible={modalVisible}
-          onClose={() => setModalVisible(false)}
-        />
       </View>
        <SectionList
         style={styles.list}
@@ -55,12 +44,9 @@ export default function Index() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    // justifyContent: 'center',
+    flex: 1
   },
   innerView: {
-    height: 280,
     width: '100%',
     paddingHorizontal: '10%',
     alignItems: 'center',
