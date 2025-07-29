@@ -47,8 +47,7 @@ export default function Index() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center'
+    flex: 1
   },
   outerView: {
     paddingHorizontal: '10%',
@@ -58,7 +57,6 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingHorizontal: '10%',
     alignItems: 'center',
-    justifyContent: 'center',
   },
   list: {
     flex: 2,

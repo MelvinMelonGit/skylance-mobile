@@ -1,13 +1,21 @@
-import { StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { H2, P } from '../../../../components/HeadingsView';
+import ButtonView from '../../../../components/ButtonView';
+import FlightContainer from '../../../../components/FlightContainer';
+import { H3 } from '../../../../components/HeadingsView';
 
 export default function AvailableFlight() {
   return (
-      <SafeAreaView style={{ flex: 1}}>
+      <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
-          <H2>Available Flights</H2>
-            <P>Please select a flight below.</P>
+          <FlatList
+            data={['Apple', 'Banana', 'Orange']}
+            renderItem={({ item, index }) => <FlightContainer id={index}>{item}</FlightContainer>}
+            keyExtractor={(item, index) => item + index}
+          />
+          <H3>Don't want to rebook?</H3>
+          <ButtonView clear>Back</ButtonView>
+          <ButtonView warning>Cancel Flight</ButtonView>
         </View>
       </SafeAreaView>
   );
@@ -15,9 +23,6 @@ export default function AvailableFlight() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     paddingHorizontal: '10%',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
