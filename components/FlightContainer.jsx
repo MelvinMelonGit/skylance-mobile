@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useBooking } from '../app/context/BookingContext';
+import { useBooking } from '../context/BookingContext';
 import { color } from '../styles/color';
 
 export default function FlightContainer({children, id}) {

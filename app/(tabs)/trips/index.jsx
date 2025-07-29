@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import CustomNavTabsView from '../../../components/CustomNavTabsView';
 import FlightContainer from '../../../components/FlightContainer';
 import LinkView from '../../../components/LinkView';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../../context/AuthContext';
 
 export default function Index() {
   const { isLoggedIn } = useAuth();

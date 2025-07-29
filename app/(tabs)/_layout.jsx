@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Tabs, useRouter } from 'expo-router';
+import { useAuth } from '../../context/AuthContext';
 import { color } from '../../styles/color';
-import { useAuth } from '../context/AuthContext';
 
 const screenOptions = {
   headerStyle: { backgroundColor: color.white },

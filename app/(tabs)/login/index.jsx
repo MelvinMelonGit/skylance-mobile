@@ -6,7 +6,7 @@ import { H1, P } from '../../../components/HeadingsView';
 import LinkText from '../../../components/LinkText';
 import LogoView from '../../../components/LogoView';
 import TextView from '../../../components/TextView';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../../context/AuthContext';
 
 export default function Index() {
   const { isLoggedIn, login, logout } = useAuth()

@@ -1,8 +1,8 @@
 import { useNavigationContainerRef } from '@react-navigation/native';
 import { Slot } from 'expo-router';
 import { useEffect, useRef } from 'react';
-import AuthProvider from "./context/AuthContext";
-import BookingProvider from "./context/BookingContext";
+import AuthProvider from "../context/AuthContext";
+import BookingProvider from "../context/BookingContext";
 
 export default function RootLayout() {
   const navigationRef = useNavigationContainerRef();
