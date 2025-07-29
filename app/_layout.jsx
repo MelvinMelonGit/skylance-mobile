@@ -2,6 +2,7 @@ import { useNavigationContainerRef } from '@react-navigation/native';
 import { Slot } from 'expo-router';
 import { useEffect, useRef } from 'react';
 import AuthProvider from "./context/AuthContext";
+import BookingProvider from "./context/BookingContext";
 
 export default function RootLayout() {
   const navigationRef = useNavigationContainerRef();
@@ -21,7 +22,9 @@ export default function RootLayout() {
     //   <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     // </Stack>
     <AuthProvider>
-      <Slot />
+      <BookingProvider>
+        <Slot />
+      </BookingProvider>
     </AuthProvider>
   );
 }

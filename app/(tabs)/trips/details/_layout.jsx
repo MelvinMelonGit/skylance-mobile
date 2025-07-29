@@ -13,10 +13,14 @@ export default function DetailsStackLayout() {
     <Stack
       screenOptions={screenOptions}
     >
-        <Stack.Screen
-            name="[id]"
-            options={{ headerShown: false }}
-            />
+      <Stack.Screen
+        name="[id]"
+         options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="none"
+        options={{ headerShown: false }}
+      />
     </Stack>
   );
 }
