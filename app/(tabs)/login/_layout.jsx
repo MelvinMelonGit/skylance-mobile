@@ -13,17 +13,13 @@ export default function LoginStackLayout() {
   const { isLoggedIn } = useAuth();
 
   return (
-    <Stack>
+    <Stack screenOptions={screenOptions}>
       {isLoggedIn ?
         (
           <Stack.Screen name="index"
             options={{
                 // title: 'Logout',
                 headerTitle: 'Account',
-                headerStyle: screenOptions.headerStyle,
-                headerTitleStyle: screenOptions.headerTitleStyle,
-                headerTintColor: screenOptions.headerTintColor, 
-                headerTitleAlign: screenOptions.headerTitleAlign,
                 headerBackVisible: false
               }}
           />
@@ -33,10 +29,6 @@ export default function LoginStackLayout() {
             options={{
                 // title: 'Login',
                 headerTitle: 'Login',
-                headerStyle: screenOptions.headerStyle,
-                headerTitleStyle: screenOptions.headerTitleStyle,
-                headerTintColor: screenOptions.headerTintColor, 
-                headerTitleAlign: screenOptions.headerTitleAlign,
                 headerBackVisible: false
               }}
           />
@@ -46,10 +38,6 @@ export default function LoginStackLayout() {
         options={{
             // title: 'Register',
             headerTitle: 'Register',
-            headerStyle: screenOptions.headerStyle,
-            headerTitleStyle: screenOptions.headerTitleStyle,
-            headerTintColor: screenOptions.headerTintColor, 
-            headerTitleAlign: screenOptions.headerTitleAlign 
           }}
       />
     </Stack> 

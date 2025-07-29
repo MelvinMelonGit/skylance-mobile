@@ -4,7 +4,7 @@ import { useBooking } from '../context/BookingContext';
 import { color } from '../styles/color';
 import { H3 } from './HeadingsView';
 
-export default function PendingContainer({title, text, id}) {
+export default function PendingContainer({choice, id}) {
     const router = useRouter();
 
     const { isOverBooked } = useBooking()
@@ -13,16 +13,18 @@ export default function PendingContainer({title, text, id}) {
         <TouchableOpacity
             style={styles.container}
             onPress={() => {
-              
+              choice === 1 ?
+              router.push(`/trips/details/cancel-flight`) :
+              router.push(`/trips/details/available-flight`)
             }}
             >
             <View style={styles.inner}>
                 <View style={styles.innerCol}>
                     <H3>
-                        {title}
+                        { choice === 1 ? "Option 1 - Cancel flight" : "Option 2 - Rebook at no cost" }
                     </H3>
                     <Text style={styles.text}>
-                        {text}
+                        { choice === 1 ? "Full Compensation: $" : "Compensation: $" }
                     </Text>
                 </View>
             </View>

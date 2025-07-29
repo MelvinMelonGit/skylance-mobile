@@ -10,16 +10,22 @@ const screenOptions = {
 
 export default function DetailsStackLayout() {
   return (
-    <Stack
-      screenOptions={screenOptions}
-    >
+    <Stack screenOptions={screenOptions}>
       <Stack.Screen
         name="[id]"
-         options={{ headerShown: false }}
+         options={{ headerTitle: 'Trip Details' }}
       />
       <Stack.Screen
         name="pending"
-        options={{ headerShown: false }}
+        options={{ headerTitle: 'Pending Check-In' }}
+      />
+      <Stack.Screen
+        name="cancel-flight"
+        options={{ headerTitle: 'Cancel Flight' }}
+      />
+      <Stack.Screen
+        name="available-flight"
+        options={{ headerTitle: 'Available Flight' }}
       />
     </Stack>
   );
