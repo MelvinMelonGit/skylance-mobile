@@ -21,7 +21,8 @@ export default function LoginStackLayout() {
             headerStyle: screenOptions.headerStyle,
             headerTitleStyle: screenOptions.headerTitleStyle,
             headerTintColor: screenOptions.headerTintColor, 
-            headerTitleAlign: screenOptions.headerTitleAlign
+            headerTitleAlign: screenOptions.headerTitleAlign,
+            headerBackVisible: false
           }}
         />
 

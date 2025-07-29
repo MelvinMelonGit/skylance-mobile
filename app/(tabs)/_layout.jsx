@@ -42,7 +42,8 @@ export default function TabLayout() {
             headerStyle: screenOptions.headerStyle,
             headerTitleStyle: screenOptions.headerTitleStyle,
             headerTintColor: screenOptions.headerTintColor, 
-            headerTitleAlign: screenOptions.headerTitleAlign 
+            headerTitleAlign: screenOptions.headerTitleAlign ,
+            headerBackVisible: false, // <-- hide back button
           }}
           listeners={{
               tabPress: (e) => {
@@ -68,7 +69,8 @@ export default function TabLayout() {
             headerStyle: screenOptions.headerStyle,
             headerTitleStyle: screenOptions.headerTitleStyle,
             headerTintColor: screenOptions.headerTintColor, 
-            headerTitleAlign: screenOptions.headerTitleAlign 
+            headerTitleAlign: screenOptions.headerTitleAlign ,
+            headerBackVisible: false, // <-- hide back button
           }}
           listeners={{
               tabPress: (e) => {
