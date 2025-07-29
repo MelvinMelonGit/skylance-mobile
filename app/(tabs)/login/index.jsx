@@ -14,30 +14,35 @@ export default function Index() {
     <ScrollView
         contentContainerStyle={styles.container}>
         <LogoView>Skylance</LogoView>
-        {/* <TextView title>Welcome Back!</TextView> */}
-        <H1>Welcome Back!</H1>
-        <View style={styles.inner}>
-            <TextView>Email</TextView>
-            <EditTextView
-                placeholder="Enter Email"
-            />
-        </View>
-            
-        <View style={styles.inner}>
-            <TextView>Enter Password</TextView>
-            <EditTextView
-                placeholder="Enter Password"
-                secure
-            />
-        </View>
+        
         {isLoggedIn ?
-          (<ButtonView onPress={logout}>Logout</ButtonView>):
-          (<ButtonView onPress={login}>Login</ButtonView>)
-        }
-
-        <P>Don't have an account?</P>
-        <LinkText href="/login/register">Register</LinkText>
-
+          (
+          <>
+            <H1>Welcome Chan!</H1>
+            <ButtonView onPress={logout}>Logout</ButtonView>
+          </>
+          ): (
+          <>
+            <H1>Welcome Back!</H1>
+            <View style={styles.inner}>
+                <TextView>Email</TextView>
+                <EditTextView
+                    placeholder="Enter Email"
+                />
+            </View>
+            
+            <View style={styles.inner}>
+                <TextView>Enter Password</TextView>
+                <EditTextView
+                    placeholder="Enter Password"
+                    secure
+                />
+            </View>
+            <ButtonView onPress={login}>Login</ButtonView>
+            <P>Don't have an account?</P>
+            <LinkText href="/login/register">Register</LinkText>
+          </>
+        )}
     </ScrollView>
   );
 }
