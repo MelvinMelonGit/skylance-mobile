@@ -2,13 +2,13 @@ import { useRouter } from 'expo-router';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { color } from '../styles/color';
 
-export default function FlightContainer({children}) {
+export default function FlightContainer({children, id}) {
     const router = useRouter();
 
     return (
         <TouchableOpacity
             style={styles.container}
-            onPress={() => router.push('/trips/details')}
+            onPress={() => router.push(`/trips/details/${id}`)}
             >
             <Text>
                 {children}

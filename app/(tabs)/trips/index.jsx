@@ -19,7 +19,7 @@ export default function Index() {
         <View style={styles.innerView}>
           <FlatList
             data={['Apple Aplly lwifbeiuvkrbfeq', 'Banana', 'Orange']}
-            renderItem={({ item }) => <FlightContainer>{item}</FlightContainer>}
+            renderItem={({ item, index }) => <FlightContainer id={index}>{item}</FlightContainer>}
             keyExtractor={(item, index) => item + index}
           />
         </View>
@@ -27,7 +27,7 @@ export default function Index() {
         <View style={styles.innerView}>
           <FlatList
             data={['1', '2', '3']}
-            renderItem={({ item }) => <FlightContainer>{item}</FlightContainer>}
+            renderItem={({ item }) => <FlightContainer id={index}>{item}</FlightContainer>}
             keyExtractor={(item, index) => item + index}
           />
         </View>
