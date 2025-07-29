@@ -1,5 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
-import { Tabs } from 'expo-router';
+import { Tabs, useRouter } from 'expo-router';
 import { color } from '../../styles/color';
 import { useAuth } from '../context/AuthContext';
 
@@ -12,6 +12,7 @@ const screenOptions = {
 
 export default function TabLayout() {
   const { isLoggedIn } = useAuth();
+  const router = useRouter();
 
   return (
       <Tabs
@@ -43,9 +44,21 @@ export default function TabLayout() {
             headerTintColor: screenOptions.headerTintColor, 
             headerTitleAlign: screenOptions.headerTitleAlign 
           }}
+          listeners={{
+              tabPress: (e) => {
+              e.preventDefault(); // Prevent default tab behavior
+              router.push('/'); // Always go to /login/index
+            },
+          }}
         />
         <Tabs.Screen name="trips"
             options={{ title: 'Trips', headerShown: false }}
+            listeners={{
+              tabPress: (e) => {
+              e.preventDefault(); // Prevent default tab behavior
+              router.push('/trips'); // Always go to /login/index
+            },
+          }}
         />
         {/* <Tabs.Screen name="otp" options={{ title: 'OTP', headerShown: false, href: null }}/> */}
         <Tabs.Screen name="boarding"
@@ -57,16 +70,26 @@ export default function TabLayout() {
             headerTintColor: screenOptions.headerTintColor, 
             headerTitleAlign: screenOptions.headerTitleAlign 
           }}
+          listeners={{
+              tabPress: (e) => {
+              e.preventDefault(); // Prevent default tab behavior
+              router.push('/boarding'); // Always go to /login/index
+            },
+          }}
          />
-         {isLoggedIn ? (
-            <Tabs.Screen name="login"
-            options={{ title: 'Account', headerShown: false }}
-          />
-         ) : (
-            <Tabs.Screen name="login"
-            options={{ title: 'Login', headerShown: false }}
-          />
-         )}
+         <Tabs.Screen
+            name="login"
+            options={{
+              title: isLoggedIn ? 'Account' : 'Login',
+              headerShown: false,
+            }}
+            listeners={{
+              tabPress: (e) => {
+              e.preventDefault(); // Prevent default tab behavior
+              router.push('/login'); // Always go to /login/index
+            },
+        }}
+      />
     </Tabs>
   );
 }
