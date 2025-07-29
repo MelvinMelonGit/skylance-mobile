@@ -6,7 +6,7 @@ export default function AvailableFlight() {
   return (
       <SafeAreaView style={{ flex: 1}}>
         <View style={styles.container}>
-          <H2>Available Flight</H2>
+          <H2>Available Flights</H2>
             <P>Please select a flight below.</P>
         </View>
       </SafeAreaView>

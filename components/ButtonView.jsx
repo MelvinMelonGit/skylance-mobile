@@ -1,20 +1,36 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { color } from '../styles/color';
 
-export default function ButtonView({children, onPress}) {
+export default function ButtonView({children, onPress, warning, clear}) {
+
+  let buttonColor = color.primary
+  if (warning) buttonColor = color.red
+  else if (clear) buttonColor = color.white
+
+  let buttonTextColor = color.white
+  if (clear) buttonColor = color.primary
+
   return (
     <TouchableOpacity
         onPress={onPress}
-        style={styles.container}
+        style={
+          [
+            styles.container,
+          { 
+            backgroundColor: buttonColor,
+            borderColor: clear && color.primary,
+            borderWidth: clear && 2
+          }
+          ]
+        }
     >
-      <Text style={styles.text}>{children}</Text>
+      <Text style={[styles.text, { color: buttonTextColor}]}>{children}</Text>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: color.primary,
     width: '100%',
     alignItems: 'center',
     paddingVertical: 20,

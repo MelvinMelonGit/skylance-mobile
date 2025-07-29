@@ -18,7 +18,7 @@ export default function TabLayout() {
       <Tabs
       screenOptions={({ route }) => ({
         tabBarActiveTintColor: color.primary,     
-        tabBarInactiveTintColor: '#8e8e93',
+        tabBarInactiveTintColor: color.gray,
         tabBarLabelStyle: {
           fontSize: 12,
           fontWeight: '600',

@@ -25,7 +25,7 @@ export default function DetailsStackLayout() {
       />
       <Stack.Screen
         name="available-flight"
-        options={{ headerTitle: 'Available Flight' }}
+        options={{ headerTitle: 'Available Flights' }}
       />
     </Stack>
   );
