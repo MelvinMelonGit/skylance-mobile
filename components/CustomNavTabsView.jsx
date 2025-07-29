@@ -9,7 +9,7 @@ export default function CustomNavTabsView({ activeTab, setActiveTab }) {
         onPress={() => setActiveTab('Upcoming Flights')}
       >
         <Text style={[styles.tabText, activeTab === 'Upcoming Flights' && styles.activeTabText]}>
-          Upcoming Flights
+          Upcoming
         </Text>
       </TouchableOpacity>
 
@@ -28,10 +28,12 @@ export default function CustomNavTabsView({ activeTab, setActiveTab }) {
 const styles = StyleSheet.create({
   tabBar: {
     flexDirection: 'row',
-    backgroundColor: '#ddd',
-    borderRadius: 8,
+    borderRadius: 50,
+    borderWidth: 2,
+    borderColor: color.primary,
     marginHorizontal: 20,
     marginBottom: 16,
+    padding: 4,
     width: '100%',
     overflow: 'hidden', // keeps rounded corners clean
   },
@@ -43,14 +45,16 @@ const styles = StyleSheet.create({
   },
   activeTab: {
     backgroundColor: color.primary,
+    borderRadius: 50
   },
   tabText: {
-    fontSize: 16,
-    color: '#333',
+    fontSize: 18,
+    color: color.primary,
     fontWeight: '500',
+    padding: 5,
   },
   activeTabText: {
-    color: 'white',
-    fontWeight: '600',
+    color: color.white,
+    fontWeight: '500',
   },
 });

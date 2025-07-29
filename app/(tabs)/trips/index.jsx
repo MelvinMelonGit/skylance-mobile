@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CustomNavTabsView from '../../../components/CustomNavTabsView';
-import { H2 } from '../../../components/HeadingsView';
-import LinkView from '../../../components/LinkView';
+import FlightContainer from '../../../components/FlightContainer';
 import LogoView from '../../../components/LogoView';
 
 export default function Index() {
@@ -18,19 +17,17 @@ export default function Index() {
         {/* Show different content based on tab */}
       {activeTab === 'Upcoming Flights' ? (
         <View style={styles.innerView}>
-          <LinkView href="/trips/details">Details</LinkView>
           <FlatList
-            data={['Apple', 'Banana', 'Orange']}
-            renderItem={({ item }) => <Text>{item}</Text>}
+            data={['Apple Aplly lwifbeiuvkrbfeq', 'Banana', 'Orange']}
+            renderItem={({ item }) => <FlightContainer>{item}</FlightContainer>}
             keyExtractor={(item, index) => item + index}
           />
         </View>
       ) : (
         <View style={styles.innerView}>
-          <H2>Past Flights</H2>
           <FlatList
             data={['1', '2', '3']}
-            renderItem={({ item }) => <Text>{item}</Text>}
+            renderItem={({ item }) => <FlightContainer>{item}</FlightContainer>}
             keyExtractor={(item, index) => item + index}
           />
         </View>

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { SafeAreaView, StyleSheet, Text } from 'react-native';
+import ButtonView from '../../../components/ButtonView';
 import LinkView from '../../../components/LinkView';
+import ModalView from '../../../components/ModalView';
 
 export default function Details() {
   const [modalVisible, setModalVisible] = useState(false);
