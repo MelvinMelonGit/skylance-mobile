@@ -3,6 +3,7 @@ import { Slot } from 'expo-router';
 import { useEffect, useRef } from 'react';
 import AuthProvider from "../context/AuthContext";
 import BookingProvider from "../context/BookingContext";
+import SelectedFlightProvider from "../context/SelectedFlightContext";
 
 export default function RootLayout() {
   const navigationRef = useNavigationContainerRef();
@@ -23,7 +24,9 @@ export default function RootLayout() {
     // </Stack>
     <AuthProvider>
       <BookingProvider>
-        <Slot />
+        <SelectedFlightProvider>
+           <Slot />
+        </SelectedFlightProvider>
       </BookingProvider>
     </AuthProvider>
   );

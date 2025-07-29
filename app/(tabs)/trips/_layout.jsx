@@ -1,5 +1,5 @@
 import { Stack } from 'expo-router';
-import { useAuth } from '../../../context/AuthContext';
+import { useBooking } from '../../../context/BookingContext';
 import { color } from '../../../styles/color';
 
 const screenOptions = {
@@ -10,7 +10,7 @@ const screenOptions = {
 };
 
 export default function LoginStackLayout() {
-  const { isLoggedIn } = useAuth();
+  const { isOverBooked } = useBooking();
 
   return (
     <Stack>
@@ -28,8 +28,7 @@ export default function LoginStackLayout() {
 
       <Stack.Screen name="details"
         options={{
-            // title: 'Register',
-            headerTitle: 'Trip Details',
+            headerTitle: isOverBooked ? 'Pending Check-In' : 'Trip Details',
             headerStyle: screenOptions.headerStyle,
             headerTitleStyle: screenOptions.headerTitleStyle,
             headerTintColor: screenOptions.headerTintColor, 

@@ -18,7 +18,7 @@ export default function DetailsStackLayout() {
          options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="none"
+        name="pending"
         options={{ headerShown: false }}
       />
     </Stack>
