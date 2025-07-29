@@ -1,11 +1,14 @@
-import { SafeAreaView, StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import LinkView from '../../components/LinkView';
 
 export default function Boarding() {
   return (
-      <SafeAreaView style={styles.container}>
-          <Text>Boarding Pass Here</Text>
-          <LinkView href="/">Go To Home</LinkView>
+      <SafeAreaView style={{ flex: 1}}>
+        <View style={styles.container}>
+            <Text>Login to see your boarding pass!</Text>
+            <LinkView href="/login">Go To Login</LinkView>
+        </View>
       </SafeAreaView>
   );
 }

@@ -3,7 +3,7 @@ import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CustomNavTabsView from '../../../components/CustomNavTabsView';
 import FlightContainer from '../../../components/FlightContainer';
-import LogoView from '../../../components/LogoView';
+import LinkView from '../../../components/LinkView';
 import { useAuth } from '../../context/AuthContext';
 
 export default function Index() {
@@ -12,12 +12,11 @@ export default function Index() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <LogoView>Skylance</LogoView>
-      {isLoggedIn ? (
+        {isLoggedIn ? (
         <>
-          <View style={styles.outerView}>
-              <CustomNavTabsView activeTab={activeTab} setActiveTab={setActiveTab} />
-          </View>
+        <View style={styles.outerView}>
+           <CustomNavTabsView activeTab={activeTab} setActiveTab={setActiveTab} />
+        </View>
           {activeTab === 'Upcoming Flights' ? (
             <View style={styles.innerView}>
               <FlatList
@@ -37,10 +36,9 @@ export default function Index() {
           )}
         </>
       ) : (
-        <View style={styles.outerView}>
-          <Text>
-            Login to see your trips!
-          </Text>
+        <View style={styles.centered}>
+          <Text>Login to see your trips!</Text>
+          <LinkView href="/login">Go To Login</LinkView>
         </View>
       )}
     </SafeAreaView>
@@ -64,5 +62,11 @@ const styles = StyleSheet.create({
   list: {
     flex: 2,
     width: '100%',
+  },
+  centered: {
+    flex: 1,
+    paddingHorizontal: '10%',
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 });
