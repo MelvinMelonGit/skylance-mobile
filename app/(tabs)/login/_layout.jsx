@@ -50,14 +50,6 @@ export default function LoginStackLayout() {
             headerTitleAlign: screenOptions.headerTitleAlign 
           }}
       />
-      <Stack.Screen name="otp" options={{
-            // title: 'OTP',
-            headerTitle: 'OTP',
-            headerStyle: screenOptions.headerStyle,
-            headerTitleStyle: screenOptions.headerTitleStyle,
-            headerTintColor: screenOptions.headerTintColor, 
-            headerTitleAlign: screenOptions.headerTitleAlign 
-          }}/>
     </Stack> 
   );
 }

@@ -1,6 +1,7 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import ButtonView from '../../../components/ButtonView';
 import EditTextView from '../../../components/EditTextView';
+import H1View from '../../../components/H1View';
 import LinkText from '../../../components/LinkText';
 import TextView from '../../../components/TextView';
 import { color } from '../../../styles/color';
@@ -12,6 +13,7 @@ export default function Index() {
   return (
     <ScrollView
         contentContainerStyle={styles.container}>
+        <H1View>Skylance</H1View>
         <TextView title>Welcome Back!</TextView>
         <View style={styles.inner}>
             <TextView>Email</TextView>
