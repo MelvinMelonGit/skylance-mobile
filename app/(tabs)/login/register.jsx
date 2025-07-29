@@ -1,10 +1,16 @@
 import { ScrollView, StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import ButtonView from '../../../components/ButtonView';
 import EditTextView from '../../../components/EditTextView';
-import LinkView from '../../../components/LinkView';
 import TextView from '../../../components/TextView';
+
+function handlePress() {
+    alert('Alert Title', 'This is the alert message');
+}
 
 export default function Register() {
   return (
+    <SafeAreaView style={{ flex: 1 }}>
         <ScrollView
             contentContainerStyle={styles.container}>
             <View style={styles.inner}>
@@ -29,9 +35,16 @@ export default function Register() {
             </View>
 
             <View style={styles.inner}>
-                <TextView>Country Code</TextView>
+                <TextView>Nationality</TextView>
                 <EditTextView
-                    placeholder="Enter Country Code"
+                    placeholder="Enter Nationality"
+                />
+            </View>
+            
+             <View style={styles.inner}>
+                <TextView>Mobile Country Code</TextView>
+                <EditTextView
+                    placeholder="Enter Mobile Country Code"
                 />
             </View>
             
@@ -58,20 +71,21 @@ export default function Register() {
                 />
             </View>
             
-            <LinkView href="/login/otp">Send OTP Via Email</LinkView>
+            {/* <LinkView href="/login/otp">Send OTP Via Email</LinkView> */}
+            <ButtonView onPress={handlePress}>Register</ButtonView>
         </ScrollView>
+    </SafeAreaView> 
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     paddingHorizontal: '10%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
   inner: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   }
 });

@@ -1,13 +1,10 @@
-import { Alert, ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import ButtonView from '../../../components/ButtonView';
 import EditTextView from '../../../components/EditTextView';
-import LinkView from '../../../components/LinkView';
+import LinkText from '../../../components/LinkText';
 import TextView from '../../../components/TextView';
+import { color } from '../../../styles/color';
 import { useAuth } from '../../context/AuthContext';
-
-function handleClick() {
-    Alert.alert('Alert Title', 'This is the alert message');
-}
 
 export default function Index() {
   const { isLoggedIn, login, logout } = useAuth()
@@ -30,12 +27,14 @@ export default function Index() {
                 secure
             />
         </View>
-        <LinkView href="/login/register">Register</LinkView>
         {isLoggedIn ?
           (<ButtonView onPress={logout}>Logout</ButtonView>):
           (<ButtonView onPress={login}>Login</ButtonView>)
         }
-        
+
+        <Text style={styles.text}>Don't have an account?</Text>
+        <LinkText href="/login/register">Register</LinkText>
+
     </ScrollView>
   );
 }
@@ -50,5 +49,9 @@ const styles = StyleSheet.create({
   inner: {
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  text: {
+    color: color.gray,
+    fontWeight: 500,
   }
 });
