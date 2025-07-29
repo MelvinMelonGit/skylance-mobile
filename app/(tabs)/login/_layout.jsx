@@ -19,7 +19,7 @@ export default function LoginStackLayout() {
           <Stack.Screen name="index"
             options={{
                 // title: 'Logout',
-                headerTitle: 'Chan Meng Tuck',
+                headerTitle: 'Account',
                 headerStyle: screenOptions.headerStyle,
                 headerTitleStyle: screenOptions.headerTitleStyle,
                 headerTintColor: screenOptions.headerTintColor, 

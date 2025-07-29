@@ -60,7 +60,7 @@ export default function TabLayout() {
          />
          {isLoggedIn ? (
             <Tabs.Screen name="login"
-            options={{ title: 'Chan', headerShown: false }}
+            options={{ title: 'Account', headerShown: false }}
           />
          ) : (
             <Tabs.Screen name="login"
