@@ -1,20 +1,18 @@
 import { StyleSheet, Text } from 'react-native';
 import { color } from '../styles/color';
 
-export default function TextView({children}) {
+export default function LogoView({children}) {
   return (
-    <Text
-        style={styles.container}
-    >
+    <Text style={styles.logo}>
         {children}
     </Text>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    fontSize: 28,
-    fontWeight: 700,
+  logo: {
+    fontSize: 30,
+    fontWeight: 900,
     textAlign: 'center',
     color: color.primary
   },

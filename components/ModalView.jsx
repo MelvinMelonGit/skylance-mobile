@@ -1,7 +1,7 @@
 import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import { color } from '../styles/color';
 
-export default function ChooseOptionModal({ visible, onClose }) {
+export default function ModalView({ visible, onClose }) {
   return (
     <Modal
       transparent

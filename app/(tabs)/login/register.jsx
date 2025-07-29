@@ -3,7 +3,7 @@ import { Alert, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ButtonView from '../../../components/ButtonView';
 import EditTextView from '../../../components/EditTextView';
-import H1View from '../../../components/H1View';
+import LogoView from '../../../components/LogoView';
 import TextView from '../../../components/TextView';
 
 export default function Register() {
@@ -64,8 +64,7 @@ export default function Register() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={styles.container}>
-        <H1View>Skylance</H1View>
-
+        <LogoView>Skylance</LogoView>
         <View style={styles.inner}>
           <TextView>Saluation</TextView>
           <EditTextView

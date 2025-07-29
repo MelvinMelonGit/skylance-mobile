@@ -45,14 +45,7 @@ export default function TabLayout() {
           }}
         />
         <Tabs.Screen name="trips"
-          options={{
-            title: 'Trips',
-            headerTitle: 'Your Trips',
-            headerStyle: screenOptions.headerStyle,
-            headerTitleStyle: screenOptions.headerTitleStyle,
-            headerTintColor: screenOptions.headerTintColor, 
-            headerTitleAlign: screenOptions.headerTitleAlign 
-          }}
+            options={{ title: 'Trips', headerShown: false }}
         />
         {/* <Tabs.Screen name="otp" options={{ title: 'OTP', headerShown: false, href: null }}/> */}
         <Tabs.Screen name="boarding"

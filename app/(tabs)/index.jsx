@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { FlatList, SafeAreaView, SectionList, StyleSheet, Text, View } from 'react-native';
 import ButtonView from '../../components/ButtonView';
 import CardView from '../../components/CardView';
-import H1View from '../../components/H1View';
+import { H1 } from '../../components/HeadingsView';
 import LinkView from '../../components/LinkView';
+import LogoView from '../../components/LogoView';
 import ModalView from '../../components/ModalView';
 import { color } from '../../styles/color';
 
@@ -13,7 +14,8 @@ export default function Index() {
   return (
       <SafeAreaView style={styles.container}>
       <View style={styles.innerView}>
-        <H1View>Begin Your Adventure Now!</H1View>
+        <LogoView>Skylance</LogoView>
+        <H1>Begin Your Adventure Now!</H1>
         <LinkView href="/">Search</LinkView>
         {/* <LinkView href="/_modal/chooseOptionModal">Choose Options</LinkView> */}
         <ButtonView onPress={() => setModalVisible(true)}>Click Me Modal</ButtonView>

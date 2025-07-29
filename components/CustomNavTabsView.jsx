@@ -5,20 +5,20 @@ export default function CustomNavTabsView({ activeTab, setActiveTab }) {
   return (
     <View style={styles.tabBar}>
       <TouchableOpacity
-        style={[styles.tab, activeTab === 'home' && styles.activeTab]}
-        onPress={() => setActiveTab('home')}
+        style={[styles.tab, activeTab === 'Upcoming Flights' && styles.activeTab]}
+        onPress={() => setActiveTab('Upcoming Flights')}
       >
-        <Text style={[styles.tabText, activeTab === 'home' && styles.activeTabText]}>
-          Home
+        <Text style={[styles.tabText, activeTab === 'Upcoming Flights' && styles.activeTabText]}>
+          Upcoming Flights
         </Text>
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={[styles.tab, activeTab === 'login' && styles.activeTab]}
-        onPress={() => setActiveTab('login')}
+        style={[styles.tab, activeTab === 'Past Flights' && styles.activeTab]}
+        onPress={() => setActiveTab('Past Flights')}
       >
-        <Text style={[styles.tabText, activeTab === 'login' && styles.activeTabText]}>
-          Login
+        <Text style={[styles.tabText, activeTab === 'Past Flights' && styles.activeTabText]}>
+          Past Flights
         </Text>
       </TouchableOpacity>
     </View>

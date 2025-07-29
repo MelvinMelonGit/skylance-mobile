@@ -1,26 +1,29 @@
 import { useState } from 'react';
 import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import CustomNavTabsView from '../../components/CustomNavTabsView';
-import H1View from '../../components/H1View';
-import LinkView from '../../components/LinkView';
+import CustomNavTabsView from '../../../components/CustomNavTabsView';
+import LinkView from '../../../components/LinkView';
+import LogoView from '../../../components/LogoView';
 
-export default function Trips() {
-  const [activeTab, setActiveTab] = useState('home');
+export default function Index() {
+  const [activeTab, setActiveTab] = useState('Upcoming Flights');
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.innerView}>
+        <LogoView>Skylance</LogoView>
         <CustomNavTabsView activeTab={activeTab} setActiveTab={setActiveTab} />
-        <H1View>Begin Your Adventure Now!</H1View>
-        <LinkView href="/">Home</LinkView>
+        
       </View>
         {/* Show different content based on tab */}
-      {activeTab === 'home' ? (
-        <FlatList
-          data={['Apple', 'Banana', 'Orange']}
-          renderItem={({ item }) => <Text>{item}</Text>}
-          keyExtractor={(item, index) => item + index}
-        />
+      {activeTab === 'Upcoming Flights' ? (
+        <View style={styles.innerView}>
+          <LinkView href="/trips/details">Details</LinkView>
+          <FlatList
+            data={['Apple', 'Banana', 'Orange']}
+            renderItem={({ item }) => <Text>{item}</Text>}
+            keyExtractor={(item, index) => item + index}
+          />
+        </View>
       ) : (
         <View style={{ padding: 20 }}>
           <Text style={{ fontSize: 18 }}>Login Tab Content</Text>
