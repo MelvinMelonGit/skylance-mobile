@@ -1,19 +1,12 @@
 import { FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useState } from 'react';
+import { useLocalSearchParams } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { H2 } from '../../../../components/HeadingsView';
-import { useBooking } from '../../../../context/BookingContext';
 import { color } from '../../../../styles/color';
 
 export default function CheckIn() {
   const { id } = useLocalSearchParams();
-  const router = useRouter();
-
-  const { isOverBooked } = useBooking();
-
-  const [modalVisible, setModalVisible] = useState(false);
 
   return (
       <SafeAreaView style={{ flex: 1}}>
