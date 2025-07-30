@@ -32,38 +32,38 @@ export default function CheckIn() {
           <View style={styles.warnings}>
             <View style={styles.warningsInner}>
               <FontAwesome5 name="skull-crossbones" size={50} color={color.black} />
-              <Text>HAHA</Text>
+              <Text style={styles.iconText}>Toxic Chemicals</Text>
               <MaterialCommunityIcons name="block-helper" size={70} color={color.red} style={styles.warningsIcons}/>
             </View>
            
           
             <View style={styles.warningsInner}>
               <FontAwesome5 name="fire" size={50} color={color.black} />
-              <Text>HAHA</Text>
+              <Text style={styles.iconText}>Flammable Items</Text>
               <MaterialCommunityIcons name="block-helper" size={70} color={color.red} style={styles.warningsIcons}/>
             </View>
             
             <View style={styles.warningsInner}>
               <FontAwesome5 name="bomb" size={50} color={color.black} />
-              <Text>HAHA</Text>
+              <Text style={styles.iconText}>Explosive Goods</Text>
               <MaterialCommunityIcons name="block-helper" size={70} color={color.red} style={styles.warningsIcons}/>
             </View>
             
             <View style={styles.warningsInner}>
               <FontAwesome5 name="spray-can" size={50} color={color.black} />
-              <Text>HAHA</Text>
+              <Text style={styles.iconText}>Aerosols & Sprays</Text>
               <MaterialCommunityIcons name="block-helper" size={70} color={color.red} style={styles.warningsIcons}/>
             </View>
             
             <View style={styles.warningsInner}>
               <Ionicons name="warning" size={50} color={color.black} />
-              <Text>HAHA</Text>
+              <Text style={styles.iconText}>Corrosive Materials</Text>
               <MaterialCommunityIcons name="block-helper" size={70} color={color.red} style={styles.warningsIcons}/>
             </View>
 
             <View style={styles.warningsInner}>
                <MaterialCommunityIcons name="propane-tank" size={50} color={color.black} />
-               <Text>HAHA</Text>
+               <Text style={styles.iconText}>Propane Gas</Text>
                <MaterialCommunityIcons name="block-helper" size={70} color={color.red} style={styles.warningsIcons}/>
             </View>
             
@@ -115,5 +115,9 @@ const styles = StyleSheet.create({
   warningsIcons: {
     position: 'absolute',
     top: -10
+  },
+  iconText: {
+    textAlign: 'center',
+    fontWeight: 500
   }
 });
