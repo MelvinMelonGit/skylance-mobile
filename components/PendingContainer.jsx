@@ -14,8 +14,8 @@ export default function PendingContainer({choice, id}) {
             style={styles.container}
             onPress={() => {
               choice === 1 ?
-              router.push(`/trips/details/cancel-flight`) :
-              router.push(`/trips/details/available-flight`)
+              router.push(`/trips/${id}/cancel-flight`) :
+              router.push(`/trips/${id}/available-flight`)
             }}
             >
             <View style={styles.inner}>
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     maxWidth: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 1,
+    borderWidth: 2,
     height: 100,
     borderRadius: 5,
     borderColor: color.primary,

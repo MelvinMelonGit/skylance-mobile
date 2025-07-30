@@ -5,10 +5,10 @@ export default function ButtonView({children, onPress, warning, clear}) {
 
   let buttonColor = color.primary
   if (warning) buttonColor = color.red
-  else if (clear) buttonColor = color.white
-
+  else if (clear) buttonColor = color.transparent
+  
   let buttonTextColor = color.white
-  if (clear) buttonColor = color.primary
+  if (clear) buttonTextColor = color.primary
 
   return (
     <TouchableOpacity

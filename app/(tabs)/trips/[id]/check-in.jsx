@@ -3,13 +3,11 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ButtonView from '../../../../components/ButtonView';
 import { H2 } from '../../../../components/HeadingsView';
-import ModalView from '../../../../components/ModalView';
 import { useBooking } from '../../../../context/BookingContext';
 import { color } from '../../../../styles/color';
 
-export default function Index() {
+export default function CheckIn() {
   const { id } = useLocalSearchParams();
   const router = useRouter();
 
@@ -37,21 +35,7 @@ export default function Index() {
               <Text>USA</Text>
             </View>
           </View>
-          <H2>Check In Trip #{id}</H2>
-          <ButtonView
-            onPress={() => {
-              isOverBooked ?
-              router.push(`/trips/${id}/pending`) :
-              router.push(`/trips/${id}/check-in`)
-            }}>
-            Check In
-          </ButtonView>
-          <ButtonView clear>Manage Booking</ButtonView>
-          <ButtonView onPress={() => setModalVisible(true)}>Click Me Modal {id}</ButtonView>
-           <ModalView
-             visible={modalVisible}
-             onClose={() => setModalVisible(false)}
-           />
+          <H2>Check In #{id}</H2>
         </View>
       </SafeAreaView>
   );

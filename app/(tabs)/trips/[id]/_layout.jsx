@@ -16,8 +16,12 @@ export default function DetailsStackLayout() {
          options={{ headerTitle: 'Trip Details' }}
       />
       <Stack.Screen
+        name="check-in"
+        options={{ headerTitle: 'Confirm Check In' }}
+      />
+      <Stack.Screen
         name="pending"
-        options={{ headerTitle: 'Pending Check-In' }}
+        options={{ headerTitle: 'Pending Check In' }}
       />
       <Stack.Screen
         name="cancel-flight"
