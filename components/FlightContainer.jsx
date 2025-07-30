@@ -1,20 +1,15 @@
 import { useRouter } from 'expo-router';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useBooking } from '../context/BookingContext';
 import { color } from '../styles/color';
 import { H3 } from './HeadingsView';
 
 export default function FlightContainer({children, id}) {
     const router = useRouter();
 
-    const { isOverBooked } = useBooking()
-
     return (
         <TouchableOpacity
             style={styles.container}
             onPress={() => {
-              isOverBooked ?
-              router.push(`/trips/${id}/pending`) :
               router.push(`/trips/${id}`)
             }}
             >
