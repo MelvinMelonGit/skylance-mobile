@@ -19,7 +19,7 @@ export default function LoginStackLayout() {
           }}
         />
 
-      <Stack.Screen name="details"
+      <Stack.Screen name="[id]"
         options={{
             headerShown: false,
           }}

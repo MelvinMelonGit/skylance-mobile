@@ -6,7 +6,7 @@ import ButtonView from '../../../../components/ButtonView';
 import LinkView from '../../../../components/LinkView';
 import ModalView from '../../../../components/ModalView';
 
-export default function Details() {
+export default function Index() {
   const { id } = useLocalSearchParams();
 
   const [modalVisible, setModalVisible] = useState(false);

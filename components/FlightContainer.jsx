@@ -14,8 +14,8 @@ export default function FlightContainer({children, id}) {
             style={styles.container}
             onPress={() => {
               isOverBooked ?
-              router.push(`/trips/details/pending`) :
-              router.push(`/trips/details/${id}`)
+              router.push(`/trips/${id}/pending`) :
+              router.push(`/trips/${id}`)
             }}
             >
             <View style={styles.inner}>

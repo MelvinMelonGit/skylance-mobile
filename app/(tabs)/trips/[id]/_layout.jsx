@@ -12,7 +12,7 @@ export default function DetailsStackLayout() {
   return (
     <Stack screenOptions={screenOptions}>
       <Stack.Screen
-        name="[id]"
+        name="index"
          options={{ headerTitle: 'Trip Details' }}
       />
       <Stack.Screen
