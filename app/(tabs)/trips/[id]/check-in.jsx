@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -36,6 +36,45 @@ export default function CheckIn() {
             </View>
           </View>
           <H2>Check In #{id}</H2>
+          <View style={styles.warnings}>
+            <View style={styles.warningsInner}>
+              <FontAwesome5 name="skull-crossbones" size={50} color={color.black} />
+              <Text>HAHA</Text>
+              <MaterialCommunityIcons name="block-helper" size={70} color={color.red} style={styles.warningsIcons}/>
+            </View>
+           
+          
+            <View style={styles.warningsInner}>
+              <FontAwesome5 name="fire" size={50} color={color.black} />
+              <Text>HAHA</Text>
+              <MaterialCommunityIcons name="block-helper" size={70} color={color.red} style={styles.warningsIcons}/>
+            </View>
+            
+            <View style={styles.warningsInner}>
+              <FontAwesome5 name="bomb" size={50} color={color.black} />
+              <Text>HAHA</Text>
+              <MaterialCommunityIcons name="block-helper" size={70} color={color.red} style={styles.warningsIcons}/>
+            </View>
+            
+            <View style={styles.warningsInner}>
+              <FontAwesome5 name="spray-can" size={50} color={color.black} />
+              <Text>HAHA</Text>
+              <MaterialCommunityIcons name="block-helper" size={70} color={color.red} style={styles.warningsIcons}/>
+            </View>
+            
+            <View style={styles.warningsInner}>
+              <Ionicons name="warning" size={50} color={color.black} />
+              <Text>HAHA</Text>
+              <MaterialCommunityIcons name="block-helper" size={70} color={color.red} style={styles.warningsIcons}/>
+            </View>
+
+            <View style={styles.warningsInner}>
+               <MaterialCommunityIcons name="propane-tank" size={50} color={color.black} />
+               <Text>HAHA</Text>
+               <MaterialCommunityIcons name="block-helper" size={70} color={color.red} style={styles.warningsIcons}/>
+            </View>
+            
+          </View>
         </View>
       </SafeAreaView>
   );
@@ -64,5 +103,24 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 30,
     fontWeight: 400
+  },
+  warnings: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    gap: 50,
+    marginTop: 50
+  },
+  warningsInner: {
+    gap: 10,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: 70,
+    position: 'relative',
+    overflow: 'visible', 
+  },
+  warningsIcons: {
+    position: 'absolute',
+    top: -10
   }
 });
