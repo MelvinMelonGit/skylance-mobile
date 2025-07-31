@@ -8,11 +8,11 @@ const screenOptions = {
   headerTintColor: color.primary,
   headerTitleStyle: { fontWeight: 'bold', fontSize: 20 },
   headerTitleAlign: 'center',
-};
+}
 
 export default function TabLayout() {
-  const { currentUser, isLoggedIn } = useAuth();
-  const router = useRouter();
+  const { currentUser, isLoggedIn } = useAuth()
+  const router = useRouter()
 
   return (
       <Tabs
@@ -24,14 +24,14 @@ export default function TabLayout() {
           fontWeight: '600',
         },
         tabBarIcon: ({ color, size }) => {
-          let iconName = 'home';
+          let iconName = 'home'
 
-          if (route.name === 'trips') iconName = 'airplane';
-          else if (route.name === 'boarding') iconName = 'ticket';
-          else if (route.name === 'login' && isLoggedIn) iconName = 'person-circle-sharp';
-          else if (route.name === 'login' && !isLoggedIn) iconName = 'person';
+          if (route.name === 'trips') iconName = 'airplane'
+          else if (route.name === 'boarding') iconName = 'ticket'
+          else if (route.name === 'login' && isLoggedIn) iconName = 'person-circle-sharp'
+          else if (route.name === 'login' && !isLoggedIn) iconName = 'person'
 
-          return <Ionicons name={iconName} size={size} color={color} />;
+          return <Ionicons name={iconName} size={size} color={color} />
         },
       })}
       >
@@ -47,8 +47,8 @@ export default function TabLayout() {
           }}
           listeners={{
               tabPress: (e) => {
-              e.preventDefault(); // Prevent default tab behavior
-              router.push('/'); // Always go to /login/index
+              e.preventDefault() // Prevent default tab behavior
+              router.push('/') // Always go to /login/index
             },
           }}
         />
@@ -56,8 +56,8 @@ export default function TabLayout() {
             options={{ title: 'Trips', headerShown: false }}
             listeners={{
               tabPress: (e) => {
-              e.preventDefault(); // Prevent default tab behavior
-              router.push('/trips'); // Always go to /login/index
+              e.preventDefault() // Prevent default tab behavior
+              router.push('/trips') // Always go to /login/index
             },
           }}
         />
@@ -74,8 +74,8 @@ export default function TabLayout() {
           }}
           listeners={{
               tabPress: (e) => {
-              e.preventDefault(); // Prevent default tab behavior
-              router.push('/boarding'); // Always go to /login/index
+              e.preventDefault() // Prevent default tab behavior
+              router.push('/boarding') // Always go to /login/index
             },
           }}
          />
@@ -87,11 +87,11 @@ export default function TabLayout() {
             }}
             listeners={{
               tabPress: (e) => {
-              e.preventDefault(); // Prevent default tab behavior
-              router.push('/login'); // Always go to /login/index
+              e.preventDefault() // Prevent default tab behavior
+              router.push('/login') // Always go to /login/index
             },
         }}
       />
     </Tabs>
-  );
+  )
 }

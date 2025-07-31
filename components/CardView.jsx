@@ -11,7 +11,7 @@ export default function CardView({name, image}) {
         <Text style={styles.text}>{name}</Text>
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({

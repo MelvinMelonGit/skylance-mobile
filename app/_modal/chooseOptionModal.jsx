@@ -3,7 +3,7 @@ import { Stack, useRouter } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 export default function ChooseOptionModal() {
-  const router = useRouter();
+  const router = useRouter()
 
   return (
     <>
@@ -25,7 +25,7 @@ export default function ChooseOptionModal() {
         </Pressable>
       </View>
     </>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -56,4 +56,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 20,
   },
-});
+})

@@ -19,29 +19,29 @@ export default function Register() {
     mobileNumber: '',
     password: '',
     confirmPassword: ''
-  });
+  })
 
   const handleChange = (key, value) => {
-    setForm(prev => ({ ...prev, [key]: value }));
-  };
+    setForm(prev => ({ ...prev, [key]: value }))
+  }
 
   const handleSubmit = async () => {
     // Validate all fields are filled
     const emptyFields = Object.entries(form)
         .filter(([key, value]) => value.trim() === '')
-        .map(([key]) => key);
+        .map(([key]) => key)
 
     if (emptyFields.length > 0) {
         Alert.alert(
         'Missing Fields',
         `Please fill in the following: ${emptyFields.join(', ')}`
-        );
-        return;
+        )
+        return
     }
 
     if (form.password !== form.confirmPassword) {
-      Alert.alert('Error', 'Passwords do not match');
-      return;
+      Alert.alert('Error', 'Passwords do not match')
+      return
     }
 
     try {
@@ -51,15 +51,15 @@ export default function Register() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(form)
-      });
+      })
 
-      if (!response.ok) throw new Error('Registration failed');
-      const data = await response.json();
-      Alert.alert('Success', 'Registration completed!');
+      if (!response.ok) throw new Error('Registration failed')
+      const data = await response.json()
+      Alert.alert('Success', 'Registration completed!')
     } catch (err) {
-      Alert.alert('Error', err.message);
+      Alert.alert('Error', err.message)
     }
-  };
+  }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -169,7 +169,7 @@ export default function Register() {
         <ButtonView onPress={handleSubmit}>Register</ButtonView>
       </ScrollView>
     </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -182,4 +182,4 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     // justifyContent: 'center',
   }
-});
+})

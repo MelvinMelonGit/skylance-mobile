@@ -4,7 +4,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { H3 } from './HeadingsView';
 
 export default function PendingContainer({choice, id}) {
-    const router = useRouter();
+    const router = useRouter()
 
     return (
         <TouchableOpacity
@@ -26,7 +26,7 @@ export default function PendingContainer({choice, id}) {
                 </View>
             </View>
         </TouchableOpacity>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -57,4 +57,4 @@ const styles = StyleSheet.create({
   text: {
     color: color.gray
   }
-});
+})

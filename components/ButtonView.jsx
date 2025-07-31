@@ -26,7 +26,7 @@ export default function ButtonView({children, onPress, warning, clear}) {
     >
       <Text style={[styles.text, { color: buttonTextColor}]}>{children}</Text>
     </TouchableOpacity>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 500
   }
-});
+})

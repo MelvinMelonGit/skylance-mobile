@@ -36,7 +36,7 @@ export default function Boarding() {
           )}
         </View>
       </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -46,4 +46,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+})

@@ -8,7 +8,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function CheckIn() {
-  const { id } = useLocalSearchParams();
+  const { id } = useLocalSearchParams()
   const router = useRouter()
 
   const { setCurrentFlight } = useSelectedFlight()
@@ -80,7 +80,7 @@ export default function CheckIn() {
           }}>Check In</ButtonView>
         </View>
       </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -140,4 +140,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 500
   }
-});
+})

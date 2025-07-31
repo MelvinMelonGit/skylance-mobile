@@ -27,7 +27,7 @@ export default function ModalView({ visible, onClose }) {
         </View>
       </View>
     </Modal>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -55,4 +55,4 @@ const styles = StyleSheet.create({
   },
   buttonText: { color: 'white', textAlign: 'center', fontWeight: 'bold' },
   closeText: { marginTop: 15, color: 'gray' },
-});
+})

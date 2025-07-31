@@ -7,7 +7,7 @@ export default function LinkText({children, href}) {
     <Link href={href} style={styles.container}>
           {children}
     </Link>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -16,4 +16,4 @@ const styles = StyleSheet.create({
     fontWeight: 500,
     fontSize: 18
   }
-});
+})

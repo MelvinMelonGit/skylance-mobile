@@ -6,7 +6,7 @@ export default function LogoView({children}) {
     <Text style={styles.logo}>
         {children}
     </Text>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
     color: color.primary,
     marginBottom: '10%'
   },
-});
+})

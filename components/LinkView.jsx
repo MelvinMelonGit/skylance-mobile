@@ -7,7 +7,7 @@ export default function LinkView({children, href}) {
     <Link href={href} style={styles.container}>
           {children}
     </Link>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
     fontWeight: 500,
     color: color.white
   }
-});
+})

@@ -35,7 +35,7 @@ export default function CancelFlight() {
           <ButtonView warning>Cancel Flight</ButtonView>
         </View>
       </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -62,4 +62,4 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 400
   }
-});
+})

@@ -4,7 +4,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { H3 } from './HeadingsView';
 
 export default function FlightContainer({children, id, overbooked}) {
-    const router = useRouter();
+    const router = useRouter()
 
     return (
         <TouchableOpacity
@@ -38,7 +38,7 @@ export default function FlightContainer({children, id, overbooked}) {
                 </View>
             </View>
         </TouchableOpacity>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -85,4 +85,4 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginTop: 10
   }
-});
+})

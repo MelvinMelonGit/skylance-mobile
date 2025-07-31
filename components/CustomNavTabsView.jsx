@@ -22,7 +22,7 @@ export default function CustomNavTabsView({ activeTab, setActiveTab }) {
         </Text>
       </TouchableOpacity>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -57,4 +57,4 @@ const styles = StyleSheet.create({
     color: color.white,
     fontWeight: '500',
   },
-});
+})

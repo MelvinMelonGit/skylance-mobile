@@ -15,7 +15,7 @@ export default function TextView({children, marginVertical}) {
     >
         {children}
     </Text>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
     fontSize: 14,
     alignSelf: 'flex-start',
   },
-});
+})

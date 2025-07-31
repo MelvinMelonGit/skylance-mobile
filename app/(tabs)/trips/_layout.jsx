@@ -6,7 +6,7 @@ const screenOptions = {
   headerTintColor: color.primary,
   headerTitleStyle: { fontWeight: 'bold', fontSize: 20 },
   headerTitleAlign: 'center'
-};
+}
 
 export default function LoginStackLayout() {
   return (
@@ -25,5 +25,5 @@ export default function LoginStackLayout() {
           }}
       />
     </Stack> 
-  );
+  )
 }

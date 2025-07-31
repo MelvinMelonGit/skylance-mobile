@@ -13,7 +13,7 @@ export default function EditTextView({placeholder, marginVertical, secure}) {
         placeholder={placeholder}
         secureTextEntry={secure}
     />
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
     borderColor: color.gray,
     color: color.gray
   },
-});
+})

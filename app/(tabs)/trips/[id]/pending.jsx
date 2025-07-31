@@ -5,7 +5,7 @@ import { StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Pending() {
-  const { currentUser, isLoggedIn } = useAuth();
+  const { currentUser, isLoggedIn } = useAuth()
   
   return (
       <SafeAreaView style={{ flex: 1}}>
@@ -16,7 +16,7 @@ export default function Pending() {
           <PendingContainer choice={2} />
         </View>
       </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
     paddingHorizontal: '10%',
     justifyContent: 'center',
   },
-});
+})

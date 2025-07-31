@@ -5,17 +5,17 @@ import { Slot } from 'expo-router';
 import { useEffect, useRef } from 'react';
 
 export default function RootLayout() {
-  const navigationRef = useNavigationContainerRef();
-  const routeNameRef = useRef();
+  const navigationRef = useNavigationContainerRef()
+  const routeNameRef = useRef()
 
   useEffect(() => {
     const unsubscribe = navigationRef.addListener('state', () => {
-      const currentRoute = navigationRef.getCurrentRoute()?.name;
-      routeNameRef.current = currentRoute;
-    });
+      const currentRoute = navigationRef.getCurrentRoute()?.name
+      routeNameRef.current = currentRoute
+    })
 
-    return unsubscribe;
-  }, [navigationRef]);
+    return unsubscribe
+  }, [navigationRef])
 
   return (
     // <Stack>
@@ -26,5 +26,5 @@ export default function RootLayout() {
         <Slot />
       </SelectedFlightProvider>
     </AuthProvider>
-  );
+  )
 }

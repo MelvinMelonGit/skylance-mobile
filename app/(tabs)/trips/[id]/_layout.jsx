@@ -6,7 +6,7 @@ const screenOptions = {
   headerTintColor: color.primary,
   headerTitleStyle: { fontWeight: 'bold', fontSize: 20 },
   headerTitleAlign: 'center',
-};
+}
 
 export default function DetailsStackLayout() {
   return (
@@ -32,5 +32,5 @@ export default function DetailsStackLayout() {
         options={{ headerTitle: 'Available Flights' }}
       />
     </Stack>
-  );
+  )
 }

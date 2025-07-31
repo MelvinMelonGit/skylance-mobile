@@ -18,11 +18,11 @@ export default function AvailableFlight() {
           <ButtonView warning>Cancel Flight</ButtonView>
         </View>
       </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: '10%',
   },
-});
+})

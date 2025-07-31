@@ -1,20 +1,16 @@
 import ButtonView from '@/components/ButtonView';
 import { H2 } from '@/components/HeadingsView';
-import ModalView from '@/components/ModalView';
 import { color } from '@/styles/color';
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Index() {
-  const { id, overbooked } = useLocalSearchParams();
-  const isOverbooked = overbooked === 'true';
+  const { id, overbooked } = useLocalSearchParams()
+  const isOverbooked = overbooked === 'true'
 
-  const router = useRouter();
-
-  const [modalVisible, setModalVisible] = useState(false);
+  const router = useRouter()
 
   return (
       <SafeAreaView style={{ flex: 1}}>
@@ -46,14 +42,9 @@ export default function Index() {
             Check In
           </ButtonView>
           <ButtonView clear>Manage Booking</ButtonView>
-          <ButtonView onPress={() => setModalVisible(true)}>Click Me Modal {id}</ButtonView>
-           <ModalView
-             visible={modalVisible}
-             onClose={() => setModalVisible(false)}
-           />
         </View>
       </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -80,4 +71,4 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 400
   }
-});
+})

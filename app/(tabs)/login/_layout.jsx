@@ -7,10 +7,10 @@ const screenOptions = {
   headerTintColor: color.primary,
   headerTitleStyle: { fontWeight: 'bold', fontSize: 20 },
   headerTitleAlign: 'center'
-};
+}
 
 export default function LoginStackLayout() {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn } = useAuth()
 
   return (
     <Stack screenOptions={screenOptions}>
@@ -41,5 +41,5 @@ export default function LoginStackLayout() {
           }}
       />
     </Stack> 
-  );
+  )
 }

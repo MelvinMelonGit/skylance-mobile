@@ -51,7 +51,7 @@ export default function Index() {
         renderItem={() => null}  // Don't render individual items vertically
       />
     </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -67,4 +67,4 @@ const styles = StyleSheet.create({
   list: {
     width: '100%',
   }
-});
+})

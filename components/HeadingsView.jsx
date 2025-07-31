@@ -6,7 +6,7 @@ export function H1({children}) {
     <Text style={styles.h1}>
         {children}
     </Text>
-  );
+  )
 }
 
 export function H2({children, textColor, textAlign}) {
@@ -21,7 +21,7 @@ export function H2({children, textColor, textAlign}) {
       ]}>
         {children}
     </Text>
-  );
+  )
 }
 
 export function H3({children, textColor, textAlign}) {
@@ -36,7 +36,7 @@ export function H3({children, textColor, textAlign}) {
       ]}>
         {children}
     </Text>
-  );
+  )
 }
 
 
@@ -45,7 +45,7 @@ export function P({children}) {
     <Text style={styles.p}>
         {children}
     </Text>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -72,4 +72,4 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     color: color.gray
   },
-});
+})

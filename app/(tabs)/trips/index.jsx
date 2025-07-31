@@ -7,8 +7,8 @@ import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Index() {
-  const { isLoggedIn } = useAuth();
-  const [activeTab, setActiveTab] = useState('Upcoming Flights');
+  const { isLoggedIn } = useAuth()
+  const [activeTab, setActiveTab] = useState('Upcoming Flights')
 
   return (
     <SafeAreaView style={styles.container}>
@@ -42,7 +42,7 @@ export default function Index() {
         </View>
       )}
     </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -68,4 +68,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   }
-});
+})
