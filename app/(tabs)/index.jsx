@@ -5,11 +5,11 @@ import { FlatList, SectionList, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const DATA = [
-  'japan', 
-  'maldives',
-  'shanghai',
-  'singapore',
-  'thailand'
+  { country: 'japan', price: 1000 },
+  { country: 'maldives', price: 1400 },
+  { country: 'shanghai', price: 500 },
+  { country: 'singapore', price: 2000 },
+  { country: 'thailand', price: 600 },
 ]
 
 const promoImages = {
@@ -34,7 +34,7 @@ export default function Index() {
           { title: 'Find your next tickets with these flight deals!', data: DATA },
           { title: 'Selected tickets are on promotion!', data: DATA },
         ]}
-        keyExtractor={(item, index) => item + index}
+        keyExtractor={(item, index) => item.country + index}
         renderSectionHeader={({ section }) => (
           <>
             <H3>{section.title}</H3>
@@ -43,9 +43,9 @@ export default function Index() {
               data={section.data}
               horizontal
               showsHorizontalScrollIndicator={false}
-              keyExtractor={(item, index) => item + index}
+              keyExtractor={(item, index) => item.country + index}
               renderItem={({ item }) => (
-                <CardView name={item} image={promoImages[item]}/>
+                <CardView item={item} image={promoImages[item.country]}/>
               )}
             />
           </>
