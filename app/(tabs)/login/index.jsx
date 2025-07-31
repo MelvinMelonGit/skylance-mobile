@@ -5,21 +5,17 @@ import LinkText from '@/components/LinkText';
 import LogoView from '@/components/LogoView';
 import TextView from '@/components/TextView';
 import { useAuth } from '@/context/AuthContext';
-import { useBooking } from '@/context/BookingContext';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Index() {
   const { isLoggedIn, login, logout } = useAuth()
-  const { isOverBooked, setOverbooking } = useBooking()
 
   return (
     <SafeAreaView style={{ flex: 1}}>
       <ScrollView
         contentContainerStyle={styles.container}>
         <LogoView>Skylance</LogoView>
-        <ButtonView onPress={() => setOverbooking(!isOverBooked)}>Set Overbooking Status</ButtonView>
-        
         {isLoggedIn ?
           (
           <>

@@ -34,14 +34,13 @@ export default function PendingContainer({choice, id}) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: '5%',
     minWidth: '100%',
     maxWidth: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 100,
     borderRadius: 5,
     marginVertical: 10,
+    padding: 30,
 
     backgroundColor: color.white,
     shadowColor: color.shadow,
@@ -56,7 +55,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   innerCol: {
-    margin: 10
+    alignItems: 'flex-start'
   },
   text: {
     color: color.gray

@@ -3,18 +3,20 @@ import { useRouter } from 'expo-router';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { H3 } from './HeadingsView';
 
-export default function FlightContainer({children, id}) {
+export default function FlightContainer({children, id, overbooked}) {
     const router = useRouter();
 
     return (
         <TouchableOpacity
             style={styles.container}
             onPress={() => {
+              overbooked ? 
+              router.push(`/trips/${id}/pending`) :
               router.push(`/trips/${id}`)
             }}
             >
             <View style={styles.inner}>
-                <View style={styles.innerCol}>
+                <View style={styles.innerLeftCol}>
                     <H3 textColor={color.primary}>
                         {children}
                     </H3>
@@ -22,13 +24,19 @@ export default function FlightContainer({children, id}) {
                         FIG
                     </Text>
                 </View>
-                <View style={styles.innerCol}>
+                <View style={styles.innerRightCol}>
                     <Text style={styles.text}>
                         23 May
                     </Text>
-                    <Text style={styles.text}>
-                        23 May
+                    { overbooked ? (
+                    <Text style={styles.overbooked}>
+                        Overbooked
                     </Text>
+                    ) : (
+                    <Text style={styles.safe}>
+                        Check In
+                    </Text>
+                    )}
                 </View>
             </View>
         </TouchableOpacity>
@@ -37,14 +45,12 @@ export default function FlightContainer({children, id}) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: '5%',
     minWidth: '100%',
     maxWidth: '100%',
     alignItems: 'center',
-    justifyContent: 'center',
-    height: 100,
     borderRadius: 5,
     marginVertical: 10,
+    padding: 20,
 
     backgroundColor: color.white,
     shadowColor: color.shadow,
@@ -58,10 +64,27 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '100%',
   },
-  innerCol: {
-    margin: 10
+  innerLeftCol: {
+    alignItems: 'flex-start'
+  },
+  innerRightCol: {
+    alignItems: 'flex-end'
   },
   text: {
     color: color.gray
+  },
+  overbooked: {
+    backgroundColor: color.red,
+    color: color.white,
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 10
+  },
+  safe: {
+    backgroundColor: color.primary,
+    color: color.white,
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 10
   }
 });

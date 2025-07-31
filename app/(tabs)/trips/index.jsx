@@ -20,8 +20,8 @@ export default function Index() {
           {activeTab === 'Upcoming Flights' ? (
             <View style={styles.innerView}>
               <FlatList
-                data={['Apple', 'Banana', 'Orange']}
-                renderItem={({ item, index }) => <FlightContainer id={index}>{item}</FlightContainer>}
+                data={[{ name: 'Apple', overbooked: true }, { name: 'Banana', overbooked: false } , { name: 'Orange', overbooked: true }]}
+                renderItem={({ item, index }) => <FlightContainer id={index} overbooked={item.overbooked}>{item.name}</FlightContainer>}
                 keyExtractor={(item, index) => item + index}
               />
             </View>

@@ -9,9 +9,8 @@ export default function AvailableFlight() {
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
           <FlatList
-            style={{ overflow: 'visible' }}
-            data={['Apple', 'Banana', 'Orange']}
-            renderItem={({ item, index }) => <FlightContainer id={index}>{item}</FlightContainer>}
+            data={[{ name: 'Apple', overbooked: true }, { name: 'Banana', overbooked: false } , { name: 'Orange', overbooked: true }]}
+            renderItem={({ item, index }) => <FlightContainer id={index} overbooked={item.overbooked}>{item.name}</FlightContainer>}
             keyExtractor={(item, index) => item + index}
           />
           <H3>Don't want to rebook?</H3>
