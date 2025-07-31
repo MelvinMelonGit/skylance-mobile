@@ -34,7 +34,11 @@ export default function Index() {
           </View>
           <H2>Check In Trip #{id}</H2>
           <View style={{ flexDirection: 'row', gap: 10 }}>
-            <ButtonView warning>Cancel Flight</ButtonView>
+            <ButtonView
+              onPress={() => {
+                router.push(`/trips/${id}/cancel-flight`)
+              }}
+              warning>Cancel Flight</ButtonView>
             <ButtonView
               onPress={() => {
                 isOverbooked ?
