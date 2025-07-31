@@ -1,5 +1,4 @@
 import AuthProvider from "@/context/AuthContext";
-import BookingProvider from "@/context/BookingContext";
 import SelectedFlightProvider from "@/context/SelectedFlightContext";
 import { useNavigationContainerRef } from '@react-navigation/native';
 import { Slot } from 'expo-router';
@@ -23,11 +22,9 @@ export default function RootLayout() {
     //   <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     // </Stack>
     <AuthProvider>
-      <BookingProvider>
-        <SelectedFlightProvider>
-           <Slot />
-        </SelectedFlightProvider>
-      </BookingProvider>
+      <SelectedFlightProvider>
+        <Slot />
+      </SelectedFlightProvider>
     </AuthProvider>
   );
 }

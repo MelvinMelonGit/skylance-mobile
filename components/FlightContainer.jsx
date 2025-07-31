@@ -10,9 +10,7 @@ export default function FlightContainer({children, id, overbooked}) {
         <TouchableOpacity
             style={styles.container}
             onPress={() => {
-              overbooked ? 
-              router.push(`/trips/${id}/pending`) :
-              router.push(`/trips/${id}`)
+              router.push({pathname: `/trips/${id}`, params: { overbooked }})
             }}
             >
             <View style={styles.inner}>

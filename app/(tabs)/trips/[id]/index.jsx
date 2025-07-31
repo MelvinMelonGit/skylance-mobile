@@ -1,7 +1,6 @@
 import ButtonView from '@/components/ButtonView';
 import { H2 } from '@/components/HeadingsView';
 import ModalView from '@/components/ModalView';
-import { useBooking } from '@/context/BookingContext';
 import { color } from '@/styles/color';
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
@@ -10,10 +9,10 @@ import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Index() {
-  const { id } = useLocalSearchParams();
-  const router = useRouter();
+  const { id, overbooked } = useLocalSearchParams();
+  const isOverbooked = overbooked === 'true';
 
-  const { isOverBooked } = useBooking();
+  const router = useRouter();
 
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -40,7 +39,7 @@ export default function Index() {
           <H2>Check In Trip #{id}</H2>
           <ButtonView
             onPress={() => {
-              isOverBooked ?
+              isOverbooked ?
               router.push(`/trips/${id}/pending`) :
               router.push(`/trips/${id}/check-in`)
             }}>

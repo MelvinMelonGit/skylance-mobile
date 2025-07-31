@@ -1,4 +1,3 @@
-import { useBooking } from '@/context/BookingContext';
 import { color } from '@/styles/color';
 import { useRouter } from 'expo-router';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
@@ -6,8 +5,6 @@ import { H3 } from './HeadingsView';
 
 export default function PendingContainer({choice, id}) {
     const router = useRouter();
-
-    const { isOverBooked } = useBooking()
 
     return (
         <TouchableOpacity
