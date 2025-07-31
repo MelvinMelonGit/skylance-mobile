@@ -32,7 +32,7 @@ export default function FlightContainer({children, id, overbooked}) {
                     </Text>
                     ) : (
                     <Text style={styles.safe}>
-                        Check In
+                        Available
                     </Text>
                     )}
                 </View>
@@ -74,13 +74,15 @@ const styles = StyleSheet.create({
   overbooked: {
     backgroundColor: color.red,
     color: color.white,
+    fontWeight: 500,
     padding: 10,
     borderRadius: 5,
     marginTop: 10
   },
   safe: {
-    backgroundColor: color.primary,
+    backgroundColor: color.green,
     color: color.white,
+    fontWeight: 500,
     padding: 10,
     borderRadius: 5,
     marginTop: 10
