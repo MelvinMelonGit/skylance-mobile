@@ -41,7 +41,7 @@ export default function Index() {
             }}>
             Check In
           </ButtonView>
-          <ButtonView clear>Manage Booking</ButtonView>
+          <ButtonView warning>Cancel Flight</ButtonView>
         </View>
       </SafeAreaView>
   )
