@@ -7,7 +7,7 @@ export default function BoardingPass({currentUser}) {
     return (
         <View style={styles.container}>
             <H2>{currentUser}</H2>
-            <View style={styles.warnings}>
+            <View style={styles.pass}>
 
                 <View style={styles.inner}>
                 <Text style={styles.text}>Departure Airport</Text>
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
         shadowRadius: 10,
         elevation: 2,
     },
-    warnings: {
+    pass: {
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'space-around',

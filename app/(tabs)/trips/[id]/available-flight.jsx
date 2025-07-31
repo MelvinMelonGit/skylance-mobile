@@ -1,13 +1,10 @@
 import ButtonView from '@/components/ButtonView';
 import FlightContainer from '@/components/FlightContainer';
 import { H3 } from '@/components/HeadingsView';
-import { useRouter } from 'expo-router';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function AvailableFlight() {
-  const router = useRouter()
-
   return (
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
@@ -17,9 +14,6 @@ export default function AvailableFlight() {
             keyExtractor={(item, index) => item + index}
           />
           <H3>Don't want to rebook?</H3>
-          <ButtonView clear onPress={() => {
-            router.back()
-          }}>Back</ButtonView>
           <ButtonView warning>Cancel Flight</ButtonView>
         </View>
       </SafeAreaView>
