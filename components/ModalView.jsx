@@ -1,5 +1,5 @@
+import { color } from '@/styles/color';
 import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
-import { color } from '../styles/color';
 
 export default function ModalView({ visible, onClose }) {
   return (

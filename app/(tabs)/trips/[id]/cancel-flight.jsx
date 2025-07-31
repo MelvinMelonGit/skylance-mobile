@@ -1,9 +1,9 @@
+import ButtonView from '@/components/ButtonView';
+import { H2, H3, P } from '@/components/HeadingsView';
+import { color } from '@/styles/color';
 import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ButtonView from '../../../../components/ButtonView';
-import { H2, H3, P } from '../../../../components/HeadingsView';
-import { color } from '../../../../styles/color';
 
 export default function CancelFlight() {
   return (

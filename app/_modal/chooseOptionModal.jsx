@@ -1,6 +1,6 @@
+import { color } from '@/styles/color';
 import { Stack, useRouter } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { color } from '../../styles/color';
 
 export default function ChooseOptionModal() {
   const router = useRouter();

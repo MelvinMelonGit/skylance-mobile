@@ -1,10 +1,10 @@
+import ButtonView from '@/components/ButtonView';
+import EditTextView from '@/components/EditTextView';
+import LogoView from '@/components/LogoView';
+import TextView from '@/components/TextView';
 import { useState } from 'react';
 import { Alert, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ButtonView from '../../../components/ButtonView';
-import EditTextView from '../../../components/EditTextView';
-import LogoView from '../../../components/LogoView';
-import TextView from '../../../components/TextView';
 
 export default function Register() {
   const [form, setForm] = useState({

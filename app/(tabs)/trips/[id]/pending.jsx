@@ -1,7 +1,7 @@
+import { H2, P } from '@/components/HeadingsView';
+import PendingContainer from '@/components/PendingContainer';
 import { StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { H2, P } from '../../../../components/HeadingsView';
-import PendingContainer from '../../../../components/PendingContainer';
 
 export default function Pending() {
   return (

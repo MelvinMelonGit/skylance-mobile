@@ -1,5 +1,5 @@
+import { color } from '@/styles/color';
 import { StyleSheet, TextInput } from 'react-native';
-import { color } from '../styles/color';
 
 export default function EditTextView({placeholder, marginVertical, secure}) {
   return (

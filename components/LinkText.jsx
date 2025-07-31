@@ -1,6 +1,6 @@
+import { color } from '@/styles/color';
 import { Link } from 'expo-router';
 import { StyleSheet } from 'react-native';
-import { color } from '../styles/color';
 
 export default function LinkText({children, href}) {
   return (

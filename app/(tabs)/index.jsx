@@ -1,11 +1,11 @@
+import ButtonView from '@/components/ButtonView';
+import CardView from '@/components/CardView';
+import { H1 } from '@/components/HeadingsView';
+import LogoView from '@/components/LogoView';
+import { useBooking } from '@/context/BookingContext';
+import { color } from '@/styles/color';
 import { FlatList, SectionList, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ButtonView from '../../components/ButtonView';
-import CardView from '../../components/CardView';
-import { H1 } from '../../components/HeadingsView';
-import LogoView from '../../components/LogoView';
-import { useBooking } from '../../context/BookingContext';
-import { color } from '../../styles/color';
 
 export default function Index() {
   const { isOverBooked, setOverbooking } = useBooking()

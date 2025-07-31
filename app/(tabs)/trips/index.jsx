@@ -1,10 +1,10 @@
+import CustomNavTabsView from '@/components/CustomNavTabsView';
+import FlightContainer from '@/components/FlightContainer';
+import LinkView from '@/components/LinkView';
+import { useAuth } from '@/context/AuthContext';
 import { useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import CustomNavTabsView from '../../../components/CustomNavTabsView';
-import FlightContainer from '../../../components/FlightContainer';
-import LinkView from '../../../components/LinkView';
-import { useAuth } from '../../../context/AuthContext';
 
 export default function Index() {
   const { isLoggedIn } = useAuth();

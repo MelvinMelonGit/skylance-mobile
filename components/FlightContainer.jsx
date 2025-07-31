@@ -1,6 +1,6 @@
+import { color } from '@/styles/color';
 import { useRouter } from 'expo-router';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { color } from '../styles/color';
 import { H3 } from './HeadingsView';
 
 export default function FlightContainer({children, id}) {

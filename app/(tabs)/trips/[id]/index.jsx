@@ -1,13 +1,13 @@
+import ButtonView from '@/components/ButtonView';
+import { H2 } from '@/components/HeadingsView';
+import ModalView from '@/components/ModalView';
+import { useBooking } from '@/context/BookingContext';
+import { color } from '@/styles/color';
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ButtonView from '../../../../components/ButtonView';
-import { H2 } from '../../../../components/HeadingsView';
-import ModalView from '../../../../components/ModalView';
-import { useBooking } from '../../../../context/BookingContext';
-import { color } from '../../../../styles/color';
 
 export default function Index() {
   const { id } = useLocalSearchParams();

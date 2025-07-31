@@ -1,5 +1,5 @@
+import { color } from '@/styles/color';
 import { Stack } from 'expo-router';
-import { color } from '../../../../styles/color';
 
 const screenOptions = {
   headerStyle: { backgroundColor: color.white },

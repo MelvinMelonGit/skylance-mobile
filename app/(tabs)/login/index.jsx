@@ -1,12 +1,12 @@
+import ButtonView from '@/components/ButtonView';
+import EditTextView from '@/components/EditTextView';
+import { H1, P } from '@/components/HeadingsView';
+import LinkText from '@/components/LinkText';
+import LogoView from '@/components/LogoView';
+import TextView from '@/components/TextView';
+import { useAuth } from '@/context/AuthContext';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ButtonView from '../../../components/ButtonView';
-import EditTextView from '../../../components/EditTextView';
-import { H1, P } from '../../../components/HeadingsView';
-import LinkText from '../../../components/LinkText';
-import LogoView from '../../../components/LogoView';
-import TextView from '../../../components/TextView';
-import { useAuth } from '../../../context/AuthContext';
 
 export default function Index() {
   const { isLoggedIn, login, logout } = useAuth()

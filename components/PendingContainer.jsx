@@ -1,7 +1,7 @@
+import { useBooking } from '@/context/BookingContext';
+import { color } from '@/styles/color';
 import { useRouter } from 'expo-router';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useBooking } from '../context/BookingContext';
-import { color } from '../styles/color';
 import { H3 } from './HeadingsView';
 
 export default function PendingContainer({choice, id}) {

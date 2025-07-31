@@ -1,8 +1,8 @@
+import ButtonView from '@/components/ButtonView';
+import FlightContainer from '@/components/FlightContainer';
+import { H3 } from '@/components/HeadingsView';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ButtonView from '../../../../components/ButtonView';
-import FlightContainer from '../../../../components/FlightContainer';
-import { H3 } from '../../../../components/HeadingsView';
 
 export default function AvailableFlight() {
   return (

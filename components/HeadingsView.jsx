@@ -1,5 +1,5 @@
+import { color } from '@/styles/color';
 import { StyleSheet, Text } from 'react-native';
-import { color } from '../styles/color';
 
 export function H1({children}) {
   return (

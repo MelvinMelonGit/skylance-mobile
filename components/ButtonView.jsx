@@ -1,5 +1,5 @@
+import { color } from '@/styles/color';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { color } from '../styles/color';
 
 export default function ButtonView({children, onPress, warning, clear}) {
 
