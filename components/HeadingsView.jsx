@@ -17,9 +17,13 @@ export function H2({children}) {
   );
 }
 
-export function H3({children}) {
+export function H3({children, textColor}) {
   return (
-    <Text style={styles.h3}>
+    <Text style={
+      [
+        styles.h3, 
+        { color: textColor ? textColor : color.gray }
+      ]}>
         {children}
     </Text>
   );
@@ -54,7 +58,6 @@ const styles = StyleSheet.create({
     fontWeight: 500,
     textAlign: 'center',
     marginBottom: 10,
-    color: color.gray
   },
   p: {
     fontSize: 18,

@@ -20,7 +20,7 @@ export default function PendingContainer({choice, id}) {
             >
             <View style={styles.inner}>
                 <View style={styles.innerCol}>
-                    <H3>
+                    <H3 textColor={color.primary}>
                         { choice === 1 ? "Option 1 - Cancel flight" : "Option 2 - Rebook at no cost" }
                     </H3>
                     <Text style={styles.text}>
@@ -39,11 +39,16 @@ const styles = StyleSheet.create({
     maxWidth: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 2,
     height: 100,
     borderRadius: 5,
-    borderColor: color.primary,
-    marginVertical: 10
+    marginVertical: 10,
+
+    backgroundColor: color.white,
+    shadowColor: color.shadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
+    elevation: 2,
   },
   inner: {
     flexDirection: 'row',

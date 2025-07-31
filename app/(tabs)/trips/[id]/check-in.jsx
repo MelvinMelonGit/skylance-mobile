@@ -1,4 +1,4 @@
-import { H2 } from '@/components/HeadingsView';
+import { H2, H3 } from '@/components/HeadingsView';
 import { color } from '@/styles/color';
 import { FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useLocalSearchParams } from 'expo-router';
@@ -29,6 +29,7 @@ export default function CheckIn() {
             </View>
           </View>
           <H2>Check In #{id}</H2>
+          <H3>Not Permitted Anywhere</H3>
           <View style={styles.warnings}>
             <View style={styles.warningsInner}>
               <FontAwesome5 name="skull-crossbones" size={50} color={color.black} />
@@ -100,9 +101,19 @@ const styles = StyleSheet.create({
   warnings: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    gap: 50,
-    marginTop: 50
+    justifyContent: 'space-around',
+    backgroundColor: color.white,
+    width: '100%',
+    gap: 30,
+    padding: 20,
+    paddingVertical: 30,
+
+    borderRadius: 10,
+    shadowColor: color.shadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
+    elevation: 2,
   },
   warningsInner: {
     gap: 10,

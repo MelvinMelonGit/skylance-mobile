@@ -9,6 +9,7 @@ export default function AvailableFlight() {
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
           <FlatList
+            style={{ overflow: 'visible' }}
             data={['Apple', 'Banana', 'Orange']}
             renderItem={({ item, index }) => <FlightContainer id={index}>{item}</FlightContainer>}
             keyExtractor={(item, index) => item + index}
