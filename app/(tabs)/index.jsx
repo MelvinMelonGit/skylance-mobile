@@ -1,42 +1,49 @@
-import ButtonView from '@/components/ButtonView';
 import CardView from '@/components/CardView';
-import { H1 } from '@/components/HeadingsView';
+import { H1, H3 } from '@/components/HeadingsView';
 import LogoView from '@/components/LogoView';
-import { useBooking } from '@/context/BookingContext';
-import { color } from '@/styles/color';
-import { FlatList, SectionList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, SectionList, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function Index() {
-  const { isOverBooked, setOverbooking } = useBooking()
+const DATA = [
+  'japan', 
+  'highway',
+  'japan', 
+  'highway',
+  'japan', 
+  'highway'
+]
 
+const promoImages = {
+  'japan' : require('@/assets/images/promo/japan.jpg'),
+  'highway' : require('@/assets/images/promo/highway.jpg')
+}
+
+export default function Index() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.innerView}>
         <LogoView>Skylance</LogoView>
         <H1>Begin Your Adventure Now!</H1>
-        <ButtonView onPress={() => setOverbooking(!isOverBooked)}>Set Overbooking Status</ButtonView>
         {/* <LinkView href="/_modal/chooseOptionModal">Choose Options</LinkView> */}
       </View>
        <SectionList
         style={styles.list}
         sections={[
-          { title: 'Find your next tickets with these flight deals!', data: ['Apple', 'Banana', 'Banana', 'Banana', 'Banana', 'Banana'] },
-          { title: 'Selected tickets are on promotion!', data: ['Carrot', 'Lettuce', 'Banana', 'Banana', 'Banana', 'Banana'] },
-          
+          { title: 'Find your next tickets with these flight deals!', data: DATA },
+          { title: 'Selected tickets are on promotion!', data: DATA },
         ]}
         keyExtractor={(item, index) => item + index}
         renderSectionHeader={({ section }) => (
           <>
-            <Text style={{ color: color.gray, fontWeight: 'bold', marginTop: 30, textAlign: 'center' }}>{section.title}</Text>
+            <H3>{section.title}</H3>
             <FlatList
-              style= {{ marginHorizontal: '2%'}}
+              style= {{ marginLeft: 10, marginBottom: 20,  overflow: 'visible'}}
               data={section.data}
               horizontal
               showsHorizontalScrollIndicator={false}
               keyExtractor={(item, index) => item + index}
               renderItem={({ item }) => (
-                <CardView />
+                <CardView name={item} image={promoImages[item]}/>
               )}
             />
           </>
@@ -58,7 +65,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   list: {
-    flex: 2,
     width: '100%',
   }
 });

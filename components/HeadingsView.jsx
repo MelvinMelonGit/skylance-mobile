@@ -39,19 +39,22 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 700,
     textAlign: 'center',
+    marginBottom: 10,
     color: color.primary
   },
   h2: {
     fontSize: 24,
     fontWeight: 500,
     textAlign: 'center',
+    marginBottom: 10,
     color: color.primary
   },
   h3: {
     fontSize: 20,
     fontWeight: 500,
     textAlign: 'center',
-    color: color.primary
+    marginBottom: 10,
+    color: color.gray
   },
   p: {
     fontSize: 18,
