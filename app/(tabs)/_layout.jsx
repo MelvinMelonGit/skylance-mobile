@@ -11,7 +11,7 @@ const screenOptions = {
 };
 
 export default function TabLayout() {
-  const { isLoggedIn } = useAuth();
+  const { currentUser, isLoggedIn } = useAuth();
   const router = useRouter();
 
   return (
@@ -38,7 +38,7 @@ export default function TabLayout() {
         <Tabs.Screen name="index"
           options={{
             title: 'Home',
-            headerTitle: 'Hey There!',
+            headerTitle: `Hey There! ${ isLoggedIn ? currentUser : '' }`,
             headerStyle: screenOptions.headerStyle,
             headerTitleStyle: screenOptions.headerTitleStyle,
             headerTintColor: screenOptions.headerTintColor, 

@@ -14,6 +14,7 @@ export default function Boarding() {
         <View style={styles.container}>
           { isLoggedIn ? (
             <>
+            { /* Need to add a check with the current sessionId also */}
               { currentFlight === -1 ? (
                 <>
                   <Text>No Boarding Pass!</Text>
@@ -22,7 +23,6 @@ export default function Boarding() {
               ) : (
                 <Text>Boarding Pass here! {currentFlight}</Text>
               )}
-              
             </>
           ) : (
             <>

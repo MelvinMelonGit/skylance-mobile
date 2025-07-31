@@ -9,20 +9,30 @@ export function H1({children}) {
   );
 }
 
-export function H2({children}) {
+export function H2({children, textColor, textAlign}) {
   return (
-    <Text style={styles.h2}>
+    <Text style={
+      [
+        styles.h2, 
+        { 
+          color: textColor ? textColor : color.primary,
+          textAlign: textAlign ? textAlign : 'center'
+        }
+      ]}>
         {children}
     </Text>
   );
 }
 
-export function H3({children, textColor}) {
+export function H3({children, textColor, textAlign}) {
   return (
     <Text style={
       [
         styles.h3, 
-        { color: textColor ? textColor : color.gray }
+        { 
+          color: textColor ? textColor : color.gray,
+          textAlign: textAlign ? textAlign : 'center'
+        }
       ]}>
         {children}
     </Text>
@@ -49,15 +59,12 @@ const styles = StyleSheet.create({
   h2: {
     fontSize: 24,
     fontWeight: 500,
-    textAlign: 'center',
     marginBottom: 10,
-    color: color.primary
   },
   h3: {
     fontSize: 20,
     fontWeight: 500,
-    textAlign: 'center',
-    marginBottom: 10,
+    marginBottom: 5,
   },
   p: {
     fontSize: 18,

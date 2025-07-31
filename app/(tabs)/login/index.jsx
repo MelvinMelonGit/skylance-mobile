@@ -5,11 +5,14 @@ import LinkText from '@/components/LinkText';
 import LogoView from '@/components/LogoView';
 import TextView from '@/components/TextView';
 import { useAuth } from '@/context/AuthContext';
+import { useRouter } from 'expo-router';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Index() {
-  const { isLoggedIn, login, logout } = useAuth()
+  const { currentUser, isLoggedIn, login, logout } = useAuth()
+
+  const router = useRouter()
 
   return (
     <SafeAreaView style={{ flex: 1}}>
@@ -19,7 +22,7 @@ export default function Index() {
         {isLoggedIn ?
           (
           <>
-            <H1>Welcome Chan!</H1>
+            <H1>Welcome { isLoggedIn && currentUser }!</H1>
             <ButtonView onPress={logout}>Logout</ButtonView>
           </>
           ): (
@@ -39,7 +42,10 @@ export default function Index() {
                     secure
                 />
             </View>
-            <ButtonView onPress={login}>Login</ButtonView>
+            <ButtonView onPress={() => {
+              login()
+              router.push("/")
+              }}>Login</ButtonView>
             <P>Don't have an account?</P>
             <LinkText href="/login/register">Register</LinkText>
           </>
