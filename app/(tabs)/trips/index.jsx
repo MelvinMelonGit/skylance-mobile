@@ -5,11 +5,13 @@ import PastFlightContainer from '@/components/PastFlightContainer';
 import { useAuth } from '@/context/AuthContext';
 import { useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function Index() {
   const { isLoggedIn } = useAuth()
   const [activeTab, setActiveTab] = useState('Upcoming Flights')
+
+  const insets = useSafeAreaInsets()
 
   return (
     <SafeAreaView style={styles.container}>
@@ -19,19 +21,21 @@ export default function Index() {
            <CustomNavTabsView activeTab={activeTab} setActiveTab={setActiveTab} />
         </View>
           {activeTab === 'Upcoming Flights' ? (
-            <View style={styles.innerView}>
+            <View style={[styles.innerView, { paddingBottom: insets.bottom + 50}]}>
               <FlatList
-                data={[{ name: 'Apple', overbooked: false }, { name: 'Banana', overbooked: false } , { name: 'Orange', overbooked: true }, { name: 'Orange', overbooked: true }, { name: 'Pear', overbooked: false }, { name: 'Orange', overbooked: true }, { name: 'Orange', overbooked: true }]}
+                data={[{ name: 'Bangkok', overbooked: false }, { name: 'New York', overbooked: false } , { name: 'Kuala Lumpur', overbooked: true }, { name: 'Ho Chi Minh', overbooked: true }, { name: 'Berlin', overbooked: false }, { name: 'Shanghai', overbooked: false }]}
                 renderItem={({ item, index }) => <FlightContainer id={index} overbooked={item.overbooked}>{item.name}</FlightContainer>}
                 keyExtractor={(item, index) => item + index}
+                showsVerticalScrollIndicator={false}
               />
             </View>
           ) : (
-            <View style={styles.innerView}>
+            <View style={[styles.innerView, { paddingBottom: insets.bottom + 50}]}>
               <FlatList
                 data={['1', '2', '3']}
                 renderItem={({ item, index }) => <PastFlightContainer id={index}>{item}</PastFlightContainer>}
                 keyExtractor={(item, index) => item + index}
+                showsVerticalScrollIndicator={false}
               />
             </View>
           )}
@@ -51,13 +55,13 @@ const styles = StyleSheet.create({
     flex: 1
   },
   outerView: {
-    paddingHorizontal: '10%',
+    paddingHorizontal: '5%',
     alignItems: 'center',
   },
   innerView: {
     width: '100%',
-    paddingHorizontal: '10%',
-    alignItems: 'center',
+    paddingHorizontal: '5%',
+    alignItems: 'center'
   },
   list: {
     flex: 2,
@@ -65,7 +69,7 @@ const styles = StyleSheet.create({
   },
   centered: {
     flex: 1,
-    paddingHorizontal: '10%',
+    paddingHorizontal: '5%',
     alignItems: 'center',
     justifyContent: 'center',
   }

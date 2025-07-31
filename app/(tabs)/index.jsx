@@ -6,16 +6,18 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const DATA = [
   'japan', 
-  'highway',
-  'japan', 
-  'highway',
-  'japan', 
-  'highway'
+  'maldives',
+  'shanghai',
+  'singapore',
+  'thailand'
 ]
 
 const promoImages = {
   'japan' : require('@/assets/images/promo/japan.jpg'),
-  'highway' : require('@/assets/images/promo/highway.jpg')
+  'maldives' : require('@/assets/images/promo/maldives.jpg'),
+  'shanghai' : require('@/assets/images/promo/shanghai.jpg'),
+  'singapore' : require('@/assets/images/promo/singapore.jpg'),
+  'thailand' : require('@/assets/images/promo/thailand.jpg')
 }
 
 export default function Index() {
@@ -60,7 +62,7 @@ const styles = StyleSheet.create({
   },
   innerView: {
     width: '100%',
-    paddingHorizontal: '10%',
+    paddingHorizontal: '5%',
     alignItems: 'center',
     justifyContent: 'center',
   },

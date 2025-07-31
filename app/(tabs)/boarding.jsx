@@ -42,7 +42,7 @@ export default function Boarding() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: '10%',
+    paddingHorizontal: '5%',
     alignItems: 'center',
     justifyContent: 'center',
   },

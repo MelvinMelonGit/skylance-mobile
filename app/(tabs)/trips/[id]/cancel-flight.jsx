@@ -18,7 +18,7 @@ export default function CancelFlight() {
             <View style={styles.infoView}>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <Ionicons name='airplane-outline' size={30} color={color.gray} />
-              <Text style={styles.flightPath}> - - - - - - - - -</Text>
+              <Text style={styles.flightPath}> - - - - - - - - - - -</Text>
               </View>
               <Text style={{ color: color.gray}}>18h 30min</Text>
             </View>
@@ -41,7 +41,7 @@ export default function CancelFlight() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: '10%',
+    paddingHorizontal: '5%',
     alignItems: 'center',
     justifyContent: 'center',
   },

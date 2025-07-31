@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   image: {
-    width: 160,
+    width: 180,
     height: 160,
   },
   textContainer: {
