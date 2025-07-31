@@ -17,14 +17,14 @@ export default function CardView({name, image}) {
 const styles = StyleSheet.create({
   card: {
     marginRight: 10,
-    borderRadius: 10,
+    borderRadius: 5,
     overflow: 'hidden',
     backgroundColor: color.white,
 
     shadowColor: color.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
-    shadowRadius: 10,
+    shadowRadius: 5,
     elevation: 2,
   },
   image: {

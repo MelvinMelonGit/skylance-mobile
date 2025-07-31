@@ -87,11 +87,11 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingVertical: 30,
 
-    borderRadius: 10,
+    borderRadius: 5,
     shadowColor: color.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
-    shadowRadius: 10,
+    shadowRadius: 5,
     elevation: 2,
   },
   warningsInner: {
