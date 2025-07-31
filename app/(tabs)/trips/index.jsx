@@ -1,6 +1,7 @@
 import CustomNavTabsView from '@/components/CustomNavTabsView';
 import FlightContainer from '@/components/FlightContainer';
 import LinkView from '@/components/LinkView';
+import PastFlightContainer from '@/components/PastFlightContainer';
 import { useAuth } from '@/context/AuthContext';
 import { useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
@@ -29,7 +30,7 @@ export default function Index() {
             <View style={styles.innerView}>
               <FlatList
                 data={['1', '2', '3']}
-                renderItem={({ item, index }) => <FlightContainer id={index}>{item}</FlightContainer>}
+                renderItem={({ item, index }) => <PastFlightContainer id={index}>{item}</PastFlightContainer>}
                 keyExtractor={(item, index) => item + index}
               />
             </View>
