@@ -1,12 +1,17 @@
+import ButtonView from '@/components/ButtonView';
 import { H2, H3 } from '@/components/HeadingsView';
+import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { color } from '@/styles/color';
 import { FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function CheckIn() {
   const { id } = useLocalSearchParams();
+  const router = useRouter()
+
+  const { setCurrentFlight } = useSelectedFlight()
 
   return (
       <SafeAreaView style={{ flex: 1}}>
@@ -69,6 +74,10 @@ export default function CheckIn() {
             </View>
             
           </View>
+          <ButtonView onPress={() => {
+            setCurrentFlight(id)
+            router.push('/boarding')
+          }}>Check In</ButtonView>
         </View>
       </SafeAreaView>
   );
