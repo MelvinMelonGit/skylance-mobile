@@ -1,3 +1,4 @@
+import BoardingPass from '@/components/BoardingPass';
 import LinkView from '@/components/LinkView';
 import { useAuth } from '@/context/AuthContext';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
@@ -5,7 +6,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Boarding() {
-  const { isLoggedIn } = useAuth()
+  const { currentUser, isLoggedIn } = useAuth()
 
   const { currentFlight } = useSelectedFlight()
 
@@ -21,7 +22,10 @@ export default function Boarding() {
                   <LinkView href="/trips">Check In</LinkView>
                 </>
               ) : (
-                <Text>Boarding Pass here! {currentFlight}</Text>
+                <>
+                  <Text>Boarding Pass here! {currentFlight}</Text>
+                  <BoardingPass currentUser={currentUser}/>
+                </>
               )}
             </>
           ) : (

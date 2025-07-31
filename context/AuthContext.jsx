@@ -8,7 +8,7 @@ export default function AuthProvider({ children }) {
 
   const login = () =>  {
     setIsLoggedIn(true) 
-    setCurrentUser('Chan Meng Tuck')
+    setCurrentUser('Donald Trump')
   }
   const logout = () => setIsLoggedIn(false);
 
