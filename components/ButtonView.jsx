@@ -31,15 +31,15 @@ export default function ButtonView({children, onPress, warning, clear}) {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
+    width: '50%',
     alignItems: 'center',
-    paddingVertical: 20,
+    padding: 10,
     marginVertical: 10,
     borderRadius: 50,
   },
   text: {
     color: color.white,
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 500
   }
 })

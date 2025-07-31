@@ -59,10 +59,12 @@ export default function CheckIn() {
             </View>
             
           </View>
-          <ButtonView onPress={() => {
-            setCurrentFlight(id)
-            router.push('/boarding')
-          }}>Check In</ButtonView>
+          <View style={{ flexDirection: 'row', gap: 10 }}>
+            <ButtonView onPress={() => {
+              setCurrentFlight(id)
+              router.push('/boarding')
+            }}>Check In</ButtonView>
+          </View>
         </View>
       </SafeAreaView>
   )

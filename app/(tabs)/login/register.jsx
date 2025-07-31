@@ -175,7 +175,7 @@ export default function Register() {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: '10%',
-    // alignItems: 'center',
+    alignItems: 'center',
     // justifyContent: 'center',
   },
   inner: {

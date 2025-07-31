@@ -23,5 +23,6 @@ export default function AvailableFlight() {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: '10%',
+    alignItems: 'center'
   },
 })
