@@ -1,19 +1,12 @@
 import { color } from '@/styles/color';
-import { useRouter } from 'expo-router';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { H3 } from './HeadingsView';
 
-export default function PendingContainer({choice, id}) {
-    const router = useRouter()
-
+export default function PendingContainer({choice, id, onPress}) {
     return (
         <TouchableOpacity
             style={styles.container}
-            onPress={() => {
-              choice === 1 ?
-              router.push(`/trips/${id}/cancel-flight`) :
-              router.push(`/trips/${id}/available-flight`)
-            }}
+            onPress={onPress}
             >
             <View style={styles.inner}>
                 <View style={styles.innerCol}>

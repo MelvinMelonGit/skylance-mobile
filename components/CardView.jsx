@@ -20,7 +20,7 @@ export default function CardView({item, image}) {
           </Text>
         </View>
       </View>
-      <Text style={styles.description}>Step into {item.country} and enjoy it! Step into {item.country} and enjoy it!</Text>
+      <Text style={styles.description}>Step into {item.country} and enjoy it!</Text>
     </View>
   )
 }
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
   textContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'baseline',
     paddingHorizontal: 12,
     paddingTop: 12,
   },

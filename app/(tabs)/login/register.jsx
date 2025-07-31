@@ -175,11 +175,7 @@ export default function Register() {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: '5%',
-    alignItems: 'center',
-    // justifyContent: 'center',
+    alignItems: 'center'
   },
-  inner: {
-    // alignItems: 'center',
-    // justifyContent: 'center',
-  }
+  inner: {}
 })

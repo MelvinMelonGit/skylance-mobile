@@ -2,11 +2,13 @@ import ButtonView from '@/components/ButtonView';
 import { H2, H3, P } from '@/components/HeadingsView';
 import { color } from '@/styles/color';
 import { Ionicons } from '@expo/vector-icons';
+import { useLocalSearchParams } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function CancelFlight() {
-  
+  const { id } = useLocalSearchParams()
+
   return (
       <SafeAreaView style={{ flex: 1}}>
         <View style={styles.container}>
@@ -27,7 +29,7 @@ export default function CancelFlight() {
               <Text>USA</Text>
             </View>
           </View>
-          <H2>Cancel Trip #???</H2>
+          <H2>Flight #{id}</H2>
           <H3>Full Compensation $1,624</H3>
           <Text style={{color: color.red, fontSize: 18}}>This action is permanent and cannot be undone.</Text>
           <H3>What's next?</H3>

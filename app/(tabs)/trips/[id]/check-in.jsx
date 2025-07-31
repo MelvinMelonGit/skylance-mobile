@@ -19,9 +19,9 @@ export default function CheckIn() {
   return (
       <SafeAreaView style={{ flex: 1}}>
         <View style={styles.container}>
-          <H2>Check In #{id}</H2>
+          <H2>Flight #{id}</H2>
           <PassengerData currentUser={currentUser}/>
-          <H3>Not Permitted Anywhere</H3>
+          <H3>Please do not bring these items:</H3>
           <View style={styles.warnings}>
             <View style={styles.warningsInner}>
               <FontAwesome5 name="skull-crossbones" size={50} color={color.black} />

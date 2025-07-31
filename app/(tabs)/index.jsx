@@ -31,13 +31,13 @@ export default function Index() {
        <SectionList
         style={styles.list}
         sections={[
-          { title: 'Find your next tickets with these flight deals!', data: DATA },
-          { title: 'Selected tickets are on promotion!', data: DATA },
+          { title: 'Plan your next trip with these deals!', data: DATA },
+          { title: 'Selected trips on a discount!', data: DATA },
         ]}
         keyExtractor={(item, index) => item.country + index}
         renderSectionHeader={({ section }) => (
           <>
-            <H3>{section.title}</H3>
+            <H3 marginVertical={10}>{section.title}</H3>
             <FlatList
               style= {{ marginLeft: 10, marginBottom: 20,  overflow: 'visible'}}
               data={section.data}

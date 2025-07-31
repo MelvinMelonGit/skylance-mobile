@@ -1,4 +1,6 @@
 import ButtonView from '@/components/ButtonView';
+import FlightData from '@/components/FlightData';
+import FlightPathData from '@/components/FlightPathData';
 import { H2 } from '@/components/HeadingsView';
 import { color } from '@/styles/color';
 import { Ionicons } from '@expo/vector-icons';
@@ -32,7 +34,9 @@ export default function Index() {
               <Text>USA</Text>
             </View>
           </View>
-          <H2>Check In Trip #{id}</H2>
+          <H2>Flight #{id}</H2>
+          <FlightData />
+          <FlightPathData />
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <ButtonView
               onPress={() => {

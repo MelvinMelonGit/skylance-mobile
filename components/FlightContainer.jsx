@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
   container: {
     minWidth: '100%',
     maxWidth: '100%',
-    alignItems: 'center',
     borderRadius: 5,
     marginVertical: 10,
     padding: 20,
@@ -59,6 +58,7 @@ const styles = StyleSheet.create({
   },
   inner: {
     flexDirection: 'row',
+    alignItems: 'baseline',
     justifyContent: 'space-between',
     width: '100%',
   },

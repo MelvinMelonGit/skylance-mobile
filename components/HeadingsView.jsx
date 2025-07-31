@@ -24,14 +24,15 @@ export function H2({children, textColor, textAlign}) {
   )
 }
 
-export function H3({children, textColor, textAlign}) {
+export function H3({children, textColor, textAlign, marginVertical}) {
   return (
     <Text style={
       [
         styles.h3, 
         { 
           color: textColor ? textColor : color.gray,
-          textAlign: textAlign ? textAlign : 'center'
+          textAlign: textAlign ? textAlign : 'center',
+          marginVertical: marginVertical ? marginVertical : 5
         }
       ]}>
         {children}
@@ -63,8 +64,7 @@ const styles = StyleSheet.create({
   },
   h3: {
     fontSize: 20,
-    fontWeight: 500,
-    marginBottom: 5,
+    fontWeight: 500
   },
   p: {
     fontSize: 18,
