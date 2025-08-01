@@ -1,12 +1,13 @@
 import { H2 } from '@/components/HeadingsView';
 import { color } from '@/styles/color';
-import { StyleSheet, Text, View } from 'react-native';
+import { Dimensions, StyleSheet, Text, View } from 'react-native';
 
-export default function BoardingPass({currentUser}) {
+const screenWidth = Dimensions.get('window').width;
 
+export default function BoardingPass({currentUser, id}) {
     return (
         <View style={styles.container}>
-            <H2>{currentUser}</H2>
+            <H2>{currentUser} - {id}</H2>
             <View style={styles.pass}>
 
                 <View style={styles.inner}>
@@ -40,6 +41,7 @@ export default function BoardingPass({currentUser}) {
 
 const styles = StyleSheet.create({
     container: {
+        width: screenWidth - 40,
         backgroundColor: color.white,
         paddingTop: 20,
         borderRadius: 10,
@@ -53,7 +55,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'space-around',
-        width: '100%',
         gap: 30,
         padding: 20,
         paddingVertical: 30,

@@ -1,5 +1,5 @@
-import { color } from '@/styles/color';
 import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
+import ButtonView from './components/ButtonView';
 
 export default function ModalView({ visible, onClose }) {
   return (
@@ -12,14 +12,11 @@ export default function ModalView({ visible, onClose }) {
       <View style={styles.modalBackground}>
         <View style={styles.modalContent}>
           <Text style={styles.title}>Choose an Option</Text>
-
-          <Pressable style={styles.button} onPress={() => alert('Option 1')}>
-            <Text style={styles.buttonText}>Option 1</Text>
-          </Pressable>
-
-          <Pressable style={styles.button} onPress={() => alert('Option 2')}>
-            <Text style={styles.buttonText}>Option 2</Text>
-          </Pressable>
+          
+          <View>
+            <ButtonView onPress={() => alert('Option 1')}>Option 1</ButtonView>
+            <ButtonView onPress={() => alert('Option 2')}>Option 2</ButtonView>
+          </View>
 
           <Pressable onPress={onClose}>
             <Text style={styles.closeText}>Close</Text>
@@ -45,14 +42,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: { fontSize: 20, marginBottom: 20 },
-  button: {
-    backgroundColor: color.primary,
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 8,
-    marginVertical: 8,
-    width: '100%',
-  },
-  buttonText: { color: 'white', textAlign: 'center', fontWeight: 'bold' },
   closeText: { marginTop: 15, color: 'gray' },
 })

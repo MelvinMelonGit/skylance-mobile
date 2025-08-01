@@ -3,6 +3,7 @@ import Checkbox from '@/components/CheckBox';
 import { H2, H3 } from '@/components/HeadingsView';
 import PassengerData from '@/components/PassengerData';
 import { useAuth } from '@/context/AuthContext';
+import { useCheckedInFlights } from '@/context/CheckedInFlightsContext';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { color } from '@/styles/color';
 import { FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
@@ -15,6 +16,7 @@ export default function CheckIn() {
   const router = useRouter()
 
   const { setCurrentFlight } = useSelectedFlight()
+  const { checkedInFlights, setCheckedInFlights } = useCheckedInFlights()
   const { currentUser } = useAuth()
 
   return (
@@ -64,6 +66,7 @@ export default function CheckIn() {
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <ButtonView onPress={() => {
               setCurrentFlight(id)
+              setCheckedInFlights([...checkedInFlights, id])
               router.push('/boarding')
             }}>Check In</ButtonView>
           </View>
