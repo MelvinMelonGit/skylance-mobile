@@ -6,7 +6,7 @@ export default function ButtonView({ children, onPress, warning, clear }) {
   let gradientColors = [color.primary, color.secondary];
   let buttonTextColor = color.white;
 
-  if (warning) gradientColors = [color.red, color.darkRed];
+  if (warning) gradientColors = [color.red, color.orange];
   else if (clear) {
     gradientColors = ['transparent', 'transparent'];
     buttonTextColor = color.intermediate;
