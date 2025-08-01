@@ -2,7 +2,7 @@ import { color } from '@/styles/color';
 import { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export default function CustomCheckbox() {
+export default function CustomCheckbox({children}) {
   const [checked, setChecked] = useState(false)
 
   return (
@@ -13,15 +13,7 @@ export default function CustomCheckbox() {
                     {checked && <View style={styles.innerBox} />}
                 </View>
             </TouchableOpacity>
-            <Text style={styles.text}>I acknowledge my details above are correct.</Text>
-        </View>
-        <View style={styles.innerRow}>
-            <TouchableOpacity onPress={() => setChecked(!checked)}>
-                <View style={styles.outerBox}>
-                    {checked && <View style={styles.innerBox} />}
-                </View>
-            </TouchableOpacity>
-            <Text style={styles.text}>I have read and acknowledged the above dangerous goods declaration.</Text>
+            <Text style={styles.text}>{children}</Text>
         </View>
     </View>
   )
@@ -37,8 +29,8 @@ const styles = StyleSheet.create({
         marginVertical: 15
     },
     outerBox: {
-        width: 24,
-        height: 24,
+        width: 30,
+        height: 30,
         borderWidth: 2,
         borderColor: color.gray,
         borderRadius: 2,
@@ -46,8 +38,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     innerBox: {
-        width: 16,
-        height: 16,
+        width: 20,
+        height: 20,
         backgroundColor: color.intermediate,
         borderRadius: 1,
     },

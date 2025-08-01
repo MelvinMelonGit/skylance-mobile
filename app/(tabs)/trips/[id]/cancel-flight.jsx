@@ -1,4 +1,5 @@
 import ButtonView from '@/components/ButtonView';
+import CheckBox from '@/components/CheckBox';
 import { H2, H3, P } from '@/components/HeadingsView';
 import { color } from '@/styles/color';
 import { Ionicons } from '@expo/vector-icons';
@@ -34,6 +35,7 @@ export default function CancelFlight() {
           <Text style={{color: color.red, fontSize: 18}}>This action is permanent and cannot be undone.</Text>
           <H3>What's next?</H3>
           <P>The compensation amount will be credited into your designated bank account within three weeks upon the cancellation.</P>
+          <CheckBox>I acknowledge that this is not reversible.</CheckBox>
           <ButtonView warning>Cancel Flight</ButtonView>
         </View>
       </SafeAreaView>
