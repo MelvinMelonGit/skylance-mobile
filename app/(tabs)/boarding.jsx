@@ -48,7 +48,7 @@ export default function Boarding() {
               <Text>Login to see your boarding pass!</Text>
               <ButtonView onPress={() => {
                 router.push('/login')
-              }}>Check In</ButtonView>
+              }}>Login</ButtonView>
             </>
           )}
         </View>

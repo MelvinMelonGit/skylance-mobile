@@ -4,10 +4,9 @@ const SelectedFlightContext = createContext(null)
 
 export default function SelectedFlightProvider({ children }) {
   const [currentFlight, setCurrentFlight] = useState(-1)
-  const [isCheckedIn, setIsCheckedIn] = useState(false)
 
   return (
-    <SelectedFlightContext.Provider value={{ currentFlight, setCurrentFlight, isCheckedIn, setIsCheckedIn }}>
+    <SelectedFlightContext.Provider value={{ currentFlight, setCurrentFlight }}>
       {children}
     </SelectedFlightContext.Provider>
   )

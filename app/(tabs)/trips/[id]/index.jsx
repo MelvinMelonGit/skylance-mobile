@@ -2,7 +2,7 @@ import ButtonView from '@/components/ButtonView';
 import FlightData from '@/components/FlightData';
 import FlightPathData from '@/components/FlightPathData';
 import { H2 } from '@/components/HeadingsView';
-import { useSelectedFlight } from '@/context/SelectedFlightContext';
+import { useCheckedInFlights } from '@/context/CheckedInFlightsContext';
 import { color } from '@/styles/color';
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
@@ -13,9 +13,9 @@ export default function Index() {
   const { id, overbooked } = useLocalSearchParams()
   const isOverbooked = overbooked === 'true'
 
-  const { isCheckedIn } = useSelectedFlight()
-
   const router = useRouter()
+
+  const { checkedInFlights } = useCheckedInFlights()
 
   return (
       <SafeAreaView style={{ flex: 1}}>
@@ -50,13 +50,13 @@ export default function Index() {
               onPress={() => {
                 if (isOverbooked) 
                   router.push(`/trips/${id}/pending`)
-                else if (isCheckedIn)
+                else if (checkedInFlights.includes(id))
                   router.push(`/boarding`)
                 else {  
                   router.push(`/trips/${id}/check-in`)
                 } 
               }}>
-              { isCheckedIn ? 'View Boarding Pass' : 'Check In' }
+              { checkedInFlights.includes(id) ? 'View Boarding Pass' : 'Check In' }
             </ButtonView>
           </View>
         </View>

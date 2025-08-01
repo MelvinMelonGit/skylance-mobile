@@ -48,7 +48,7 @@ export default function Index() {
           <Text>Login to see your trips!</Text>
           <ButtonView onPress={() => {
              router.push('/login')
-          }}>Check In</ButtonView>
+          }}>Login</ButtonView>
         </View>
       )}
     </SafeAreaView>
