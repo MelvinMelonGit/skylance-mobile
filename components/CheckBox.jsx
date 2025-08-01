@@ -6,30 +6,35 @@ export default function CustomCheckbox() {
   const [checked, setChecked] = useState(false)
 
   return (
-    <>
-    <View style={styles.checkRow}>
-        <TouchableOpacity onPress={() => setChecked(!checked)}>
-        <View style={styles.outerBox}>
-            {checked && <View style={styles.innerBox} />}
-        </View>
-        </TouchableOpacity>
+    <View style={styles.outerRow}>
+        <View style={styles.innerRow}>
+            <TouchableOpacity onPress={() => setChecked(!checked)}>
+                <View style={styles.outerBox}>
+                    {checked && <View style={styles.innerBox} />}
+                </View>
+            </TouchableOpacity>
             <Text style={styles.text}>I acknowledge my details above are correct.</Text>
         </View>
-        <TouchableOpacity onPress={() => setChecked(!checked)}>
-        <View style={styles.outerBox}>
-            {checked && <View style={styles.innerBox} />}
-        </View>
-        </TouchableOpacity>
+        <View style={styles.innerRow}>
+            <TouchableOpacity onPress={() => setChecked(!checked)}>
+                <View style={styles.outerBox}>
+                    {checked && <View style={styles.innerBox} />}
+                </View>
+            </TouchableOpacity>
             <Text style={styles.text}>I have read and acknowledged the above dangerous goods declaration.</Text>
-    </>
+        </View>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
-    checkRow: {
+    outerRow: {
+        width: '90%',
+    },
+    innerRow: {
         flexDirection: 'row',
-        alignItems: 'center',
-        gap: 10
+        gap: 10,
+        marginVertical: 15
     },
     outerBox: {
         width: 24,
@@ -46,9 +51,6 @@ const styles = StyleSheet.create({
         backgroundColor: color.intermediate,
         borderRadius: 1,
     },
-    // checkInnerRow: {
-    //     flexDirection: 'column'
-    // },
     text: {
         fontSize: 16
     }

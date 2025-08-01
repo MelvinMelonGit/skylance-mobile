@@ -40,9 +40,9 @@ export default function Index() {
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <ButtonView
               onPress={() => {
-                router.push(`/trips/${id}/cancel-flight`)
+                router.push(`/trips/${id}/manage-trip`)
               }}
-              clear>Manage Booking</ButtonView>
+              clear>Manage Trip</ButtonView>
             <ButtonView
               onPress={() => {
                 isOverbooked ?

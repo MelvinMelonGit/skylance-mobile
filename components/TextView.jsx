@@ -21,7 +21,9 @@ export default function TextView({children, marginVertical}) {
 const styles = StyleSheet.create({
   container: {
     color: color.black,
-    fontSize: 14,
+    fontSize: 16,
+    fontWeight: 500,
+    marginTop: 10,
     alignSelf: 'flex-start',
   },
 })
