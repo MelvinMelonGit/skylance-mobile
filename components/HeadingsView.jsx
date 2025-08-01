@@ -31,7 +31,6 @@ export function H2({children, textColor, textAlign}) {
 
 export function H3({children, textColor, textAlign, marginVertical}) {
   return (
-    <GradientText>
       <Text style={
       [
         styles.h3, 
@@ -43,7 +42,6 @@ export function H3({children, textColor, textAlign, marginVertical}) {
       ]}>
         {children}
     </Text>
-    </GradientText>
   )
 }
 
