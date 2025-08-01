@@ -1,32 +1,38 @@
 import { color } from '@/styles/color';
 import { StyleSheet, Text } from 'react-native';
+import GradientText from './GradientText';
 
 export function H1({children}) {
   return (
-    <Text style={styles.h1}>
+    <GradientText>
+      <Text style={styles.h1}>
         {children}
-    </Text>
+      </Text>
+    </GradientText>
   )
 }
 
 export function H2({children, textColor, textAlign}) {
   return (
-    <Text style={
+    <GradientText>
+      <Text style={
       [
         styles.h2, 
         { 
-          color: textColor ? textColor : color.primary,
+          color: textColor ? textColor : color.intermediate,
           textAlign: textAlign ? textAlign : 'center'
         }
       ]}>
         {children}
     </Text>
+    </GradientText>
   )
 }
 
 export function H3({children, textColor, textAlign, marginVertical}) {
   return (
-    <Text style={
+    <GradientText>
+      <Text style={
       [
         styles.h3, 
         { 
@@ -37,6 +43,7 @@ export function H3({children, textColor, textAlign, marginVertical}) {
       ]}>
         {children}
     </Text>
+    </GradientText>
   )
 }
 
@@ -54,8 +61,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 700,
     textAlign: 'center',
-    marginBottom: 10,
-    color: color.primary
+    marginBottom: 10
   },
   h2: {
     fontSize: 24,

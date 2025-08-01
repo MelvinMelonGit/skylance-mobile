@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     color: color.gray
   },
   details: {
-    backgroundColor: color.primary,
+    backgroundColor: color.intermediate,
     color: color.white,
     fontWeight: 500,
     padding: 10,

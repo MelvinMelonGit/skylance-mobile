@@ -5,7 +5,7 @@ import { Tabs, useRouter } from 'expo-router';
 
 const screenOptions = {
   headerStyle: { backgroundColor: color.white },
-  headerTintColor: color.primary,
+  headerTintColor: color.intermediate,
   headerTitleStyle: { fontWeight: 'bold', fontSize: 20 },
   headerTitleAlign: 'center',
 }
@@ -17,7 +17,7 @@ export default function TabLayout() {
   return (
       <Tabs
       screenOptions={({ route }) => ({
-        tabBarActiveTintColor: color.primary,     
+        tabBarActiveTintColor: color.intermediate,     
         tabBarInactiveTintColor: color.gray,
         tabBarLabelStyle: {
           fontSize: 12,

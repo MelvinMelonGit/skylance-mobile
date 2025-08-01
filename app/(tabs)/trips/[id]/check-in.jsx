@@ -1,4 +1,5 @@
 import ButtonView from '@/components/ButtonView';
+import Checkbox from '@/components/CheckBox';
 import { H2, H3 } from '@/components/HeadingsView';
 import PassengerData from '@/components/PassengerData';
 import { useAuth } from '@/context/AuthContext';
@@ -59,6 +60,7 @@ export default function CheckIn() {
             </View>
             
           </View>
+          <Checkbox />
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <ButtonView onPress={() => {
               setCurrentFlight(id)

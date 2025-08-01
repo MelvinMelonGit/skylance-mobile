@@ -1,28 +1,57 @@
 import { color } from '@/styles/color';
+import { LinearGradient } from 'expo-linear-gradient';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function CustomNavTabsView({ activeTab, setActiveTab }) {
   return (
     <View style={styles.tabBar}>
       <TouchableOpacity
-        style={[styles.tab, activeTab === 'Upcoming Flights' && styles.activeTab]}
+        style={styles.tab}
         onPress={() => setActiveTab('Upcoming Flights')}
+        activeOpacity={0.7}
       >
-        <Text style={[styles.tabText, activeTab === 'Upcoming Flights' && styles.activeTabText]}>
-          Upcoming
-        </Text>
+        {activeTab === 'Upcoming Flights' ? (
+          <LinearGradient
+            colors={[color.primary, color.secondary]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={styles.activeTab}
+          >
+            <Text style={[styles.tabText, styles.activeTabText]}>
+              Upcoming
+            </Text>
+          </LinearGradient>
+        ) : (
+          <View style={styles.inactiveTab}>
+            <Text style={styles.tabText}>Upcoming</Text>
+          </View>
+        )}
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={[styles.tab, activeTab === 'Past Flights' && styles.activeTab]}
+        style={styles.tab}
         onPress={() => setActiveTab('Past Flights')}
+        activeOpacity={0.7}
       >
-        <Text style={[styles.tabText, activeTab === 'Past Flights' && styles.activeTabText]}>
-          Past Flights
-        </Text>
+        {activeTab === 'Past Flights' ? (
+          <LinearGradient
+            colors={[color.primary, color.secondary]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={styles.activeTab}
+          >
+            <Text style={[styles.tabText, styles.activeTabText]}>
+              Past Flights
+            </Text>
+          </LinearGradient>
+        ) : (
+          <View style={styles.inactiveTab}>
+            <Text style={styles.tabText}>Past Flights</Text>
+          </View>
+        )}
       </TouchableOpacity>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -30,31 +59,35 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderRadius: 50,
     borderWidth: 2,
-    borderColor: color.primary,
+    borderColor: color.intermediate,
     marginHorizontal: 20,
     marginBottom: 16,
     padding: 4,
     width: '100%',
-    overflow: 'hidden', // keeps rounded corners clean
+    overflow: 'hidden',
   },
   tab: {
     flex: 1,
+    borderRadius: 50,
+    overflow: 'hidden',
+  },
+  activeTab: {
+    paddingVertical: 12,
+    alignItems: 'center',
+    borderRadius: 50,
+  },
+  inactiveTab: {
     paddingVertical: 12,
     alignItems: 'center',
     backgroundColor: '#eee',
-  },
-  activeTab: {
-    backgroundColor: color.primary,
-    borderRadius: 50
+    borderRadius: 50,
   },
   tabText: {
     fontSize: 18,
-    color: color.primary,
+    color: color.intermediate,
     fontWeight: '500',
-    padding: 5,
   },
   activeTabText: {
     color: color.white,
-    fontWeight: '500',
   },
-})
+});

@@ -1,4 +1,5 @@
 import CardView from '@/components/CardView';
+import GradientText from '@/components/GradientText';
 import { H1, H3 } from '@/components/HeadingsView';
 import LogoView from '@/components/LogoView';
 import { FlatList, SectionList, StyleSheet, View } from 'react-native';
@@ -25,7 +26,9 @@ export default function Index() {
     <SafeAreaView style={styles.container}>
       <View style={styles.innerView}>
         <LogoView>Skylance</LogoView>
-        <H1>Begin Your Adventure Now!</H1>
+        <GradientText style={{ fontSize: 32, fontWeight: 'bold' }}>
+          <H1>Begin your adventure now!</H1>
+        </GradientText>
         {/* <LinkView href="/_modal/chooseOptionModal">Choose Options</LinkView> */}
       </View>
        <SectionList

@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   safe: {
-    backgroundColor: color.primary,
+    backgroundColor: color.intermediate,
     color: color.white,
     padding: 10,
     borderRadius: 5,

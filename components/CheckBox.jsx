@@ -1,0 +1,55 @@
+import { color } from '@/styles/color';
+import { useState } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
+export default function CustomCheckbox() {
+  const [checked, setChecked] = useState(false)
+
+  return (
+    <>
+    <View style={styles.checkRow}>
+        <TouchableOpacity onPress={() => setChecked(!checked)}>
+        <View style={styles.outerBox}>
+            {checked && <View style={styles.innerBox} />}
+        </View>
+        </TouchableOpacity>
+            <Text style={styles.text}>I acknowledge my details above are correct.</Text>
+        </View>
+        <TouchableOpacity onPress={() => setChecked(!checked)}>
+        <View style={styles.outerBox}>
+            {checked && <View style={styles.innerBox} />}
+        </View>
+        </TouchableOpacity>
+            <Text style={styles.text}>I have read and acknowledged the above dangerous goods declaration.</Text>
+    </>
+  )
+}
+
+const styles = StyleSheet.create({
+    checkRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 10
+    },
+    outerBox: {
+        width: 24,
+        height: 24,
+        borderWidth: 2,
+        borderColor: color.gray,
+        borderRadius: 2,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    innerBox: {
+        width: 16,
+        height: 16,
+        backgroundColor: color.intermediate,
+        borderRadius: 1,
+    },
+    // checkInnerRow: {
+    //     flexDirection: 'column'
+    // },
+    text: {
+        fontSize: 16
+    }
+});

@@ -1,45 +1,51 @@
 import { color } from '@/styles/color';
+import { LinearGradient } from 'expo-linear-gradient';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-export default function ButtonView({children, onPress, warning, clear}) {
+export default function ButtonView({ children, onPress, warning, clear }) {
+  let gradientColors = [color.primary, color.secondary];
+  let buttonTextColor = color.white;
 
-  let buttonColor = color.primary
-  if (warning) buttonColor = color.red
-  else if (clear) buttonColor = color.transparent
-  
-  let buttonTextColor = color.white
-  if (clear) buttonTextColor = color.primary
+  if (warning) gradientColors = [color.red, color.red];
+  else if (clear) {
+    gradientColors = ['transparent', 'transparent'];
+    buttonTextColor = color.intermediate;
+  }
 
   return (
-    <TouchableOpacity
-        onPress={onPress}
-        style={
-          [
-            styles.container,
-          { 
-            backgroundColor: buttonColor,
-            borderColor: clear && color.primary,
-            borderWidth: clear && 2
-          }
-          ]
-        }
+    <LinearGradient
+      colors={gradientColors}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={[
+        styles.container,
+        clear && {
+          backgroundColor: 'transparent',
+          borderColor: color.intermediate,
+          borderWidth: 2,
+        },
+      ]}
     >
-      <Text style={[styles.text, { color: buttonTextColor}]}>{children}</Text>
-    </TouchableOpacity>
-  )
+      <TouchableOpacity onPress={onPress} style={styles.touchable} activeOpacity={0.7}>
+        <Text style={[styles.text, { color: buttonTextColor }]}>{children}</Text>
+      </TouchableOpacity>
+    </LinearGradient>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     width: '50%',
-    alignItems: 'center',
-    padding: 10,
     marginVertical: 10,
     borderRadius: 50,
+    overflow: 'hidden', // Ensures TouchableOpacity doesn't overflow gradient corners
+  },
+  touchable: {
+    padding: 10,
+    alignItems: 'center',
   },
   text: {
-    color: color.white,
     fontSize: 16,
-    fontWeight: 500
-  }
-})
+    fontWeight: '500',
+  },
+});
