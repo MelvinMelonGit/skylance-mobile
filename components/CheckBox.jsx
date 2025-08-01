@@ -21,21 +21,20 @@ export default function CustomCheckbox({children}) {
 
 const styles = StyleSheet.create({
     outerRow: {
-        width: '90%',
+        // width: '90%',
     },
     innerRow: {
         flexDirection: 'row',
         gap: 10,
-        marginVertical: 15
+        marginVertical: 15,
+        alignItems: 'center'
     },
     outerBox: {
         width: 30,
         height: 30,
         borderWidth: 2,
         borderColor: color.gray,
-        borderRadius: 2,
-        alignItems: 'center',
-        justifyContent: 'center',
+        borderRadius: 2
     },
     innerBox: {
         width: 20,
