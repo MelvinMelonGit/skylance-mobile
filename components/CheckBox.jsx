@@ -34,7 +34,9 @@ const styles = StyleSheet.create({
         height: 30,
         borderWidth: 2,
         borderColor: color.gray,
-        borderRadius: 2
+        borderRadius: 2,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     innerBox: {
         width: 20,
