@@ -11,7 +11,7 @@ export default function FlightPathData() {
                    06:15am
                 </Text>
                 <Text style={styles.pathLine}> - - - - - - </Text>
-                <Text style={{ backgroundColor: color.primary, color: color.white, padding: 10, borderRadius: 5 }}>18h 30min</Text>
+                <Text style={{ backgroundColor: color.intermediate, color: color.white, padding: 10, borderRadius: 5 }}>18h 30min</Text>
                 <Text style={styles.pathLine}> - - - - - - </Text>
                 <Text style={styles.text}>
                     08:45am

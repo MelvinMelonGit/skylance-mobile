@@ -1,8 +1,9 @@
+import ButtonView from '@/components/ButtonView';
 import CustomNavTabsView from '@/components/CustomNavTabsView';
 import FlightContainer from '@/components/FlightContainer';
-import LinkView from '@/components/LinkView';
 import PastFlightContainer from '@/components/PastFlightContainer';
 import { useAuth } from '@/context/AuthContext';
+import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -12,6 +13,8 @@ export default function Index() {
   const [activeTab, setActiveTab] = useState('Upcoming Flights')
 
   const insets = useSafeAreaInsets()
+
+  const router = useRouter()
 
   return (
     <SafeAreaView style={styles.container}>
@@ -43,7 +46,9 @@ export default function Index() {
       ) : (
         <View style={styles.centered}>
           <Text>Login to see your trips!</Text>
-          <LinkView href="/login">Go To Login</LinkView>
+          <ButtonView onPress={() => {
+             router.push('/login')
+          }}>Check In</ButtonView>
         </View>
       )}
     </SafeAreaView>

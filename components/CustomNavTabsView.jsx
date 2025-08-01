@@ -51,7 +51,7 @@ export default function CustomNavTabsView({ activeTab, setActiveTab }) {
         )}
       </TouchableOpacity>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -90,4 +90,4 @@ const styles = StyleSheet.create({
   activeTabText: {
     color: color.white,
   },
-});
+})

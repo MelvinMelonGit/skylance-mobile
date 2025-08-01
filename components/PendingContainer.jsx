@@ -10,7 +10,7 @@ export default function PendingContainer({choice, id, onPress}) {
             >
             <View style={styles.inner}>
                 <View style={styles.innerCol}>
-                    <H3 textColor={color.primary}>
+                    <H3 textColor={color.intermediate}>
                         { choice === 1 ? "Option 1 - Cancel flight" : "Option 2 - Rebook at no cost" }
                     </H3>
                     <Text style={styles.text}>

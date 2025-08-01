@@ -15,7 +15,7 @@ export default function PastFlightContainer({children, id}) {
             >
             <View style={styles.inner}>
                 <View style={styles.innerLeftCol}>
-                    <H3 textColor={color.primary}>
+                    <H3 textColor={color.intermediate}>
                         {children}
                     </H3>
                     <Text style={styles.text}>

@@ -42,7 +42,7 @@ export default function Index() {
               onPress={() => {
                 router.push(`/trips/${id}/cancel-flight`)
               }}
-              warning>Cancel Flight</ButtonView>
+              clear>Manage Booking</ButtonView>
             <ButtonView
               onPress={() => {
                 isOverbooked ?

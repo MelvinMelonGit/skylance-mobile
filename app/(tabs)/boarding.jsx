@@ -1,14 +1,17 @@
 import BoardingPass from '@/components/BoardingPass';
-import LinkView from '@/components/LinkView';
 import { useAuth } from '@/context/AuthContext';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
+import { useRouter } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import ButtonView from '../../components/ButtonView';
 
 export default function Boarding() {
   const { currentUser, isLoggedIn } = useAuth()
 
   const { currentFlight } = useSelectedFlight()
+
+  const router = useRouter()
 
   return (
       <SafeAreaView style={{ flex: 1}}>
@@ -19,7 +22,9 @@ export default function Boarding() {
               { currentFlight === -1 ? (
                 <>
                   <Text>No Boarding Pass!</Text>
-                  <LinkView href="/trips">Check In</LinkView>
+                  <ButtonView onPress={() => {
+                    router.push('/trips')
+                  }}>Check In</ButtonView>
                 </>
               ) : (
                 <>
@@ -31,7 +36,9 @@ export default function Boarding() {
           ) : (
             <>
               <Text>Login to see your boarding pass!</Text>
-              <LinkView href="/login">Go To Login</LinkView>
+              <ButtonView onPress={() => {
+                router.push('/login')
+              }}>Check In</ButtonView>
             </>
           )}
         </View>

@@ -6,7 +6,7 @@ export default function ButtonView({ children, onPress, warning, clear }) {
   let gradientColors = [color.primary, color.secondary];
   let buttonTextColor = color.white;
 
-  if (warning) gradientColors = [color.red, color.red];
+  if (warning) gradientColors = [color.red, color.darkRed];
   else if (clear) {
     gradientColors = ['transparent', 'transparent'];
     buttonTextColor = color.intermediate;
@@ -30,7 +30,7 @@ export default function ButtonView({ children, onPress, warning, clear }) {
         <Text style={[styles.text, { color: buttonTextColor }]}>{children}</Text>
       </TouchableOpacity>
     </LinearGradient>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
