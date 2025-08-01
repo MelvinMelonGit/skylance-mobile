@@ -36,7 +36,7 @@ export default function Boarding() {
                   showsHorizontalScrollIndicator={false}
                   keyExtractor={(item, index) => item + index}
                   renderItem={({ item, index }) => (
-                    <View style={{ marginRight: index === 1 ? 0 : 20 }}>
+                    <View style={{ marginRight: index === checkedInFlights.length - 1 ? 0 : 20 }}>
                       <BoardingPass currentUser={currentUser} id={checkedInFlights[index]}/>
                     </View>
                   )}

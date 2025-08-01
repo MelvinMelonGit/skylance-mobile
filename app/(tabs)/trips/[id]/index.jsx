@@ -2,6 +2,7 @@ import ButtonView from '@/components/ButtonView';
 import FlightData from '@/components/FlightData';
 import FlightPathData from '@/components/FlightPathData';
 import { H2 } from '@/components/HeadingsView';
+import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { color } from '@/styles/color';
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
@@ -11,6 +12,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 export default function Index() {
   const { id, overbooked } = useLocalSearchParams()
   const isOverbooked = overbooked === 'true'
+
+  const { isCheckedIn } = useSelectedFlight()
 
   const router = useRouter()
 
@@ -45,11 +48,15 @@ export default function Index() {
               clear>Manage Trip</ButtonView>
             <ButtonView
               onPress={() => {
-                isOverbooked ?
-                router.push(`/trips/${id}/pending`) :
-                router.push(`/trips/${id}/check-in`)
+                if (isOverbooked) 
+                  router.push(`/trips/${id}/pending`)
+                else if (isCheckedIn)
+                  router.push(`/boarding`)
+                else {  
+                  router.push(`/trips/${id}/check-in`)
+                } 
               }}>
-              Check In
+              { isCheckedIn ? 'View Boarding Pass' : 'Check In' }
             </ButtonView>
           </View>
         </View>
