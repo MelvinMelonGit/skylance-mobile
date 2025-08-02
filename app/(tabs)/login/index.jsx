@@ -24,7 +24,6 @@ export default function Index() {
 
   const handleChange = (key, value) => {
     setForm(prev => ({ ...prev, [key]: value }))
-    console.log(form)
   }
 
   const handleSubmit = async () => {
