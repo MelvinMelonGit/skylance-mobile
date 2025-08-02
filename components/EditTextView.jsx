@@ -1,7 +1,7 @@
 import { color } from '@/styles/color';
 import { StyleSheet, TextInput } from 'react-native';
 
-export default function EditTextView({placeholder, marginVertical, secure}) {
+export default function EditTextView({placeholder, marginVertical, value, secure, onChangeText}) {
   return (
     <TextInput 
         style={
@@ -11,6 +11,8 @@ export default function EditTextView({placeholder, marginVertical, secure}) {
           ]
         }
         placeholder={placeholder}
+        value={value}
+        onChangeText={onChangeText}
         secureTextEntry={secure}
     />
   )

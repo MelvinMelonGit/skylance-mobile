@@ -1,7 +1,7 @@
 import * as SecureStore from 'expo-secure-store';
 
 async function login(email, password) {
-  const res = await fetch(`${process.env.API_URL}/auth/login`, {
+  const res = await fetch(`${apiUrl}${path}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),
@@ -20,13 +20,28 @@ async function fetchSecretData() {
   if (!token) throw new Error('Not authenticated');
 
   const res = await fetch(`${process.env.API_URL}/data/secret`, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      'Session-Token': token,
+    },
   });
 
   if (!res.ok) throw new Error('Unauthorized');
 
   return await res.json();
 }
+
+// async function fetchSecretData() {
+//   const token = await SecureStore.getItemAsync('authToken');
+//   if (!token) throw new Error('Not authenticated');
+
+//   const res = await fetch(`${process.env.API_URL}/data/secret`, {
+//     headers: { Authorization: `Bearer ${token}` },
+//   });
+
+//   if (!res.ok) throw new Error('Unauthorized');
+
+//   return await res.json();
+// }
 
 // | Scenario              | API\_URL value                                                        |
 // | --------------------- | --------------------------------------------------------------------- |

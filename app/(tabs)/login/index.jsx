@@ -4,7 +4,9 @@ import { H1 } from '@/components/HeadingsView';
 import LogoView from '@/components/LogoView';
 import TextView from '@/components/TextView';
 import { useAuth } from '@/context/AuthContext';
+import { loginCheck } from '@/utils/loginCheck';
 import { useRouter } from 'expo-router';
+import { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -13,6 +15,39 @@ export default function Index() {
 
   const router = useRouter()
 
+  const [form, setForm] = useState({
+    email: '',
+    password: ''
+  })
+
+  const [error, setError] = useState('')
+
+  const handleChange = (key, value) => {
+    setForm(prev => ({ ...prev, [key]: value }))
+    console.log(form)
+  }
+
+  const handleSubmit = async () => {
+    const emptyFields = Object.entries(form)
+      .filter(([_, value]) => value.trim() === '')
+      .map(([key]) => key)
+
+    if (emptyFields.length > 0) {
+      Alert.alert('Missing Fields', `Please fill in: ${emptyFields.join(', ')}`)
+      return;
+    }
+
+    try {
+      const token = await loginCheck(form.email, form.password)
+      if (token) {
+        login()
+        router.push('/')
+      }
+    } catch (err) {
+      setError(err.message)
+      Alert.alert('Login Error', err.message)
+    }
+}
   return (
     <SafeAreaView style={{ flex: 1}}>
       <ScrollView
@@ -31,6 +66,8 @@ export default function Index() {
                 <TextView>Email</TextView>
                 <EditTextView
                     placeholder="Enter Email"
+                    value={form.email}
+                    onChangeText={(text) => handleChange('email', text)}
                 />
             </View>
             
@@ -38,6 +75,8 @@ export default function Index() {
                 <TextView>Enter Password</TextView>
                 <EditTextView
                     placeholder="Enter Password"
+                    value={form.password}
+                    onChangeText={(text) => handleChange('password', text)}
                     secure
                 />
             </View>
@@ -46,8 +85,7 @@ export default function Index() {
                   router.push('/login/register')
                 }}>Sign Up</ButtonView>
                 <ButtonView onPress={() => {
-                  login()
-                  router.push("/")
+                  handleSubmit()
                  }}>Login</ButtonView>
             </View>
           </>

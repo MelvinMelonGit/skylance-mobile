@@ -1,9 +1,9 @@
-import { fetchData } from '@/api/fetchData';
 import ButtonView from '@/components/ButtonView';
 import CustomNavTabsView from '@/components/CustomNavTabsView';
 import FlightContainer from '@/components/FlightContainer';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { useAuth } from '@/context/AuthContext';
+import { fetchData } from '@/utils/fetchData';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
@@ -22,7 +22,7 @@ export default function Index() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      fetchData(`api/Flights/${activeTab}`)
+      fetchData(`/api/Flights/${activeTab}`, 'token-here')
         .then(setFlights)
         .catch(err => setError(err.message))
     }
