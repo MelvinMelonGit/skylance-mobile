@@ -2,7 +2,6 @@ import { fetchData } from '@/api/fetchData';
 import ButtonView from '@/components/ButtonView';
 import CustomNavTabsView from '@/components/CustomNavTabsView';
 import FlightContainer from '@/components/FlightContainer';
-import PastFlightContainer from '@/components/PastFlightContainer';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
@@ -11,22 +10,22 @@ import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export default function Index() {
   const { isLoggedIn } = useAuth()
-  const [activeTab, setActiveTab] = useState('Upcoming Flights')
+  const [activeTab, setActiveTab] = useState('UpcomingFlights')
 
   const insets = useSafeAreaInsets()
 
   const router = useRouter()
 
-  const [data, setData] = useState(null)
+  const [flights, setFlights] = useState(null)
   const [error, setError] = useState('')
 
   useEffect(() => {
     if (isLoggedIn) {
-      fetchData('api/Flights/UpcomingFlights')
-        .then(setData)
+      fetchData(`api/Flights/${activeTab}`)
+        .then(setFlights)
         .catch(err => setError(err.message))
     }
-  }, [isLoggedIn])
+  }, [activeTab, isLoggedIn])
 
   // if (error) {
   //   return <Text>Error: {error}</Text>
@@ -34,37 +33,36 @@ export default function Index() {
 
   return (
     <SafeAreaView style={styles.container}>
-        {isLoggedIn ? (
+      {isLoggedIn ? (
         <>
-        <View style={styles.outerView}>
-           <CustomNavTabsView activeTab={activeTab} setActiveTab={setActiveTab} />
-        </View>
-          { !data && <Text>Loading...</Text> }
-          {activeTab === 'Upcoming Flights' ? (
-            <View style={[styles.innerView, { paddingBottom: insets.bottom + 50}]}>
-              <FlatList
-                data={[{ name: 'Bangkok', overbooked: false }, { name: 'New York', overbooked: false } , { name: 'Kuala Lumpur', overbooked: true }, { name: 'Ho Chi Minh', overbooked: true }, { name: 'Berlin', overbooked: false }, { name: 'Shanghai', overbooked: false }]}
-                renderItem={({ item, index }) => <FlightContainer id={index} overbooked={item.overbooked}>{item.name}</FlightContainer>}
-                keyExtractor={(item, index) => item + index}
-                showsVerticalScrollIndicator={false}
-              />
-            </View>
-          ) : (
-            <View style={[styles.innerView, { paddingBottom: insets.bottom + 50}]}>
-              <FlatList
-                data={['1', '2', '3']}
-                renderItem={({ item, index }) => <PastFlightContainer id={index}>{item}</PastFlightContainer>}
-                keyExtractor={(item, index) => item + index}
-                showsVerticalScrollIndicator={false}
-              />
-            </View>
-          )}
+          <View style={styles.outerView}>
+              <CustomNavTabsView activeTab={activeTab} setActiveTab={setActiveTab} />
+          </View>
+          { !flights && <Text>Loading...</Text> }
+          <View style={[styles.innerView, { paddingBottom: insets.bottom + 50}]}>
+            <FlatList
+              data={flights}
+              renderItem={({ item, index }) => {
+                return (
+                  <FlightContainer
+                    flight={item}
+                    onPress={() => {
+                      activeTab === 'UpcomingFlights' &&
+                      router.push({pathname: `/trips/${item.flightNumber}`})
+                    }}
+                  />
+                )
+              }}
+              keyExtractor={(item, index) => item + index}
+              showsVerticalScrollIndicator={false}
+            />
+          </View>
         </>
       ) : (
         <View style={styles.centered}>
           <Text>Login to see your trips!</Text>
           <ButtonView onPress={() => {
-             router.push('/login')
+              router.push('/login')
           }}>Login</ButtonView>
         </View>
       )}

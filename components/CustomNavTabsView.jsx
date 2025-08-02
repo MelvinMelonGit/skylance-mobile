@@ -7,10 +7,10 @@ export default function CustomNavTabsView({ activeTab, setActiveTab }) {
     <View style={styles.tabBar}>
       <TouchableOpacity
         style={styles.tab}
-        onPress={() => setActiveTab('Upcoming Flights')}
+        onPress={() => setActiveTab('UpcomingFlights')}
         activeOpacity={0.7}
       >
-        {activeTab === 'Upcoming Flights' ? (
+        {activeTab === 'UpcomingFlights' ? (
           <LinearGradient
             colors={[color.primary, color.secondary]}
             start={{ x: 0, y: 0 }}
@@ -30,10 +30,10 @@ export default function CustomNavTabsView({ activeTab, setActiveTab }) {
 
       <TouchableOpacity
         style={styles.tab}
-        onPress={() => setActiveTab('Past Flights')}
+        onPress={() => setActiveTab('PastFlights')}
         activeOpacity={0.7}
       >
-        {activeTab === 'Past Flights' ? (
+        {activeTab === 'PastFlights' ? (
           <LinearGradient
             colors={[color.primary, color.secondary]}
             start={{ x: 0, y: 0 }}

@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from 'react';
 const SelectedFlightContext = createContext(null)
 
 export default function SelectedFlightProvider({ children }) {
-  const [currentFlight, setCurrentFlight] = useState(-1)
+  const [currentFlight, setCurrentFlight] = useState(null)
 
   return (
     <SelectedFlightContext.Provider value={{ currentFlight, setCurrentFlight }}>

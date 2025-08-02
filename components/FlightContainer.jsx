@@ -1,44 +1,36 @@
 import { color } from '@/styles/color';
-import { useRouter } from 'expo-router';
+import { formatDate, formatTime } from '@/utils/formatDateTime';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { H3 } from './HeadingsView';
 
-export default function FlightContainer({children, id, overbooked}) {
-    const router = useRouter()
-
-    return (
-        <TouchableOpacity
-            style={styles.container}
-            onPress={() => {
-              router.push({pathname: `/trips/${id}`, params: { overbooked }})
-            }}
-            >
-            <View style={styles.inner}>
-                <View style={styles.innerLeftCol}>
-                    <H3 textColor={color.intermediate}>
-                        {children}
-                    </H3>
-                    <Text style={styles.text}>
-                        FIG
-                    </Text>
-                </View>
-                <View style={styles.innerRightCol}>
-                    <Text style={styles.text}>
-                        23 May
-                    </Text>
-                    { overbooked ? (
-                    <Text style={styles.overbooked}>
-                        Overbooked
-                    </Text>
-                    ) : (
-                    <Text style={styles.safe}>
-                        Available
-                    </Text>
-                    )}
-                </View>
+export default function FlightContainer({flight, onPress}) {
+  return (
+    <TouchableOpacity
+        style={styles.container}
+        onPress={onPress}
+        >
+        <View style={styles.inner}>
+            <View style={styles.innerLeftCol}>
+                <H3 textColor={color.intermediate}>
+                    {flight.flightNumber}
+                </H3>
+                <Text style={styles.text}>
+                    {flight.origin}
+                </Text>
             </View>
-        </TouchableOpacity>
-    )
+            { flight.departureTime && (
+              <View style={styles.innerRightCol}>
+                <Text style={styles.text}>
+                    {formatDate(flight.departureTime)}
+                </Text>
+                <Text style={styles.text}>
+                    {formatTime(flight.departureTime)}
+                </Text>
+              </View>
+            )}
+        </View>
+    </TouchableOpacity>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -59,6 +51,7 @@ const styles = StyleSheet.create({
   inner: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     width: '100%',
   },
   innerLeftCol: {
