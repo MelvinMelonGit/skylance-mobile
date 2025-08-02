@@ -17,17 +17,20 @@ export default function Index() {
 
   const router = useRouter()
 
-  const [data, setData] = useState(null);
-  const [error, setError] = useState('');
+  const [data, setData] = useState(null)
+  const [error, setError] = useState('')
 
   useEffect(() => {
-    fetchData('api/Flights/UpcomingFlights')
-      .then(setData)
-      .catch(err => setError(err.message));
-  }, []);
+    if (isLoggedIn) {
+      fetchData('api/Flights/UpcomingFlights')
+        .then(setData)
+        .catch(err => setError(err.message))
+    }
+  }, [isLoggedIn])
 
-  if (error) return <Text>Error: {error}</Text>;
-  if (!data) return <Text>Loading...</Text>;
+  // if (error) {
+  //   return <Text>Error: {error}</Text>
+  // }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -36,6 +39,7 @@ export default function Index() {
         <View style={styles.outerView}>
            <CustomNavTabsView activeTab={activeTab} setActiveTab={setActiveTab} />
         </View>
+          { !data && <Text>Loading...</Text> }
           {activeTab === 'Upcoming Flights' ? (
             <View style={[styles.innerView, { paddingBottom: insets.bottom + 50}]}>
               <FlatList
