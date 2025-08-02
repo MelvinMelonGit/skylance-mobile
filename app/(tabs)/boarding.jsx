@@ -22,7 +22,7 @@ export default function Boarding() {
           { isLoggedIn ? (
             <>
             { /* Need to add a check with the current sessionId also */}
-              { currentFlight === -1 ? (
+              { currentFlight === null ? (
                 <>
                   <Text>No Boarding Pass!</Text>
                   <ButtonView onPress={() => {

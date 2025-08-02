@@ -2,6 +2,7 @@ import { fetchData } from '@/api/fetchData';
 import ButtonView from '@/components/ButtonView';
 import CustomNavTabsView from '@/components/CustomNavTabsView';
 import FlightContainer from '@/components/FlightContainer';
+import LoadingSpinner from '@/components/LoadingSpinner';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
@@ -38,7 +39,7 @@ export default function Index() {
           <View style={styles.outerView}>
               <CustomNavTabsView activeTab={activeTab} setActiveTab={setActiveTab} />
           </View>
-          { !flights && <Text>Loading...</Text> }
+          { !flights && <LoadingSpinner /> }
           <View style={[styles.innerView, { paddingBottom: insets.bottom + 50}]}>
             <FlatList
               data={flights}
