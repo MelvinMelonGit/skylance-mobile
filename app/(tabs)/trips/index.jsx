@@ -1,10 +1,11 @@
+import { fetchData } from '@/api/fetchData';
 import ButtonView from '@/components/ButtonView';
 import CustomNavTabsView from '@/components/CustomNavTabsView';
 import FlightContainer from '@/components/FlightContainer';
 import PastFlightContainer from '@/components/PastFlightContainer';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -15,6 +16,18 @@ export default function Index() {
   const insets = useSafeAreaInsets()
 
   const router = useRouter()
+
+  const [data, setData] = useState(null);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    fetchData('api/Flights/UpcomingFlights')
+      .then(setData)
+      .catch(err => setError(err.message));
+  }, []);
+
+  if (error) return <Text>Error: {error}</Text>;
+  if (!data) return <Text>Loading...</Text>;
 
   return (
     <SafeAreaView style={styles.container}>

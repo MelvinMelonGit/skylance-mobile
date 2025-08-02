@@ -43,7 +43,6 @@ export default {
     },
     extra: {
       apiUrl: process.env.API_URL,
-      appEnv: process.env.APP_ENV,
     },
   },
 };

@@ -1,7 +1,7 @@
 import * as SecureStore from 'expo-secure-store';
 
 async function login(email, password) {
-  const res = await fetch('https://your-api.com/auth/login', {
+  const res = await fetch(`${process.env.API_URL}/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),
@@ -19,7 +19,7 @@ async function fetchSecretData() {
   const token = await SecureStore.getItemAsync('authToken');
   if (!token) throw new Error('Not authenticated');
 
-  const res = await fetch('https://your-api.com/data/secret', {
+  const res = await fetch(`${process.env.API_URL}/data/secret`, {
     headers: { Authorization: `Bearer ${token}` },
   });
 
@@ -27,3 +27,10 @@ async function fetchSecretData() {
 
   return await res.json();
 }
+
+// | Scenario              | API\_URL value                                                        |
+// | --------------------- | --------------------------------------------------------------------- |
+// | Local development     | `http://localhost:5035` or `http://10.0.2.2:5035` (Android emulator)  |
+// | Physical device dev   | `http://YOUR_COMPUTER_IP:5035` (e.g. `http://192.168.1.100:5035`)     |
+// | Production deployment | `https://api.yourdomain.com` (or server IP like `http://34.12.45.67`) |
+
