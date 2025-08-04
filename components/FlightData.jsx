@@ -21,9 +21,7 @@ export default function FlightData({flight}) {
               <Text style={styles.text}>
                   Origin: {flight.origin}
               </Text>
-              <Text style={styles.text}>
-                  Destination: {flight.destination} 
-              </Text>
+              
           </View>
           { flight.departureTime && (
             <View>
@@ -33,13 +31,16 @@ export default function FlightData({flight}) {
             </View>
           )}
           </View>
+          <Text style={styles.text}>
+            Destination: {flight.destination} 
+          </Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
+    minWidth: '100%',
     borderRadius: 5,
     marginVertical: 10,
     padding: 20,
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
   inner: {
     flexDirection: 'row',
     alignItems: 'baseline',
-    width: '70%',
+    justifyContent: 'space-between'
   },
   innerLeftCol: {
     alignItems: 'flex-start',
