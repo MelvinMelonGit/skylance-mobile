@@ -15,7 +15,7 @@ export default function CheckIn() {
   const { id } = useLocalSearchParams()
   const router = useRouter()
 
-  const { currentFlight, setCurrentFlight } = useSelectedFlight()
+  const { currentFlight } = useSelectedFlight()
   const { checkedInFlights, setCheckedInFlights } = useCheckedInFlights()
   const { currentUser } = useAuth()
 
@@ -65,8 +65,7 @@ export default function CheckIn() {
           <CheckBox>I acknowledge my details above are correct.</CheckBox>
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <ButtonView onPress={() => {
-              setCurrentFlight(id)
-              setCheckedInFlights([...checkedInFlights, id])
+              setCheckedInFlights([...checkedInFlights, currentFlight])
               router.push('/boarding')
             }}>Check In</ButtonView>
           </View>
