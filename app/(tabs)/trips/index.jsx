@@ -21,7 +21,7 @@ export default function Index() {
 
   const { setCurrentFlight, setCurrentBooking } = useSelectedFlight()
 
-  const [flights, setFlights] = useState(null)
+  const [flights, setFlights] = useState([])
   const [error, setError] = useState('')
 
   useEffect(() => {
@@ -51,7 +51,7 @@ export default function Index() {
           <View style={styles.outerView}>
               <CustomNavTabsView activeTab={activeTab} setActiveTab={setActiveTab} />
           </View>
-          { flights === null && <LoadingSpinner /> }
+          { !flights && <LoadingSpinner /> }
           <View style={[styles.innerView, { paddingBottom: insets.bottom + 50}]}>
             { flights.length === 0 ?
             (<Text>No flights here</Text>) : 

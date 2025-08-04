@@ -1,34 +1,45 @@
 import { H3 } from '@/components/HeadingsView';
 import { color } from '@/styles/color';
+import { formatDate, formatTime } from '@/utils/formatDateTime';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function FlightData({id}) {
+export default function FlightData({flight}) {
 
     return (
-        <View style={styles.inner}>
+        <View style={styles.container}>
+          <View style={styles.inner}>
             <View style={styles.innerLeftCol}>
-                <H3 textColor={color.intermediate}>{id}</H3>
-                <Text style={styles.text}>
-                    FIG
-                </Text>
+              <H3 textColor={color.intermediate}>
+                  {flight.flightNumber}
+              </H3>
+              <Text style={styles.text}>
+                  Departure Time: {formatTime(flight.departureTime)}
+              </Text>
+              <Text style={styles.text}>
+                  - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+              </Text>
+              <Text style={styles.text}>
+                  Origin: {flight.origin}
+              </Text>
+              <Text style={styles.text}>
+                  Destination: {flight.destination} 
+              </Text>
+          </View>
+          { flight.departureTime && (
+            <View>
+              <Text style={styles.text}>
+                  {formatDate(flight.departureTime)}
+              </Text>
             </View>
-            <View style={styles.innerRightCol}>
-                <Text style={styles.text}>
-                    23 May
-                </Text>
-                <Text style={styles.text}>
-                    23 May
-                </Text>
-            </View>
+          )}
+          </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-  inner: {
-    minWidth: '100%',
-    maxWidth: '100%',
-    alignItems: 'center',
+  container: {
+    width: '100%',
     borderRadius: 5,
     marginVertical: 10,
     padding: 20,
@@ -39,19 +50,17 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 10,
     elevation: 2,
-
+  },
+  inner: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%',
+    alignItems: 'baseline',
+    width: '70%',
   },
   innerLeftCol: {
-    alignItems: 'flex-start'
-  },
-  innerRightCol: {
-    alignItems: 'flex-end'
+    alignItems: 'flex-start',
   },
   text: {
-    color: color.gray
+    color: color.gray,
   },
   overbooked: {
     backgroundColor: color.red,

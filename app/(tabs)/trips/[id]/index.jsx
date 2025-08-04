@@ -45,7 +45,7 @@ export default function Index() {
         <View style={styles.container}>
           <FlightInfographic currentBooking={currentBooking} />
           <H2>Booking #{currentBooking.bookingReferenceNumber}</H2>
-          <FlightData id={id} />
+          <FlightData flight={currentFlight} />
           <FlightPathData currentBooking={currentBooking} />
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <ButtonView

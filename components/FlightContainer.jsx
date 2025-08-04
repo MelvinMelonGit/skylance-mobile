@@ -15,16 +15,22 @@ export default function FlightContainer({flight, onPress}) {
                     {flight.flightNumber}
                 </H3>
                 <Text style={styles.text}>
-                    {flight.origin}
+                    Departure Time: {formatTime(flight.departureTime)}
+                </Text>
+                <Text style={styles.text}>
+                    - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+                </Text>
+                <Text style={styles.text}>
+                    Origin: {flight.origin}
+                </Text>
+                <Text style={styles.text}>
+                    Destination: {flight.destination} 
                 </Text>
             </View>
             { flight.departureTime && (
-              <View style={styles.innerRightCol}>
+              <View>
                 <Text style={styles.text}>
                     {formatDate(flight.departureTime)}
-                </Text>
-                <Text style={styles.text}>
-                    {formatTime(flight.departureTime)}
                 </Text>
               </View>
             )}
@@ -35,8 +41,7 @@ export default function FlightContainer({flight, onPress}) {
 
 const styles = StyleSheet.create({
   container: {
-    minWidth: '100%',
-    maxWidth: '100%',
+    width: '100%',
     borderRadius: 5,
     marginVertical: 10,
     padding: 20,
@@ -50,15 +55,11 @@ const styles = StyleSheet.create({
   },
   inner: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
+    alignItems: 'baseline',
+    width: '70%',
   },
   innerLeftCol: {
     alignItems: 'flex-start'
-  },
-  innerRightCol: {
-    alignItems: 'flex-end'
   },
   text: {
     color: color.gray
