@@ -12,7 +12,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Account from './account';
 
 export default function Index() {
-  const { currentUser, isLoggedIn, login, logout } = useAuth()
+  const { isLoggedIn, login } = useAuth()
 
   const router = useRouter()
 
@@ -34,7 +34,7 @@ export default function Index() {
 
     if (emptyFields.length > 0) {
       Alert.alert('Missing Fields', `Please fill in: ${emptyFields.join(', ')}`)
-      return;
+      return
     }
 
     try {
