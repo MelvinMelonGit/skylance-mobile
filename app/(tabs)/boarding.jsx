@@ -1,11 +1,11 @@
 import BoardingPass from '@/components/BoardingPass';
+import ButtonView from '@/components/ButtonView';
 import { useAuth } from '@/context/AuthContext';
 import { useCheckedInFlights } from '@/context/CheckedInFlightsContext';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { useRouter } from 'expo-router';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ButtonView from '../../components/ButtonView';
 
 export default function Boarding() {
   const { currentUser, isLoggedIn } = useAuth()
