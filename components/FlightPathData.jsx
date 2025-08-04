@@ -1,6 +1,5 @@
 import { color } from '@/styles/color';
 import { formatTime } from '@/utils/formatDateTime';
-import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function FlightPathData({currentBooking}) {
@@ -22,7 +21,12 @@ export default function FlightPathData({currentBooking}) {
                 <Text style={styles.text}>
                   {currentBooking.originAirportName}
                 </Text>
-                <Ionicons name='ticket' size={70} color={color.gray} />
+                <Text style={styles.text}>
+                  {currentBooking.aircraftModel}
+                </Text>
+                <Text style={styles.text}>
+                  {currentBooking.airline}
+                </Text>
                 <Text style={styles.text}>
                   {currentBooking.destinationAirportName}
                 </Text>

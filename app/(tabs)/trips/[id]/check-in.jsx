@@ -1,6 +1,7 @@
 import ButtonView from '@/components/ButtonView';
 import CheckBox from '@/components/CheckBox';
-import { H2, H3 } from '@/components/HeadingsView';
+import FlightData from '@/components/FlightData';
+import { H3 } from '@/components/HeadingsView';
 import PassengerData from '@/components/PassengerData';
 import { useAuth } from '@/context/AuthContext';
 import { useCheckedInFlights } from '@/context/CheckedInFlightsContext';
@@ -33,8 +34,8 @@ export default function CheckIn() {
   return (
       <SafeAreaView style={{ flex: 1}}>
         <View style={styles.container}>
-          <H2>Booking #{currentBooking.bookingReferenceNumber}</H2>
-          <PassengerData currentUser={currentUser}/>
+          <PassengerData currentUser={currentUser} currentBooking={currentBooking}/>
+          <FlightData flight={currentFlight} />
           <H3 textColor={color.intermediate}>Please do not bring these items:</H3>
           <View style={styles.warnings}>
             <View style={styles.warningsInner}>

@@ -1,23 +1,15 @@
 import { H3 } from '@/components/HeadingsView';
 import { color } from '@/styles/color';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
-export default function PassengerData({currentUser}) {
+export default function PassengerData({currentUser, currentBooking}) {
   return (
     <View style={styles.inner}>
         <View style={styles.innerLeftCol}>
             <H3 textColor={color.intermediate}>{currentUser}</H3>
-            <Text style={styles.text}>
-                FIG
-            </Text>
         </View>
         <View style={styles.innerRightCol}>
-            <Text style={styles.text}>
-                23 May
-            </Text>
-            <Text style={styles.text}>
-                23 May
-            </Text>
+             <H3 textColor={color.intermediate}>#{currentBooking.bookingReferenceNumber}</H3>
         </View>
     </View>
   )
@@ -40,6 +32,7 @@ const styles = StyleSheet.create({
     elevation: 2,
 
     flexDirection: 'row',
+    alignItems: 'baseline',
     justifyContent: 'space-between',
     width: '100%',
   },
