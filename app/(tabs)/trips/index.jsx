@@ -53,7 +53,10 @@ export default function Index() {
           </View>
           { !flights && <LoadingSpinner /> }
           <View style={[styles.innerView, { paddingBottom: insets.bottom + 50}]}>
-            <FlatList
+            { flights.length === 0 ?
+            (<Text>Nothing here</Text>) : 
+            ( 
+              <FlatList
               data={flights}
               renderItem={({ item, index }) => {
                 return (
@@ -68,6 +71,7 @@ export default function Index() {
               keyExtractor={(item, index) => item + index}
               showsVerticalScrollIndicator={false}
             />
+            )}
           </View>
         </>
       ) : (
