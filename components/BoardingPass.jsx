@@ -4,10 +4,10 @@ import { Dimensions, StyleSheet, Text, View } from 'react-native';
 
 const screenWidth = Dimensions.get('window').width;
 
-export default function BoardingPass({currentUser, id}) {
+export default function BoardingPass({currentUser, currentFlight, id}) {
     return (
         <View style={styles.container}>
-            <H2>{currentUser} - {id}</H2>
+            <H2>{currentUser} - #{currentFlight.bookingReferenceNumber}</H2>
             <View style={styles.pass}>
 
                 <View style={styles.inner}>

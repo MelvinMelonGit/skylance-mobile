@@ -15,14 +15,14 @@ export default function CheckIn() {
   const { id } = useLocalSearchParams()
   const router = useRouter()
 
-  const { setCurrentFlight } = useSelectedFlight()
+  const { currentFlight, setCurrentFlight } = useSelectedFlight()
   const { checkedInFlights, setCheckedInFlights } = useCheckedInFlights()
   const { currentUser } = useAuth()
 
   return (
       <SafeAreaView style={{ flex: 1}}>
         <View style={styles.container}>
-          <H2>Flight #{id}</H2>
+          <H2>Booking #{currentFlight.bookingReferenceNumber}</H2>
           <PassengerData currentUser={currentUser}/>
           <H3>Please do not bring these items:</H3>
           <View style={styles.warnings}>

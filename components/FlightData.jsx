@@ -7,7 +7,7 @@ export default function FlightData({id}) {
     return (
         <View style={styles.inner}>
             <View style={styles.innerLeftCol}>
-                <H3>{id}</H3>
+                <H3 textColor={color.intermediate}>{id}</H3>
                 <Text style={styles.text}>
                     FIG
                 </Text>

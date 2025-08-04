@@ -1,15 +1,15 @@
 import ButtonView from '@/components/ButtonView';
 import FlightData from '@/components/FlightData';
 import FlightPathData from '@/components/FlightPathData';
+import { H2 } from '@/components/HeadingsView';
 import { useCheckedInFlights } from '@/context/CheckedInFlightsContext';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
-import { color } from '@/styles/color';
 import { fetchFlight } from '@/utils/fetchFlight';
-import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import FlightInfographic from '../../../../components/FlightInfographic';
 
 export default function Index() {
   const { id } = useLocalSearchParams()
@@ -42,23 +42,8 @@ export default function Index() {
   return (
       <SafeAreaView style={{ flex: 1}}>
         <View style={styles.container}>
-          <View style={styles.infographic}>
-            <View style={styles.infoView}>
-              <Text style={styles.text}>{currentFlight.originAirportCode}</Text>
-              <Text style={styles.textSmall}>{currentFlight.originAirportName}</Text>
-            </View>
-            <View style={styles.flightPathContainer}>
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Ionicons name='airplane-outline' size={30} color={color.gray} />
-              <Text style={styles.flightPath}> - - - - - - - - - - -</Text>
-              </View>
-              <Text style={{ color: color.gray}}>{currentFlight.flightDuration}</Text>
-            </View>
-            <View style={styles.infoView}>
-              <Text style={styles.text}>{currentFlight.destinationAirportCode}</Text>
-              <Text style={styles.textSmall}>{currentFlight.destinationAirportName}</Text>
-            </View>
-          </View>
+          <FlightInfographic currentFlight={currentFlight} />
+          <H2>Booking #{currentFlight.bookingReferenceNumber}</H2>
           <FlightData id={id} />
           <FlightPathData currentFlight={currentFlight} />
           <View style={{ flexDirection: 'row', gap: 10 }}>
@@ -92,32 +77,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: '5%',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  infographic: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: '100%'
-  },
-  flightPathContainer: {
-    alignItems: 'center'
-  },
-  infoView :{
-    alignItems: 'center',
-    width: '20%',
-    flexWrap: 'wrap'
-  },
-  flightPath: {
-    color: color.gray,
-    fontSize: 30
-  },
-  text: {
-    fontSize: 30,
-    fontWeight: 400
-  },
-  textSmall: {
-    fontSize: 12,
-    fontWeight: 400,
-    textAlign: 'center'
   }
 })

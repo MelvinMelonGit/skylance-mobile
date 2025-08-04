@@ -37,7 +37,7 @@ export default function Boarding() {
                   keyExtractor={(item, index) => item + index}
                   renderItem={({ item, index }) => (
                     <View style={{ marginRight: index === checkedInFlights.length - 1 ? 0 : 20 }}>
-                      <BoardingPass currentUser={currentUser} id={checkedInFlights[index]}/>
+                      <BoardingPass currentUser={currentUser} currentFlight={currentFlight} id={checkedInFlights[index]}/>
                     </View>
                   )}
                 />
