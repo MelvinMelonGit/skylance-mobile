@@ -51,10 +51,10 @@ export default function Index() {
           <View style={styles.outerView}>
               <CustomNavTabsView activeTab={activeTab} setActiveTab={setActiveTab} />
           </View>
-          { !flights && <LoadingSpinner /> }
+          { flights === null && <LoadingSpinner /> }
           <View style={[styles.innerView, { paddingBottom: insets.bottom + 50}]}>
             { flights.length === 0 ?
-            (<Text>Nothing here</Text>) : 
+            (<Text>No flights here</Text>) : 
             ( 
               <FlatList
               data={flights}
