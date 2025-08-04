@@ -4,8 +4,6 @@ import { useAuth } from '@/context/AuthContext';
 import { logoutUser } from '@/utils/logoutUser';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Account() {
   const { currentUser, isLoggedIn, logout } = useAuth()
@@ -26,24 +24,9 @@ export default function Account() {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1}}>
-      <View style={styles.container}>
-        <H1>Welcome { isLoggedIn && currentUser }!</H1>
-        <ButtonView onPress={handleLogout}>Logout</ButtonView>
-      </View>
-    </SafeAreaView>
+    <>
+      <H1>Welcome { isLoggedIn && currentUser }!</H1>
+      <ButtonView onPress={handleLogout}>Logout</ButtonView>
+    </>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: '5%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inner: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-})
