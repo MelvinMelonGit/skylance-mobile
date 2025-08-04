@@ -78,9 +78,9 @@ export default function Index() {
                 />
             </View>
             <View style={{ flexDirection: 'row', gap: 10 }}>
-               <ButtonView clear onPress={() => {
+               {/* <ButtonView clear onPress={() => {
                   router.push('/login/register')
-                }}>Sign Up</ButtonView>
+                }}>Sign Up</ButtonView> */}
                 <ButtonView onPress={() => {
                   handleSubmit()
                  }}>Login</ButtonView>
