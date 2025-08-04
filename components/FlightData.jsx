@@ -2,12 +2,12 @@ import { H3 } from '@/components/HeadingsView';
 import { color } from '@/styles/color';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function FlightData() {
+export default function FlightData({id}) {
 
     return (
         <View style={styles.inner}>
             <View style={styles.innerLeftCol}>
-                <H3>Current Flight</H3>
+                <H3>{id}</H3>
                 <Text style={styles.text}>
                     FIG
                 </Text>

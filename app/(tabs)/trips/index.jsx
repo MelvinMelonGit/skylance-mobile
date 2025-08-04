@@ -3,6 +3,7 @@ import CustomNavTabsView from '@/components/CustomNavTabsView';
 import FlightContainer from '@/components/FlightContainer';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { useAuth } from '@/context/AuthContext';
+import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { fetchData } from '@/utils/fetchData';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
@@ -17,12 +18,14 @@ export default function Index() {
 
   const router = useRouter()
 
+  const { setCurrentFlight } = useSelectedFlight()
+
   const [flights, setFlights] = useState(null)
   const [error, setError] = useState('')
 
   useEffect(() => {
     if (isLoggedIn) {
-      fetchData(`/api/Flights/${activeTab}`, 'token-here')
+      fetchData(`/api/Flights/${activeTab}`)
         .then(setFlights)
         .catch(err => setError(err.message))
     }
@@ -48,8 +51,10 @@ export default function Index() {
                   <FlightContainer
                     flight={item}
                     onPress={() => {
-                      activeTab === 'UpcomingFlights' &&
-                      router.push({pathname: `/trips/${item.flightNumber}`})
+                      if (activeTab === 'UpcomingFlights') {
+                        setCurrentFlight(item)
+                        router.push({pathname: `/trips/${item.flightNumber}`})
+                      }
                     }}
                   />
                 )

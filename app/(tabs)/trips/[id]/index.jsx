@@ -3,9 +3,12 @@ import FlightData from '@/components/FlightData';
 import FlightPathData from '@/components/FlightPathData';
 import { H2 } from '@/components/HeadingsView';
 import { useCheckedInFlights } from '@/context/CheckedInFlightsContext';
+import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { color } from '@/styles/color';
+import { fetchFlight } from '@/utils/fetchFlight';
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -16,6 +19,19 @@ export default function Index() {
   const router = useRouter()
 
   const { checkedInFlights } = useCheckedInFlights()
+
+  const { currentFlight } = useSelectedFlight()
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    fetchFlight(`/Trip/${currentFlight.flightBookingDetailId}`)
+      // .then(setFlights)
+      .catch(err => setError(err.message))
+  }, [currentFlight])
+
+  // if (error) {
+  //   return <Text>Error: {error}</Text>
+  // }
 
   return (
       <SafeAreaView style={{ flex: 1}}>
@@ -38,7 +54,7 @@ export default function Index() {
             </View>
           </View>
           <H2>Flight #{id}</H2>
-          <FlightData />
+          <FlightData id={id} />
           <FlightPathData />
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <ButtonView
