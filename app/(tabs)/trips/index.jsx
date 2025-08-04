@@ -53,7 +53,7 @@ export default function Index() {
                     onPress={() => {
                       if (activeTab === 'UpcomingFlights') {
                         setCurrentFlight(item)
-                        router.push({pathname: `/trips/${item.flightNumber}`})
+                        router.push(`/trips/${item.flightNumber}`)
                       }
                     }}
                   />

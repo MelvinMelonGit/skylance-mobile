@@ -1,29 +1,30 @@
 import { color } from '@/styles/color';
+import { formatTime } from '@/utils/formatDateTime';
 import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function FlightPathData() {
+export default function FlightPathData({currentFlight}) {
 
     return (
         <View style={styles.inner}>
             <View style={styles.innerLeftCol}>
                 <Text style={styles.text}>
-                   06:15am
+                  {formatTime(currentFlight.departureTime)}
                 </Text>
                 <Text style={styles.pathLine}> - - - - - - </Text>
-                <Text style={{ backgroundColor: color.intermediate, color: color.white, padding: 10, borderRadius: 5 }}>18h 30min</Text>
+                <Text style={{ backgroundColor: color.intermediate, color: color.white, padding: 10, borderRadius: 5 }}>{currentFlight.flightDuration}</Text>
                 <Text style={styles.pathLine}> - - - - - - </Text>
                 <Text style={styles.text}>
-                    08:45am
+                  {formatTime(currentFlight.arrivalTime)}
                 </Text>
             </View>
             <View style={styles.innerRightCol}>
                 <Text style={styles.text}>
-                    Singapore (SIN)
+                  {currentFlight.originAirportName}
                 </Text>
                 <Ionicons name='ticket' size={70} color={color.gray} />
                 <Text style={styles.text}>
-                    New York City, USA (EWR)
+                  {currentFlight.destinationAirportName}
                 </Text>
             </View>
         </View>

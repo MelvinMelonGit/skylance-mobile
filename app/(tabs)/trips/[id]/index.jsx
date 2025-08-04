@@ -1,7 +1,6 @@
 import ButtonView from '@/components/ButtonView';
 import FlightData from '@/components/FlightData';
 import FlightPathData from '@/components/FlightPathData';
-import { H2 } from '@/components/HeadingsView';
 import { useCheckedInFlights } from '@/context/CheckedInFlightsContext';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { color } from '@/styles/color';
@@ -13,21 +12,28 @@ import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Index() {
-  const { id, overbooked } = useLocalSearchParams()
-  const isOverbooked = overbooked === 'true'
+  const { id } = useLocalSearchParams()
+  // const isOverbooked = overbooked === 'true'
 
   const router = useRouter()
 
   const { checkedInFlights } = useCheckedInFlights()
 
-  const { currentFlight } = useSelectedFlight()
+  const { currentFlight, setCurrentFlight } = useSelectedFlight()
   const [error, setError] = useState('')
 
   useEffect(() => {
-    fetchFlight(`/Trip/${currentFlight.flightBookingDetailId}`)
-      // .then(setFlights)
-      .catch(err => setError(err.message))
-  }, [currentFlight])
+  const fetchAndSetFlight = async () => {
+    try {
+      const data = await fetchFlight(`/Trip/${currentFlight.flightBookingDetailId}`)
+      setCurrentFlight(data)
+    } catch (err) {
+      setError(err.message)
+    }
+  }
+
+  fetchAndSetFlight()
+}, [])
 
   // if (error) {
   //   return <Text>Error: {error}</Text>
@@ -38,24 +44,23 @@ export default function Index() {
         <View style={styles.container}>
           <View style={styles.infographic}>
             <View style={styles.infoView}>
-              <Text style={styles.text}>SIN</Text>
-              <Text>Singapore</Text>
+              <Text style={styles.text}>{currentFlight.originAirportCode}</Text>
+              <Text style={styles.textSmall}>{currentFlight.originAirportName}</Text>
             </View>
-            <View style={styles.infoView}>
+            <View style={styles.flightPathContainer}>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <Ionicons name='airplane-outline' size={30} color={color.gray} />
               <Text style={styles.flightPath}> - - - - - - - - - - -</Text>
               </View>
-              <Text style={{ color: color.gray}}>18h 30min</Text>
+              <Text style={{ color: color.gray}}>{currentFlight.flightDuration}</Text>
             </View>
             <View style={styles.infoView}>
-              <Text style={styles.text}>EWR</Text>
-              <Text>USA</Text>
+              <Text style={styles.text}>{currentFlight.destinationAirportCode}</Text>
+              <Text style={styles.textSmall}>{currentFlight.destinationAirportName}</Text>
             </View>
           </View>
-          <H2>Flight #{id}</H2>
           <FlightData id={id} />
-          <FlightPathData />
+          <FlightPathData currentFlight={currentFlight} />
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <ButtonView
               onPress={() => {
@@ -64,9 +69,10 @@ export default function Index() {
               clear>Manage Trip</ButtonView>
             <ButtonView
               onPress={() => {
-                if (isOverbooked) 
-                  router.push(`/trips/${id}/pending`)
-                else if (checkedInFlights.includes(id))
+                // if (isOverbooked) 
+                //   router.push(`/trips/${id}/pending`)
+                // else
+                if (checkedInFlights.includes(id))
                   router.push(`/boarding`)
                 else {  
                   router.push(`/trips/${id}/check-in`)
@@ -93,8 +99,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '100%'
   },
-  infoView :{
+  flightPathContainer: {
     alignItems: 'center'
+  },
+  infoView :{
+    alignItems: 'center',
+    width: '20%',
+    flexWrap: 'wrap'
   },
   flightPath: {
     color: color.gray,
@@ -103,5 +114,10 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 30,
     fontWeight: 400
+  },
+  textSmall: {
+    fontSize: 12,
+    fontWeight: 400,
+    textAlign: 'center'
   }
 })
