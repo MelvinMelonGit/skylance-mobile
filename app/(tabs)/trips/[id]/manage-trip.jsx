@@ -1,3 +1,4 @@
+import Baggage from '@/components/Baggage';
 import PassengerData from '@/components/PassengerData';
 import { useAuth } from '@/context/AuthContext';
 import { StyleSheet, View } from 'react-native';
@@ -10,6 +11,7 @@ export default function ManageTrip() {
       <SafeAreaView style={{ flex: 1}}>
         <View style={styles.container}>
           <PassengerData currentUser={currentUser}/>
+          <Baggage />
         </View>
       </SafeAreaView>
   )

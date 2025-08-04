@@ -55,9 +55,8 @@ export default function Index() {
         contentContainerStyle={styles.container}>
         <LogoView>Skylance</LogoView>
         {isLoggedIn ?
-          (
-          <Account />
-          ): (
+          ( <Account /> )
+          : (
           <>
             <H1>Welcome Back!</H1>
             <View style={styles.inner}>

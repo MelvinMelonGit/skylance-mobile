@@ -2,7 +2,7 @@ import { H3 } from '@/components/HeadingsView';
 import { color } from '@/styles/color';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function PassengerData({currentUser}) {
+export default function Baggage({currentUser}) {
   return (
     <View style={styles.inner}>
         <View style={styles.innerLeftCol}>
