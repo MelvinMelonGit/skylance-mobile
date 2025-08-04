@@ -6,9 +6,9 @@ export default function AuthProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [currentUser, setCurrentUser] = useState('')
 
-  const login = () =>  {
+  const login = (data) =>  {
     setIsLoggedIn(true) 
-    setCurrentUser('Donald Trump')
+    setCurrentUser(`${data.user?.firstName} ${data.user?.lastName}`)
   }
   const logout = () => setIsLoggedIn(false)
 

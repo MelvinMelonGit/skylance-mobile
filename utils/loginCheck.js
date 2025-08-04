@@ -18,7 +18,7 @@ export async function loginCheck(email, password) {
         const data = await response.json()
         await SecureStore.setItemAsync('authToken', data.token)
         console.log(data)
-        return data.token
+        return data
     } catch (error) {
         console.error('Login failed:', error.message)
         throw error

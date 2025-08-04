@@ -38,10 +38,10 @@ export default function Index() {
     }
 
     try {
-      const token = await loginCheck(form.email, form.password)
+      const data = await loginCheck(form.email, form.password)
       setForm({ email: '', password: ''})
-      if (token) {
-        login()
+      if (data.token) {
+        login(data)
         router.push('/')
       }
     } catch (err) {
