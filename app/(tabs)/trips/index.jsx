@@ -5,6 +5,7 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 import { useAuth } from '@/context/AuthContext';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { fetchData } from '@/utils/fetchData';
+import { fetchFlight } from '@/utils/fetchFlight';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
@@ -18,7 +19,7 @@ export default function Index() {
 
   const router = useRouter()
 
-  const { setCurrentFlight } = useSelectedFlight()
+  const { setCurrentFlight, setCurrentBooking } = useSelectedFlight()
 
   const [flights, setFlights] = useState(null)
   const [error, setError] = useState('')
@@ -31,6 +32,14 @@ export default function Index() {
     }
   }, [activeTab, isLoggedIn])
 
+  async function handleSelection(item) {
+    if (activeTab === 'UpcomingFlights') {
+      setCurrentFlight(item)
+      const data = await fetchFlight(`/Trip/${item.flightBookingDetailId}`)
+      setCurrentBooking(data)
+      router.push(`/trips/${item.flightNumber}`)
+    }
+  }
   // if (error) {
   //   return <Text>Error: {error}</Text>
   // }
@@ -51,10 +60,7 @@ export default function Index() {
                   <FlightContainer
                     flight={item}
                     onPress={() => {
-                      if (activeTab === 'UpcomingFlights') {
-                        setCurrentFlight(item)
-                        router.push(`/trips/${item.flightNumber}`)
-                      }
+                      handleSelection(item)
                     }}
                   />
                 )

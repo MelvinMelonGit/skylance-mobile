@@ -1,7 +1,7 @@
 import ButtonView from '@/components/ButtonView';
 import { H1 } from '@/components/HeadingsView';
 import { useAuth } from '@/context/AuthContext';
-import { logoutUser } from '@/utils/logoutUser';
+import { logoutUser } from '@/utils/AuthCheck';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 

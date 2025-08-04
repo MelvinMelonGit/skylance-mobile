@@ -3,28 +3,28 @@ import { formatTime } from '@/utils/formatDateTime';
 import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function FlightPathData({currentFlight}) {
+export default function FlightPathData({currentBooking}) {
 
     return (
         <View style={styles.inner}>
             <View style={styles.innerLeftCol}>
                 <Text style={styles.text}>
-                  {formatTime(currentFlight.departureTime)}
+                  {formatTime(currentBooking.departureTime)}
                 </Text>
                 <Text style={styles.pathLine}> - - - - - - </Text>
-                <Text style={{ backgroundColor: color.intermediate, color: color.white, padding: 10, borderRadius: 5 }}>{currentFlight.flightDuration}</Text>
+                <Text style={{ backgroundColor: color.intermediate, color: color.white, padding: 10, borderRadius: 5 }}>{currentBooking.flightDuration}</Text>
                 <Text style={styles.pathLine}> - - - - - - </Text>
                 <Text style={styles.text}>
-                  {formatTime(currentFlight.arrivalTime)}
+                  {formatTime(currentBooking.arrivalTime)}
                 </Text>
             </View>
             <View style={styles.innerRightCol}>
                 <Text style={styles.text}>
-                  {currentFlight.originAirportName}
+                  {currentBooking.originAirportName}
                 </Text>
                 <Ionicons name='ticket' size={70} color={color.gray} />
                 <Text style={styles.text}>
-                  {currentFlight.destinationAirportName}
+                  {currentBooking.destinationAirportName}
                 </Text>
             </View>
         </View>

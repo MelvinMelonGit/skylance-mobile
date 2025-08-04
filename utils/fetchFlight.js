@@ -26,3 +26,24 @@ export async function fetchFlight(path) {
         throw error
     }
 }
+
+export async function fetchFlightValidate(path) {
+    const { apiUrl } = Constants.expoConfig.extra
+
+    const token = await SecureStore.getItemAsync('authToken')
+
+    try {
+        const response = await fetch(`${apiUrl}${path}`)
+
+        if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+        }
+
+        const data = await response.text()
+        console.log(data)
+        return data
+    } catch (error) {
+        console.error('Fetch failed:', error.message)
+        throw error
+    }
+}

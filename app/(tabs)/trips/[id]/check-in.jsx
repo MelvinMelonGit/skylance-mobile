@@ -6,6 +6,7 @@ import { useAuth } from '@/context/AuthContext';
 import { useCheckedInFlights } from '@/context/CheckedInFlightsContext';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { color } from '@/styles/color';
+import { checkInFlight } from '@/utils/checkInFlight';
 import { FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
@@ -18,6 +19,16 @@ export default function CheckIn() {
   const { currentFlight } = useSelectedFlight()
   const { checkedInFlights, setCheckedInFlights } = useCheckedInFlights()
   const { currentUser } = useAuth()
+
+  async function handleCheckIn() {
+    try {
+      const data = await checkInFlight(`/Trip/${currentFlight.flightBookingDetailId}/checkin/confirm`)
+      setCheckedInFlights([...checkedInFlights, currentFlight])
+      router.push('/boarding')
+    } catch (err) {
+      setError(err.message)
+    }
+  }
 
   return (
       <SafeAreaView style={{ flex: 1}}>
@@ -65,8 +76,7 @@ export default function CheckIn() {
           <CheckBox>I acknowledge my details above are correct.</CheckBox>
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <ButtonView onPress={() => {
-              setCheckedInFlights([...checkedInFlights, currentFlight])
-              router.push('/boarding')
+              handleCheckIn()
             }}>Check In</ButtonView>
           </View>
         </View>

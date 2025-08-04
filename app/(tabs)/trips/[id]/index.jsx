@@ -5,7 +5,7 @@ import FlightPathData from '@/components/FlightPathData';
 import { H2 } from '@/components/HeadingsView';
 import { useCheckedInFlights } from '@/context/CheckedInFlightsContext';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
-import { fetchFlight } from '@/utils/fetchFlight';
+import { fetchFlightValidate } from '@/utils/fetchFlight';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
@@ -19,17 +19,18 @@ export default function Index() {
 
   const { checkedInFlights } = useCheckedInFlights()
 
-  const { currentFlight, setCurrentFlight } = useSelectedFlight()
+  const { currentFlight, currentBooking } = useSelectedFlight()
+  const [checkIn, setCheckIn] = useState('')
   const [error, setError] = useState('')
 
   useEffect(() => {
-  const fetchAndSetFlight = async () => {
-    try {
-      const data = await fetchFlight(`/Trip/${currentFlight.flightBookingDetailId}`)
-      setCurrentFlight(data)
-    } catch (err) {
-      setError(err.message)
-    }
+    const fetchAndSetFlight = async () => {
+      try {
+        const data = await fetchFlightValidate(`/Trip/${currentFlight.flightBookingDetailId}/checkin/validate`)
+        setCheckIn(data)
+      } catch (err) {
+        setError(err.message)
+      }
   }
 
   fetchAndSetFlight()
@@ -42,10 +43,10 @@ export default function Index() {
   return (
       <SafeAreaView style={{ flex: 1}}>
         <View style={styles.container}>
-          <FlightInfographic currentFlight={currentFlight} />
-          <H2>Booking #{currentFlight.bookingReferenceNumber}</H2>
+          <FlightInfographic currentBooking={currentBooking} />
+          <H2>Booking #{currentBooking.bookingReferenceNumber}</H2>
           <FlightData id={id} />
-          <FlightPathData currentFlight={currentFlight} />
+          <FlightPathData currentBooking={currentBooking} />
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <ButtonView
               onPress={() => {
@@ -57,13 +58,12 @@ export default function Index() {
                 // if (isOverbooked) 
                 //   router.push(`/trips/${id}/pending`)
                 // else
-                if (checkedInFlights.includes(id))
-                  router.push(`/boarding`)
-                else {  
+              if (checkIn === 'Proceed to confirm check-in.')
                   router.push(`/trips/${id}/check-in`)
-                } 
+               else
+                  router.push(`/boarding`)
               }}>
-              { checkedInFlights.includes(id) ? 'View Boarding Pass' : 'Check In' }
+              { checkIn === 'Proceed to confirm check-in.' ? 'Check In' : 'View Boarding Pass'}
             </ButtonView>
           </View>
         </View>

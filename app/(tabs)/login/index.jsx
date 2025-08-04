@@ -4,7 +4,7 @@ import { H1 } from '@/components/HeadingsView';
 import LogoView from '@/components/LogoView';
 import TextView from '@/components/TextView';
 import { useAuth } from '@/context/AuthContext';
-import { loginCheck } from '@/utils/loginCheck';
+import { loginUser } from '@/utils/AuthCheck';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
@@ -38,7 +38,7 @@ export default function Index() {
     }
 
     try {
-      const data = await loginCheck(form.email, form.password)
+      const data = await loginUser(form.email, form.password)
       setForm({ email: '', password: ''})
       if (data.token) {
         login(data)
