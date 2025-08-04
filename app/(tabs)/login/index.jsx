@@ -9,6 +9,7 @@ import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Account from './account';
 
 export default function Index() {
   const { currentUser, isLoggedIn, login, logout } = useAuth()
@@ -54,10 +55,7 @@ export default function Index() {
         <LogoView>Skylance</LogoView>
         {isLoggedIn ?
           (
-          <>
-            <H1>Welcome { isLoggedIn && currentUser }!</H1>
-            <ButtonView onPress={logout}>Logout</ButtonView>
-          </>
+          <Account />
           ): (
           <>
             <H1>Welcome Back!</H1>
