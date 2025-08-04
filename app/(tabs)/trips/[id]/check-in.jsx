@@ -24,7 +24,7 @@ export default function CheckIn() {
         <View style={styles.container}>
           <H2>Booking #{currentFlight.bookingReferenceNumber}</H2>
           <PassengerData currentUser={currentUser}/>
-          <H3>Please do not bring these items:</H3>
+          <H3 textColor={color.intermediate}>Please do not bring these items:</H3>
           <View style={styles.warnings}>
             <View style={styles.warningsInner}>
               <FontAwesome5 name="skull-crossbones" size={50} color={color.black} />
