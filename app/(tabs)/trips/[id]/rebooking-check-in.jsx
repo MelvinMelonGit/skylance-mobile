@@ -2,6 +2,7 @@ import ButtonView from '@/components/ButtonView';
 import CheckBox from '@/components/CheckBox';
 import FlightData from '@/components/FlightData';
 import { H3 } from '@/components/HeadingsView';
+import ModalView from '@/components/ModalView';
 import PassengerData from '@/components/PassengerData';
 import { useAuth } from '@/context/AuthContext';
 import { useCheckedInFlights } from '@/context/CheckedInFlightsContext';
@@ -10,6 +11,7 @@ import { color } from '@/styles/color';
 import { rebookingCheckInFlight } from '@/utils/checkInFlight';
 import { FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -21,11 +23,13 @@ export default function RebookingCheckIn() {
   const { checkedInFlights, setCheckedInFlights } = useCheckedInFlights()
   const { currentUser } = useAuth()
 
+  const [modalVisible, setModalVisible] = useState(false)
+
   async function handleCheckIn() {
     try {
       const data = await rebookingCheckInFlight(`/api/ConfirmFlight/checkin/`)
       setCheckedInFlights([...checkedInFlights, currentFlight])
-      router.push('/boarding')
+      setModalVisible(true)
     } catch (err) {
       setError(err.message)
     }
@@ -80,6 +84,19 @@ export default function RebookingCheckIn() {
               handleCheckIn()
             }}>Check In</ButtonView>
           </View>
+          <ModalView
+             visible={modalVisible}
+             onClose={() => {
+              setModalVisible(false)
+              router.push('/boarding')
+            }}
+             onPress={() => {
+              setModalVisible(false)
+              router.push('/boarding')
+            }}
+             content='You have successfully checked in!'
+             btnContent='ok'
+          />
         </View>
       </SafeAreaView>
   )

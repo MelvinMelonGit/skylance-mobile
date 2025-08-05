@@ -2,10 +2,12 @@ import ButtonView from '@/components/ButtonView';
 import CheckBox from '@/components/CheckBox';
 import FlightInfographic from '@/components/FlightInfographic';
 import { H2, H3, P } from '@/components/HeadingsView';
+import ModalView from '@/components/ModalView';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { color } from '@/styles/color';
-import { cancelFlight } from '@/utils/cancelFlight';
+import { cancelFlight, fetchCancelFlight } from '@/utils/cancelFlight';
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -14,13 +16,29 @@ export default function CancelFlight() {
 
   const { currentFlight, currentBooking } = useSelectedFlight()
 
+  const [cancelledSelection, setCancelledSelection] = useState({})
+  const [error, setError] = useState('')
+  const [modalVisible, setModalVisible] = useState(false)
+
   const router = useRouter()
+
+  useEffect(() => {
+      const fetchCancelFlightInfo = async () => {
+        try {
+          const data = await fetchCancelFlight(`/api/CancelFlight/cancelconfirmation`, currentFlight.flightBookingDetailId)
+          setCancelledSelection(data)
+        } catch (err) {
+          setError(err.message)
+        }
+    }
+  
+    fetchCancelFlightInfo()
+  }, [])
 
   async function handleCancel() {
      try {
         const data = await cancelFlight(`/api/CancelFlight/excutecancel`, currentFlight.flightBookingDetailId)
-        alert(data)
-        router.push('/')
+        setModalVisible(true)
       } catch (err) {
         setError(err.message)
       }
@@ -31,7 +49,7 @@ export default function CancelFlight() {
         <View style={styles.container}>
           <FlightInfographic currentBooking={currentBooking}/>
           <H2>Flight #{id}</H2>
-          <H3>Full Compensation $1,624</H3>
+          <H3>Full Compensation S${cancelledSelection.compensation}</H3>
           <Text style={{color: color.red, fontSize: 18}}>This action is permanent and cannot be undone.</Text>
           <H3>What's next?</H3>
           <P>The compensation amount will be credited into your designated bank account within three weeks upon the cancellation.</P>
@@ -42,6 +60,19 @@ export default function CancelFlight() {
               handleCancel()
             }}
           >Cancel Flight</ButtonView>
+          <ModalView
+             visible={modalVisible}
+             onClose={() => {
+              setModalVisible(false)
+              router.push('/')
+            }}
+             onPress={() => {
+              setModalVisible(false)
+              router.push('/')
+            }}
+             content='You have successfully cancelled your flight and received a full compensation'
+             btnContent='ok'
+          />
         </View>
       </SafeAreaView>
   )
