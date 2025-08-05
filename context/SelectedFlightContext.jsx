@@ -5,9 +5,10 @@ const SelectedFlightContext = createContext(null)
 export default function SelectedFlightProvider({ children }) {
   const [currentFlight, setCurrentFlight] = useState(null)
   const [currentBooking, setCurrentBooking] = useState(null)
+  const [currentRebookedFlight, setCurrentRebookedFlight] = useState(null)
 
   return (
-    <SelectedFlightContext.Provider value={{ currentFlight, setCurrentFlight, currentBooking, setCurrentBooking }}>
+    <SelectedFlightContext.Provider value={{ currentFlight, setCurrentFlight, currentBooking, setCurrentBooking, currentRebookedFlight, setCurrentRebookedFlight }}>
       {children}
     </SelectedFlightContext.Provider>
   )

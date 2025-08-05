@@ -4,7 +4,8 @@ import FlightInfographic from '@/components/FlightInfographic';
 import { H2, H3, P } from '@/components/HeadingsView';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { color } from '@/styles/color';
-import { useLocalSearchParams } from 'expo-router';
+import { cancelFlight } from '@/utils/cancelFlight';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -12,6 +13,18 @@ export default function CancelFlight() {
   const { id } = useLocalSearchParams()
 
   const { currentFlight, currentBooking } = useSelectedFlight()
+
+  const router = useRouter()
+
+  async function handleCancel() {
+     try {
+        const data = await cancelFlight(`/api/CancelFlight/excutecancel`, currentFlight.flightBookingDetailId)
+        alert(data)
+        router.push('/')
+      } catch (err) {
+        setError(err.message)
+      }
+  }
 
   return (
       <SafeAreaView style={{ flex: 1}}>
@@ -23,7 +36,12 @@ export default function CancelFlight() {
           <H3>What's next?</H3>
           <P>The compensation amount will be credited into your designated bank account within three weeks upon the cancellation.</P>
           <CheckBox>I acknowledge that this is not reversible.</CheckBox>
-          <ButtonView warning>Cancel Flight</ButtonView>
+          <ButtonView
+            warning
+            onPress={() => {
+              handleCancel()
+            }}
+          >Cancel Flight</ButtonView>
         </View>
       </SafeAreaView>
   )

@@ -1,0 +1,28 @@
+import Constants from 'expo-constants';
+import * as SecureStore from 'expo-secure-store';
+
+export async function cancelFlight(path, flightBookingDetailId) {
+    const { apiUrl } = Constants.expoConfig.extra
+    const token = await SecureStore.getItemAsync('authToken')
+
+    try {
+        const response = await fetch(`${apiUrl}${path}?flightBookingDetailId=${flightBookingDetailId}`, {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json', 
+                'Session-Token': token,
+            },
+        })
+
+        if (!response.ok) {
+            throw new Error(`Cancel Flight failed! status: ${response.status}`)
+        }
+
+        const data = await response.json()
+        console.log(data)
+        return data
+    } catch (error) {
+        console.error('Cancel Flight failed:', error.message)
+        throw error
+    }
+}

@@ -16,7 +16,7 @@ export default function AvailableFlight() {
   
   const router = useRouter()
 
-  const { setCurrentFlight, setCurrentBooking } = useSelectedFlight()
+  const { setCurrentBooking, setCurrentRebookedFlight } = useSelectedFlight()
 
   const [flights, setFlights] = useState([])
   const [error, setError] = useState('')
@@ -28,9 +28,9 @@ export default function AvailableFlight() {
   }, [])
 
   async function handleSelection(item) {
-    setCurrentFlight(item)
+    setCurrentRebookedFlight(item)
     const data = await fetchFlight(`/api/RebookingFlights/${item.id}`)
-    setCurrentBooking(data)
+    // setCurrentBooking(data)
     router.push(`/trips/${item.aircraft.flightNumber}/rebooking-check-in`)
   }
 
