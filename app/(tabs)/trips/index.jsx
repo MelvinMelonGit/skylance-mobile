@@ -37,13 +37,13 @@ export default function Index() {
       setCurrentFlight(item)
       const data = await fetchFlight(`/Trip/${item.flightBookingDetailId}`)
       setCurrentBooking(data)
-      router.push(`/trips/${item.flightNumber}`)
+      router.push({
+        pathname: `/trips/${item.flightNumber}`,
+        params: { rebooking: false }
+      })
     }
   }
-  // if (error) {
-  //   return <Text>Error: {error}</Text>
-  // }
-
+  
   return (
     <SafeAreaView style={styles.container}>
       {isLoggedIn ? (

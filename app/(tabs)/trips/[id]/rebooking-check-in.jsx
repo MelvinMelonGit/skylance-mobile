@@ -95,7 +95,7 @@ export default function RebookingCheckIn() {
               router.push('/boarding')
             }}
              content='You have successfully checked in!'
-             btnContent='ok'
+             btnContent='Ok'
           />
         </View>
       </SafeAreaView>

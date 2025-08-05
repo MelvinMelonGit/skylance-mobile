@@ -3,7 +3,6 @@ import FlightData from '@/components/FlightData';
 import FlightInfographic from '@/components/FlightInfographic';
 import FlightPathData from '@/components/FlightPathData';
 import { H2 } from '@/components/HeadingsView';
-import { useCheckedInFlights } from '@/context/CheckedInFlightsContext';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { fetchFlightValidate } from '@/utils/fetchFlight';
 import { useLocalSearchParams, useRouter } from 'expo-router';
@@ -13,11 +12,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Index() {
   const { id } = useLocalSearchParams()
-  // const isOverbooked = overbooked === 'true'
 
   const router = useRouter()
-
-  const { checkedInFlights } = useCheckedInFlights()
 
   const { currentFlight, currentBooking } = useSelectedFlight()
   const [checkIn, setCheckIn] = useState('')
@@ -31,14 +27,10 @@ export default function Index() {
       } catch (err) {
         setError(err.message)
       }
-  }
+    }
 
-  fetchAndSetFlight()
-}, [])
-
-  // if (error) {
-  //   return <Text>Error: {error}</Text>
-  // }
+    fetchAndSetFlight()
+  }, [])
 
   return (
       <SafeAreaView style={{ flex: 1}}>

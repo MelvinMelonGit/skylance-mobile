@@ -2,12 +2,13 @@ import ButtonView from '@/components/ButtonView';
 import CheckBox from '@/components/CheckBox';
 import FlightData from '@/components/FlightData';
 import { H3 } from '@/components/HeadingsView';
+import ModalView from '@/components/ModalView';
 import PassengerData from '@/components/PassengerData';
 import { useAuth } from '@/context/AuthContext';
 import { useCheckedInFlights } from '@/context/CheckedInFlightsContext';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { color } from '@/styles/color';
-import { checkInFlight } from '@/utils/checkInFlight';
+import { checkInFlight, rebookingCheckInFlight } from '@/utils/checkInFlight';
 import { FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
@@ -15,7 +16,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function CheckIn() {
-  const { id } = useLocalSearchParams()
+  const { id, rebooking } = useLocalSearchParams()
+  const isRebooking = rebooking === 'true'
+
   const router = useRouter()
 
   const { currentFlight, currentBooking } = useSelectedFlight()
@@ -23,10 +26,23 @@ export default function CheckIn() {
   const { currentUser } = useAuth()
 
   const [modalVisible, setModalVisible] = useState(false)
+  const [isAcknowledged, setIsAcknowledged] = useState(false)
 
   async function handleCheckIn() {
+    if (!isAcknowledged) {
+      setError("You must acknowledge before check in.")
+      return
+    }
+
     try {
-      const data = await checkInFlight(`/Trip/${currentFlight.flightBookingDetailId}/checkin/confirm`)
+      let data = null
+      if (isRebooking) {
+        data = await rebookingCheckInFlight(`/api/ConfirmFlight/checkin/`)
+      }
+      else {
+        data = await checkInFlight(`/Trip/${currentFlight.flightBookingDetailId}/checkin/confirm`)
+      }
+      
       setCheckedInFlights([...checkedInFlights, currentFlight])
       setModalVisible(true)
     } catch (err) {
@@ -77,7 +93,10 @@ export default function CheckIn() {
             </View>
             
           </View>
-          <CheckBox>I acknowledge my details above are correct.</CheckBox>
+          <CheckBox
+            checked={isAcknowledged}
+            onChange={setIsAcknowledged}
+          >I acknowledge my details above are correct.</CheckBox>
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <ButtonView onPress={() => {
               handleCheckIn()
@@ -94,7 +113,7 @@ export default function CheckIn() {
               router.push('/boarding')
             }}
              content='You have successfully checked in!'
-             btnContent='ok'
+             btnContent='Ok'
           />
         </View>
       </SafeAreaView>

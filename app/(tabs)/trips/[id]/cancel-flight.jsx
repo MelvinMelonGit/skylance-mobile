@@ -19,6 +19,7 @@ export default function CancelFlight() {
   const [cancelledSelection, setCancelledSelection] = useState({})
   const [error, setError] = useState('')
   const [modalVisible, setModalVisible] = useState(false)
+  const [isAcknowledged, setIsAcknowledged] = useState(false)
 
   const router = useRouter()
 
@@ -36,12 +37,17 @@ export default function CancelFlight() {
   }, [])
 
   async function handleCancel() {
-     try {
-        const data = await cancelFlight(`/api/CancelFlight/excutecancel`, currentFlight.flightBookingDetailId)
-        setModalVisible(true)
-      } catch (err) {
-        setError(err.message)
-      }
+    if (!isAcknowledged) {
+      setError("You must acknowledge before cancelling the flight.")
+      return
+    }
+
+    try {
+      await cancelFlight(`/api/CancelFlight/excutecancel`, currentFlight.flightBookingDetailId)
+      setModalVisible(true)
+    } catch (err) {
+      setError(err.message)
+    }
   }
 
   return (
@@ -53,7 +59,11 @@ export default function CancelFlight() {
           <Text style={{color: color.red, fontSize: 18}}>This action is permanent and cannot be undone.</Text>
           <H3>What's next?</H3>
           <P>The compensation amount will be credited into your designated bank account within three weeks upon the cancellation.</P>
-          <CheckBox>I acknowledge that this is not reversible.</CheckBox>
+          <CheckBox
+            checked={isAcknowledged}
+            onChange={setIsAcknowledged}
+          >I acknowledge that this is not reversible.</CheckBox>
+          {error ? <Text style={{ color: 'red', marginBottom: 10 }}>{error}</Text> : null}
           <ButtonView
             warning
             onPress={() => {
@@ -71,7 +81,7 @@ export default function CancelFlight() {
               router.push('/')
             }}
              content='You have successfully cancelled your flight and received a full compensation'
-             btnContent='ok'
+             btnContent='Ok'
           />
         </View>
       </SafeAreaView>
