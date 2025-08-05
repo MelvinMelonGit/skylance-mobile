@@ -20,10 +20,6 @@ export default function DetailsStackLayout() {
         options={{ headerTitle: 'Confirm Check In' }}
       />
       <Stack.Screen
-        name="rebooking-check-in"
-        options={{ headerTitle: 'Confirm Check In' }}
-      />
-      <Stack.Screen
         name="manage-trip"
         options={{ headerTitle: 'Manage Trip' }}
       />

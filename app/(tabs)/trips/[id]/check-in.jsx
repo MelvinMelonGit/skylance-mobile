@@ -27,6 +27,7 @@ export default function CheckIn() {
 
   const [modalVisible, setModalVisible] = useState(false)
   const [isAcknowledged, setIsAcknowledged] = useState(false)
+  const [error, setError] = useState('')
 
   async function handleCheckIn() {
     if (!isAcknowledged) {
@@ -35,12 +36,11 @@ export default function CheckIn() {
     }
 
     try {
-      let data = null
       if (isRebooking) {
-        data = await rebookingCheckInFlight(`/api/ConfirmFlight/checkin/`)
+        const data = await rebookingCheckInFlight(`/api/ConfirmFlight/checkin/`)
       }
       else {
-        data = await checkInFlight(`/Trip/${currentFlight.flightBookingDetailId}/checkin/confirm`)
+        const data2 = await checkInFlight(`/Trip/${currentFlight.flightBookingDetailId}/checkin/confirm`)
       }
       
       setCheckedInFlights([...checkedInFlights, currentFlight])
@@ -97,6 +97,7 @@ export default function CheckIn() {
             checked={isAcknowledged}
             onChange={setIsAcknowledged}
           >I acknowledge my details above are correct.</CheckBox>
+          {error ? <Text style={{ color: 'red', marginBottom: 10 }}>{error}</Text> : null}
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <ButtonView onPress={() => {
               handleCheckIn()

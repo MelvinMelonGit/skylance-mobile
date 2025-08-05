@@ -5,6 +5,7 @@ import FlightPathData from '@/components/FlightPathData';
 import { H2 } from '@/components/HeadingsView';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { fetchFlightValidate } from '@/utils/fetchFlight';
+import { fetchOverbooking } from '@/utils/fetchOverbooking';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
@@ -15,7 +16,7 @@ export default function Index() {
 
   const router = useRouter()
 
-  const { currentFlight, currentBooking } = useSelectedFlight()
+  const { currentFlight, currentBooking, setOverBooking } = useSelectedFlight()
   const [checkIn, setCheckIn] = useState('')
   const [error, setError] = useState('')
 
@@ -23,7 +24,9 @@ export default function Index() {
     const fetchAndSetFlight = async () => {
       try {
         const data = await fetchFlightValidate(`/Trip/${currentFlight.flightBookingDetailId}/checkin/validate`)
+        const data2 = await fetchOverbooking(`/api/Overbooking/overbooking`, currentFlight.flightBookingDetailId)
         setCheckIn(data)
+        setOverBooking(data2)
       } catch (err) {
         setError(err.message)
       }
