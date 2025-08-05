@@ -1,7 +1,9 @@
 import ButtonView from '@/components/ButtonView';
 import { H3 } from '@/components/HeadingsView';
 import RebookingFlightContainer from '@/components/RebookingFlightContainer';
+import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { fetchData } from '@/utils/fetchData';
+import { fetchFlight } from '@/utils/fetchFlight';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
@@ -14,6 +16,8 @@ export default function AvailableFlight() {
   
   const router = useRouter()
 
+  const { setCurrentFlight, setCurrentBooking } = useSelectedFlight()
+
   const [flights, setFlights] = useState([])
   const [error, setError] = useState('')
 
@@ -23,8 +27,11 @@ export default function AvailableFlight() {
       .catch(err => setError(err.message))
   }, [])
 
-  async function handleSelection() {
-    alert("hi")
+  async function handleSelection(item) {
+    setCurrentFlight(item)
+    const data = await fetchFlight(`/api/RebookingFlights/${item.id}`)
+    setCurrentBooking(data)
+    router.push(`/trips/${item.aircraft.flightNumber}/rebooking-check-in`)
   }
 
   return (
