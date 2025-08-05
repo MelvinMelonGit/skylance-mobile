@@ -14,7 +14,7 @@ export default function PendingContainer({choice, id, onPress}) {
                         { choice === 1 ? "Option 1 - Cancel flight" : "Option 2 - Rebook at no cost" }
                     </H3>
                     <Text style={styles.text}>
-                        { choice === 1 ? "Full Compensation: $" : "Compensation: $" }
+                        { choice === 1 ? "Full Compensation will be reimbursed" : "Compensation to be determined upon selecting available flight" }
                     </Text>
                 </View>
             </View>

@@ -1,8 +1,9 @@
 import ButtonView from '@/components/ButtonView';
 import CheckBox from '@/components/CheckBox';
+import FlightInfographic from '@/components/FlightInfographic';
 import { H2, H3, P } from '@/components/HeadingsView';
+import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { color } from '@/styles/color';
-import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -10,26 +11,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 export default function CancelFlight() {
   const { id } = useLocalSearchParams()
 
+  const { currentFlight, currentBooking } = useSelectedFlight()
+
   return (
       <SafeAreaView style={{ flex: 1}}>
         <View style={styles.container}>
-          <View style={styles.infographic}>
-            <View style={styles.infoView}>
-              <Text style={styles.text}>SIN</Text>
-              <Text>Singapore</Text>
-            </View>
-            <View style={styles.infoView}>
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Ionicons name='airplane-outline' size={30} color={color.gray} />
-              <Text style={styles.flightPath}> - - - - - - - - - - -</Text>
-              </View>
-              <Text style={{ color: color.gray}}>18h 30min</Text>
-            </View>
-            <View style={styles.infoView}>
-              <Text style={styles.text}>EWR</Text>
-              <Text>USA</Text>
-            </View>
-          </View>
+          <FlightInfographic currentBooking={currentBooking}/>
           <H2>Flight #{id}</H2>
           <H3>Full Compensation $1,624</H3>
           <Text style={{color: color.red, fontSize: 18}}>This action is permanent and cannot be undone.</Text>
@@ -48,19 +35,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: '5%',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  infographic: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: '100%'
-  },
-  infoView :{
-    alignItems: 'center'
-  },
-  flightPath: {
-    color: color.gray,
-    fontSize: 30
   },
   text: {
     fontSize: 30,
