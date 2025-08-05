@@ -97,7 +97,7 @@ export default function CheckIn() {
             checked={isAcknowledged}
             onChange={setIsAcknowledged}
           >I acknowledge my details above are correct.</CheckBox>
-          {error ? <Text style={{ color: 'red', marginBottom: 10 }}>{error}</Text> : null}
+          {error ? <Text style={{ color: color.red, marginBottom: 10 }}>{error}</Text> : null}
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <ButtonView onPress={() => {
               handleCheckIn()

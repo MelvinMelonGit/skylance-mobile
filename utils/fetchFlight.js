@@ -19,7 +19,7 @@ export async function fetchFlight(path) {
         }
 
         const data = await response.json()
-        console.log(data)
+        console.log(`Fetch Flight status: ${data}`)
         return data
     } catch (error) {
         console.error('Fetch failed:', error.message)
@@ -40,7 +40,7 @@ export async function fetchFlightValidate(path) {
         }
 
         const data = await response.text()
-        console.log(data)
+        console.log(`Fetch Flight validate status: ${data}`)
         return data
     } catch (error) {
         console.error('Fetch Validate failed:', error.message)

@@ -7,11 +7,7 @@ export async function checkInFlight(path) {
 
     try {
         const response = await fetch(`${apiUrl}${path}`, {
-            method: 'POST',
-            // headers: { 
-            //     'Content-Type': 'application/json', 
-            //     'Session-Token': token 
-            // },
+            method: 'POST'
         })
 
         if (!response.ok) {
@@ -19,7 +15,7 @@ export async function checkInFlight(path) {
         }
 
         const data = await response.text()
-        console.log(data)
+        console.log(`Check In status: ${data}`)
         return data
     } catch (error) {
         console.error('Check In failed:', error.message)
@@ -41,15 +37,6 @@ export async function rebookingCheckInFlight(path) {
             body: JSON.stringify({
                 appUserId,
                 flightDetailId,
-                baggageAllowance,
-                seatNumber,
-                requireSpecialAssistance,
-                fareamount,
-                checkInTime,
-                boardingTime,
-                gate,
-                terminal,
-                isOverbooking,
                 overbookingDetailId,
                 finalCompensationAmount
             }),
@@ -60,7 +47,7 @@ export async function rebookingCheckInFlight(path) {
         }
 
         const data = await response.json()
-        console.log(data)
+        console.log(`Rebook Check In status: ${data}`)
         return data
     } catch (error) {
         console.error('Check In failed:', error.message)

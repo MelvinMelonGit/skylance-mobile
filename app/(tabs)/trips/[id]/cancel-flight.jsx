@@ -63,7 +63,7 @@ export default function CancelFlight() {
             checked={isAcknowledged}
             onChange={setIsAcknowledged}
           >I acknowledge that this is not reversible.</CheckBox>
-          {error ? <Text style={{ color: 'red', marginBottom: 10 }}>{error}</Text> : null}
+          {error ? <Text style={{ color: color.red, marginBottom: 10 }}>{error}</Text> : null}
           <ButtonView
             warning
             onPress={() => {
