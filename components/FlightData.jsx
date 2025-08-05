@@ -18,10 +18,6 @@ export default function FlightData({flight}) {
               <Text style={styles.text}>
                   - - - - - - - - - - - - - - - - - - - - - - - - - - - 
               </Text>
-              <Text style={styles.text}>
-                  Origin: {flight.origin}
-              </Text>
-              
           </View>
           { flight.departureTime && (
             <View>
@@ -31,6 +27,9 @@ export default function FlightData({flight}) {
             </View>
           )}
           </View>
+          <Text style={styles.text}>
+            Origin: {flight.origin}
+          </Text>
           <Text style={styles.text}>
             Destination: {flight.destination} 
           </Text>

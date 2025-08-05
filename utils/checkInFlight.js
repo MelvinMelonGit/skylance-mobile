@@ -18,7 +18,7 @@ export async function checkInFlight(path) {
             throw new Error(`Check In failed! status: ${response.status}`)
         }
 
-        const data = await response.text()
+        const data = await response.json()
         console.log(data)
         return data
     } catch (error) {

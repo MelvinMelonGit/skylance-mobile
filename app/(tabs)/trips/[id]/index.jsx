@@ -55,15 +55,14 @@ export default function Index() {
               clear>Manage Trip</ButtonView> */}
             <ButtonView
               onPress={() => {
-                // if (isOverbooked) 
-                //   router.push(`/trips/${id}/pending`)
-                // else
-              if (checkIn === 'Proceed to confirm check-in.')
+              if (checkIn.status === "Allowed")
                   router.push(`/trips/${id}/check-in`)
-               else
+              else if (checkIn.status === "AlreadyCheckedIn")
                   router.push(`/boarding`)
+              else
+                  router.push(`/trips/${id}/pending`)
               }}>
-              { checkIn === 'Proceed to confirm check-in.' ? 'Check In' : 'View Boarding Pass'}
+              { checkIn.status === "AlreadyCheckedIn" ? 'View Boarding Pass' : 'Check In' }
             </ButtonView>
           </View>
         </View>

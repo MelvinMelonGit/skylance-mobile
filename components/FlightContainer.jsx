@@ -20,9 +20,6 @@ export default function FlightContainer({flight, onPress}) {
                 <Text style={styles.text}>
                     - - - - - - - - - - - - - - - - - - - - - - - - - - - 
                 </Text>
-                <Text style={styles.text}>
-                    Origin: {flight.origin}
-                </Text>
             </View>
             { flight.departureTime && (
               <View>
@@ -33,6 +30,9 @@ export default function FlightContainer({flight, onPress}) {
             )}
             
         </View>
+        <Text style={styles.text}>
+           Origin: {flight.origin}
+        </Text>
         <Text style={styles.text}>
           Destination: {flight.destination} 
         </Text>

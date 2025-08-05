@@ -39,11 +39,11 @@ export async function fetchFlightValidate(path) {
         throw new Error(`HTTP error! status: ${response.status}`)
         }
 
-        const data = await response.text()
+        const data = await response.json()
         console.log(data)
         return data
     } catch (error) {
-        console.error('Fetch failed:', error.message)
+        console.error('Fetch Validate failed:', error.message)
         throw error
     }
 }
