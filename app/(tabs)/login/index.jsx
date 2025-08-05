@@ -4,10 +4,11 @@ import { H1 } from '@/components/HeadingsView';
 import LogoView from '@/components/LogoView';
 import TextView from '@/components/TextView';
 import { useAuth } from '@/context/AuthContext';
+import { color } from '@/styles/color';
 import { loginUser } from '@/utils/AuthCheck';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Account from './account';
 
@@ -21,34 +22,46 @@ export default function Index() {
     password: ''
   })
 
-  const [error, setError] = useState('')
+  const [errors, setErrors] = useState({ email: '', password: '' })
 
   const handleChange = (key, value) => {
     setForm(prev => ({ ...prev, [key]: value }))
   }
 
   const handleSubmit = async () => {
+    setErrors({ email: '', password: '' })
+
     const emptyFields = Object.entries(form)
       .filter(([_, value]) => value.trim() === '')
-      .map(([key]) => key)
+      .map(([key]) => key);
 
-    if (emptyFields.length > 0) {
-      Alert.alert('Missing Fields', `Please fill in: ${emptyFields.join(', ')}`)
-      return
+        if (emptyFields.length > 0) {
+          setErrors(prev => ({
+            ...prev,
+            email: emptyFields.includes('email') ? 'Email is required.' : '',
+            password: emptyFields.includes('password') ? 'Password is required.' : ''
+          }))
+          return
+        }
+
+        try {
+          const data = await loginUser(form.email, form.password)
+          setForm({ email: '', password: '' })
+          if (data.token) {
+            login(data)
+            router.push('/')
+          }
+        } catch (err) {
+          if (err.message.toLowerCase().includes('email')) {
+            setErrors(prev => ({ ...prev, email: err.message }))
+          } else if (err.message.toLowerCase().includes('password')) {
+            setErrors(prev => ({ ...prev, password: err.message }))
+          } else {
+            setErrors(prev => ({ ...prev, password: err.message }))
+          }
+        }
     }
 
-    try {
-      const data = await loginUser(form.email, form.password)
-      setForm({ email: '', password: ''})
-      if (data.token) {
-        login(data)
-        router.push('/')
-      }
-    } catch (err) {
-      setError(err.message)
-      Alert.alert('Login Error', err.message)
-    }
-}
   return (
     <SafeAreaView style={{ flex: 1}}>
       <ScrollView
@@ -66,6 +79,7 @@ export default function Index() {
                     value={form.email}
                     onChangeText={(text) => handleChange('email', text)}
                 />
+                {errors.email ? <Text style={{ color: color.red, marginBottom: 10 }}>{errors.email}</Text> : null}
             </View>
             
             <View style={styles.inner}>
@@ -76,6 +90,7 @@ export default function Index() {
                     onChangeText={(text) => handleChange('password', text)}
                     secure
                 />
+                {errors.password ? <Text style={{ color: color.red, marginBottom: 10 }}>{errors.password}</Text> : null}
             </View>
             <View style={{ flexDirection: 'row', gap: 10 }}>
                {/* <ButtonView clear onPress={() => {
