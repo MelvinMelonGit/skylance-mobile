@@ -7,7 +7,7 @@ import { useAuth } from '@/context/AuthContext';
 import { useCheckedInFlights } from '@/context/CheckedInFlightsContext';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { color } from '@/styles/color';
-import { checkInFlight } from '@/utils/checkInFlight';
+import { rebookingCheckInFlight } from '@/utils/checkInFlight';
 import { FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
@@ -23,7 +23,7 @@ export default function RebookingCheckIn() {
 
   async function handleCheckIn() {
     try {
-      const data = await checkInFlight(`/Trip/${currentFlight.flightBookingDetailId}/checkin/confirm`)
+      const data = await rebookingCheckInFlight(`/api/ConfirmFlight/checkin/`)
       setCheckedInFlights([...checkedInFlights, currentFlight])
       router.push('/boarding')
     } catch (err) {
