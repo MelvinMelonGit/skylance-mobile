@@ -18,6 +18,7 @@ export async function loginUser(email, password) {
         const data = await response.json()
         await SecureStore.setItemAsync('authToken', data.token)
         console.log(`Login success! ${data}`)
+        console.log(data)
         return data
     } catch (error) {
         console.error('Login failed:', error.message)

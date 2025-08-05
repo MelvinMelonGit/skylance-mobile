@@ -13,7 +13,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Account from './account';
 
 export default function Index() {
-  const { isLoggedIn, login } = useAuth()
+  const { isLoggedIn, login, setCurrentUserObj } = useAuth()
 
   const router = useRouter()
 
@@ -49,6 +49,7 @@ export default function Index() {
           setForm({ email: '', password: '' })
           if (data.token) {
             login(data)
+            setCurrentUserObj(data)
             router.push('/')
           }
         } catch (err) {

@@ -21,9 +21,9 @@ export default function CheckIn() {
 
   const router = useRouter()
 
-  const { currentFlight, currentBooking } = useSelectedFlight()
+  const { currentFlight, currentBooking, currentRebookedFlight, overBooking } = useSelectedFlight()
   const { checkedInFlights, setCheckedInFlights } = useCheckedInFlights()
-  const { currentUser } = useAuth()
+  const { currentUser, currentUserObj } = useAuth()
 
   const [modalVisible, setModalVisible] = useState(false)
   const [isAcknowledged, setIsAcknowledged] = useState(false)
@@ -37,7 +37,13 @@ export default function CheckIn() {
 
     try {
       if (isRebooking) {
-        const data = await rebookingCheckInFlight(`/api/ConfirmFlight/checkin/`)
+        const data = await rebookingCheckInFlight(
+          `/api/ConfirmFlight/checkin/`,
+          currentUserObj.user?.id,
+          currentRebookedFlight.id,
+          overBooking.overbookingDetailId,
+          overBooking.finalCompensationAmount
+        )
       }
       else {
         const data2 = await checkInFlight(`/Trip/${currentFlight.flightBookingDetailId}/checkin/confirm`)

@@ -23,10 +23,10 @@ export default function Index() {
   useEffect(() => {
     const fetchAndSetFlight = async () => {
       try {
-        const data = await fetchFlightValidate(`/Trip/${currentFlight.flightBookingDetailId}/checkin/validate`)
         const data2 = await fetchOverbooking(`/api/Overbooking/overbooking`, currentFlight.flightBookingDetailId)
-        setCheckIn(data)
         setOverBooking(data2)
+        const data = await fetchFlightValidate(`/Trip/${currentFlight.flightBookingDetailId}/checkin/validate`)
+        setCheckIn(data)
       } catch (err) {
         setError(err.message)
       }

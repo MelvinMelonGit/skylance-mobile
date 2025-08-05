@@ -23,7 +23,13 @@ export async function checkInFlight(path) {
     }
 }
 
-export async function rebookingCheckInFlight(path) {
+export async function rebookingCheckInFlight(
+    path,
+    appUserId,
+    flightDetailId,
+    overbookingDetailId,
+    finalCompensationAmount 
+) {
     const { apiUrl } = Constants.expoConfig.extra
     const token = await SecureStore.getItemAsync('authToken')
 
@@ -32,7 +38,7 @@ export async function rebookingCheckInFlight(path) {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json', 
-                'Session-Token': token 
+                // 'Session-Token': token 
             },
             body: JSON.stringify({
                 appUserId,
