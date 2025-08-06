@@ -3,7 +3,6 @@ import ButtonView from '@/components/ButtonView';
 import { H3 } from '@/components/HeadingsView';
 import { useAuth } from '@/context/AuthContext';
 import { useCheckedInFlights } from '@/context/CheckedInFlightsContext';
-import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { color } from '@/styles/color';
 import { fetchCheckedInFlights } from '@/utils/fetchFlight';
 import { useRouter } from 'expo-router';
@@ -12,9 +11,7 @@ import { FlatList, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Index() {
-  const { currentUser, isLoggedIn } = useAuth()
-
-  const { currentFlight } = useSelectedFlight()
+  const { isLoggedIn, currentUserObj } = useAuth()
 
   const { checkedInFlights, setCheckedInFlights, checkedInFlightId } = useCheckedInFlights()
 
@@ -25,19 +22,21 @@ export default function Index() {
   useEffect(() => {
       const fetchCheckedInFlightsInfo = async () => {
         try {
-          console.log(`flightBookingId = ${currentFlight.flightBookingDetailId}, checkInId = ${checkedInFlightId}`)
-          console.log(checkedInFlights)
-          console.log(checkedInFlightId)
-          console.log(checkedInFlights.length)
-          const data = await fetchCheckedInFlights(`/api/ConfirmFlight/${currentFlight.flightBookingDetailId}/boardingPass`, checkedInFlightId)
-          setCheckedInFlights([...checkedInFlights, data])
+          if (isLoggedIn && checkedInFlightId === '' ) {
+            const data = await fetchCheckedInFlights(`/api/BoardingPass/${currentUserObj.user?.id}`)
+            setCheckedInFlights(data.boardingPasses)
+          }
+          else {
+            const data = await fetchCheckedInFlights(`/api/BoardingPass/${checkedInFlightId}/boardingPass`)
+            setCheckedInFlights([...checkedInFlights, data])
+          }
         } catch (err) {
           setError(err.message)
         }
     }
   
-    fetchCheckedInFlightsInfo ()
-  }, [checkedInFlights, currentFlight])
+    fetchCheckedInFlightsInfo()
+  }, [isLoggedIn])
 
   return (
       <SafeAreaView style={{ flex: 1}}>
@@ -60,7 +59,7 @@ export default function Index() {
                   keyExtractor={(item, index) => item + index}
                   renderItem={({ item, index }) => (
                     <View style={{ marginRight: index === checkedInFlights.length - 1 ? 0 : 20 }}>
-                      <BoardingPass currentUser={currentUser} currentFlight={currentFlight} id={checkedInFlights[index]}/>
+                      <BoardingPass boardingPass={checkedInFlights[index]}/>
                     </View>
                   )}
                 />

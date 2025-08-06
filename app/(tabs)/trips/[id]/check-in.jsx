@@ -20,8 +20,6 @@ export default function CheckIn() {
   const { id, rebooking } = useLocalSearchParams()
   const isRebooking = rebooking?.toLowerCase() === 'true'
 
-  console.log(`Rebooking is ${isRebooking}`)
-
   const router = useRouter()
 
   const { currentFlight, currentBooking, currentRebookedFlight, overBooking } = useSelectedFlight()

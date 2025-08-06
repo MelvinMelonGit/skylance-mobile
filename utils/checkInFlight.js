@@ -4,10 +4,13 @@ import * as SecureStore from 'expo-secure-store';
 export async function checkInFlight(
     path,
     appUserId,
-    flightDetailId,
+    flightBookingDetailId,
 ) {
     const { apiUrl } = Constants.expoConfig.extra
     const token = await SecureStore.getItemAsync('authToken')
+
+    console.log(`appUserId: ${appUserId},
+    flightBookingDetailId: ${flightBookingDetailId}` )
 
     try {
         const response = await fetch(`${apiUrl}${path}`, {
@@ -18,7 +21,7 @@ export async function checkInFlight(
             },
             body: JSON.stringify({
                 appUserId,
-                flightDetailId,
+                flightBookingDetailId,
             }),
         })
 

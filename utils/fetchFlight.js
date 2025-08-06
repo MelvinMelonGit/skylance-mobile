@@ -46,17 +46,13 @@ export async function fetchFlightValidate(path) {
     }
 }
 
-export async function fetchCheckedInFlights(path, checkInId) {
+export async function fetchCheckedInFlights(path) {
     const { apiUrl } = Constants.expoConfig.extra
-
-    console.log('fired fetch checkedin flights')
-    console.log(checkInId)
-    console.log(path)
 
     const token = await SecureStore.getItemAsync('authToken')
 
     try {
-         const response = await fetch(`${apiUrl}${path}?checkInId=${checkInId}`, {
+         const response = await fetch(`${apiUrl}${path}`, {
             headers: {
                 'Session-Token': token,
                 'Content-Type': 'application/json'
@@ -71,7 +67,7 @@ export async function fetchCheckedInFlights(path, checkInId) {
         console.log(data)
         return data
     } catch (error) {
-        console.error('Fetch Checked In Flights failed:', error.message)
+        console.error('Fetch Checked In Flight failed:', error.message)
         throw error
     }
 }
