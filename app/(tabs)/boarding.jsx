@@ -3,7 +3,9 @@ import ButtonView from '@/components/ButtonView';
 import { useAuth } from '@/context/AuthContext';
 import { useCheckedInFlights } from '@/context/CheckedInFlightsContext';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
+import { fetchCheckedInFlights } from '@/utils/checkInFlight';
 import { useRouter } from 'expo-router';
+import { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -12,9 +14,24 @@ export default function Boarding() {
 
   const { currentFlight } = useSelectedFlight()
 
-  const { checkedInFlights } = useCheckedInFlights()
+  const { checkedInFlights, setCheckedInFlights, checkedInFlightId } = useCheckedInFlights()
 
   const router = useRouter()
+
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+      const fetchCheckedInFlightsInfo = async () => {
+        try {
+          const data = await fetchCheckedInFlights(`/api/ConfirmFlight/${currentFlight.flightBookingDetailId}/boardingPass`, checkedInFlightId)
+          setCheckedInFlights([...checkedInFlights, data])
+        } catch (err) {
+          setError(err.message)
+        }
+    }
+  
+    fetchCheckedInFlightsInfo ()
+  }, [])
 
   return (
       <SafeAreaView style={{ flex: 1}}>

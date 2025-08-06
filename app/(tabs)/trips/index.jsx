@@ -5,7 +5,7 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 import { useAuth } from '@/context/AuthContext';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { fetchData } from '@/utils/fetchData';
-import { fetchFlight } from '@/utils/fetchFlight';
+import { fetchFlight, fetchFlightValidate } from '@/utils/fetchFlight';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
@@ -19,7 +19,7 @@ export default function Index() {
 
   const router = useRouter()
 
-  const { setCurrentFlight, setCurrentBooking } = useSelectedFlight()
+  const { setCurrentFlight, setCurrentBooking, currentFlightValidate, setCurrentFlightValidate } = useSelectedFlight()
 
   const [flights, setFlights] = useState([])
   const [error, setError] = useState('')
@@ -37,10 +37,11 @@ export default function Index() {
       setCurrentFlight(item)
       const data = await fetchFlight(`/Trip/${item.flightBookingDetailId}`)
       setCurrentBooking(data)
-      router.push({
-        pathname: `/trips/${item.flightNumber}`,
-        params: { rebooking: false }
-      })
+      const data2 = await fetchFlightValidate(`/Trip/${item.flightBookingDetailId}/checkin/validate`)
+      setCurrentFlightValidate(data2)
+      router.push(
+        `/trips/${item.flightNumber}`
+      )
     }
   }
   

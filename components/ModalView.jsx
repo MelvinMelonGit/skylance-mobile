@@ -1,3 +1,5 @@
+import { H3 } from '@/components/HeadingsView';
+import { color } from '@/styles/color';
 import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import ButtonView from './ButtonView';
 
@@ -11,7 +13,8 @@ export default function ModalView({ visible, onClose, onPress, content, btnConte
     >
       <View style={styles.modalBackground}>
         <View style={styles.modalContent}>
-          <Text style={styles.title}>{content}</Text>
+          <H3 textColor={color.intermediate}></H3>
+          <Text style={styles.content}>{content}</Text>
           
           <View style={{ width: '100%', alignItems: 'center' }}>
             <ButtonView onPress={onPress}>{btnContent}</ButtonView>
@@ -41,6 +44,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 20,
   },
-  title: { fontSize: 20, marginBottom: 20, textAlign: 'center' },
+  content: { color: color.gray, marginBottom: 20, textAlign: 'center' },
   closeText: { marginTop: 15, color: 'gray' },
 })

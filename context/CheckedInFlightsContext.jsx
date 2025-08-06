@@ -4,9 +4,10 @@ const CheckedInFlightsContext = createContext(null)
 
 export default function CheckedInFlightsProvider({ children }) {
   const [checkedInFlights, setCheckedInFlights] = useState([])
+  const [checkedInFlightId, setCheckedInFlightId] = useState('')
 
   return (
-    <CheckedInFlightsContext.Provider value={{ checkedInFlights, setCheckedInFlights }}>
+    <CheckedInFlightsContext.Provider value={{ checkedInFlights, setCheckedInFlights, checkedInFlightId, setCheckedInFlightId }}>
       {children}
     </CheckedInFlightsContext.Provider>
   )

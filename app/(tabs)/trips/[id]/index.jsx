@@ -4,7 +4,6 @@ import FlightInfographic from '@/components/FlightInfographic';
 import FlightPathData from '@/components/FlightPathData';
 import { H2 } from '@/components/HeadingsView';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
-import { fetchFlightValidate } from '@/utils/fetchFlight';
 import { fetchOverbooking } from '@/utils/fetchOverbooking';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
@@ -13,20 +12,20 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Index() {
   const { id } = useLocalSearchParams()
+  // const isRebooking = rebooking?.toLowerCase() === 'true'
 
   const router = useRouter()
 
-  const { currentFlight, currentBooking, setOverBooking } = useSelectedFlight()
-  const [checkIn, setCheckIn] = useState('')
+  const { currentFlight, currentBooking, setOverBooking, currentFlightValidate } = useSelectedFlight()
   const [error, setError] = useState('')
+  console.log(currentFlightValidate)
 
   useEffect(() => {
     const fetchAndSetFlight = async () => {
       try {
+        console.log(currentFlight.flightBookingDetailId)
         const data2 = await fetchOverbooking(`/api/Overbooking/overbooking`, currentFlight.flightBookingDetailId)
         setOverBooking(data2)
-        const data = await fetchFlightValidate(`/Trip/${currentFlight.flightBookingDetailId}/checkin/validate`)
-        setCheckIn(data)
       } catch (err) {
         setError(err.message)
       }
@@ -50,14 +49,17 @@ export default function Index() {
               clear>Manage Trip</ButtonView> */}
             <ButtonView
               onPress={() => {
-              if (checkIn.status === "Allowed")
-                  router.push(`/trips/${id}/check-in`)
-              else if (checkIn.status === "AlreadyCheckedIn")
+              if (currentFlightValidate.status === "Allowed")
+                  router.push({
+                    pathname: `/trips/${id}/check-in`,
+                    params: { rebooking: false }
+                  })
+              else if (currentFlightValidate.status === "AlreadyCheckedIn")
                   router.push(`/boarding`)
               else
                   router.push(`/trips/${id}/pending`)
               }}>
-              { checkIn.status === "AlreadyCheckedIn" ? 'View Boarding Pass' : 'Check In' }
+              { currentFlightValidate.status === "AlreadyCheckedIn" ? 'View Boarding Pass' : 'Check In' }
             </ButtonView>
           </View>
         </View>

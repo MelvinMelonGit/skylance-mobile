@@ -17,12 +17,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function CheckIn() {
   const { id, rebooking } = useLocalSearchParams()
-  const isRebooking = rebooking === 'true'
+  const isRebooking = rebooking?.toLowerCase() === 'true'
+
+  console.log(`Rebooking is ${isRebooking}`)
 
   const router = useRouter()
 
   const { currentFlight, currentBooking, currentRebookedFlight, overBooking } = useSelectedFlight()
-  const { checkedInFlights, setCheckedInFlights } = useCheckedInFlights()
+  const { checkedInFlights, setCheckedInFlights, setCheckedInFlightId } = useCheckedInFlights()
   const { currentUser, currentUserObj } = useAuth()
 
   const [modalVisible, setModalVisible] = useState(false)
@@ -46,10 +48,11 @@ export default function CheckIn() {
         )
       }
       else {
+        console.log(currentFlight.flightBookingDetailId)
         const data2 = await checkInFlight(`/Trip/${currentFlight.flightBookingDetailId}/checkin/confirm`)
       }
       
-      setCheckedInFlights([...checkedInFlights, currentFlight])
+      setCheckedInFlightId(data.checkInId)
       setModalVisible(true)
     } catch (err) {
       setError(err.message)

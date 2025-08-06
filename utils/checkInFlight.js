@@ -33,6 +33,11 @@ export async function rebookingCheckInFlight(
     const { apiUrl } = Constants.expoConfig.extra
     const token = await SecureStore.getItemAsync('authToken')
 
+    console.log(`appUserId: ${appUserId},
+    flightDetailId: ${flightDetailId},
+    overbookingDetailId: ${overbookingDetailId},
+    finalCompensationAmount: ${finalCompensationAmount}` )
+
     try {
         const response = await fetch(`${apiUrl}${path}`, {
             method: 'POST',

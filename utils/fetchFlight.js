@@ -39,11 +39,37 @@ export async function fetchFlightValidate(path) {
         throw new Error(`HTTP error! status: ${response.status}`)
         }
 
-        const data = await response.text()
+        const data = await response.json()
         console.log(`Fetch Flight validate status: ${data}`)
         return data
     } catch (error) {
         console.error('Fetch Validate failed:', error.message)
+        throw error
+    }
+}
+
+export async function fetchCheckedInFlights(path, checkInId) {
+    const { apiUrl } = Constants.expoConfig.extra
+
+    const token = await SecureStore.getItemAsync('authToken')
+
+    try {
+         const response = await fetch(`${apiUrl}${path}?checkInId=${checkInId}`, {
+            headers: {
+                'Session-Token': token,
+                'Content-Type': 'application/json'
+            },
+        })
+
+        if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+        }
+
+        const data = await response.json()
+        console.log(data)
+        return data
+    } catch (error) {
+        console.error('Fetch Checked In Flights failed:', error.message)
         throw error
     }
 }
