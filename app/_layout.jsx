@@ -12,7 +12,6 @@ export default function RootLayout() {
   useEffect(() => {
     const currentRoute = segments.join("/");
     if (previousRoute.current !== currentRoute) {
-      console.log("Navigated to:", currentRoute)
       previousRoute.current = currentRoute
     }
   }, [segments])
