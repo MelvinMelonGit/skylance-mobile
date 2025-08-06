@@ -4,6 +4,7 @@ import { formatTime } from '@/utils/formatDateTime';
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
 
 const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 
 export default function BoardingPass({ boardingPass }) {
     return (
@@ -33,7 +34,7 @@ export default function BoardingPass({ boardingPass }) {
                 
                 <View style={styles.inner}>
                     <Text style={styles.text}>Seat</Text>
-                    <Text style={styles.content}>{boardingPass.seat.seatNumber}</Text>
+                    <Text style={styles.content}>{boardingPass.seat?.seatNumber}</Text>
                 </View>
                 
                 <View style={styles.inner}>
@@ -58,6 +59,7 @@ export default function BoardingPass({ boardingPass }) {
 const styles = StyleSheet.create({
     container: {
         width: screenWidth - 80,
+        height: screenHeight - 210,
         backgroundColor: color.white,
         paddingTop: 20,
         borderRadius: 10,
