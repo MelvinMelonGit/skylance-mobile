@@ -19,8 +19,6 @@ export async function fetchOverbooking(path, flightBookingDetailId) {
         }
 
         const data = await response.json()
-        console.log(`Fetch overbooking status: ${data}`)
-        console.log(data)
         return data
     } catch (error) {
         console.error('Fetch overbooking failed:', error.message)

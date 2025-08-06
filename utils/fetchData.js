@@ -19,7 +19,6 @@ export async function fetchData(path) {
         }
 
         const data = await response.json()
-        console.log(data)
         return data
     } catch (error) {
         console.error('Fetch failed:', error.message)

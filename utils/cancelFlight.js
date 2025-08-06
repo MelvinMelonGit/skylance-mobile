@@ -19,7 +19,6 @@ export async function fetchCancelFlight(path, flightBookingDetailId) {
         }
 
         const data = await response.json()
-        console.log(`Fetch Cancel Flight status: ${data}`)
         return data
     } catch (error) {
         console.error('Fetch failed:', error.message)
@@ -45,7 +44,6 @@ export async function cancelFlight(path, flightBookingDetailId) {
         }
 
         const data = await response.json()
-        console.log(`Cancel Flight status: ${data}`)
         return data
     } catch (error) {
         console.error('Cancel Flight failed:', error.message)

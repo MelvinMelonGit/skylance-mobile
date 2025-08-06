@@ -19,7 +19,6 @@ export async function fetchFlight(path) {
         }
 
         const data = await response.json()
-        console.log(`Fetch Flight status: ${data}`)
         return data
     } catch (error) {
         console.error('Fetch failed:', error.message)
@@ -40,7 +39,6 @@ export async function fetchFlightValidate(path) {
         }
 
         const data = await response.json()
-        console.log(`Fetch Flight validate status: ${data}`)
         return data
     } catch (error) {
         console.error('Fetch Validate failed:', error.message)
@@ -50,6 +48,10 @@ export async function fetchFlightValidate(path) {
 
 export async function fetchCheckedInFlights(path, checkInId) {
     const { apiUrl } = Constants.expoConfig.extra
+
+    console.log('fired fetch checkedin flights')
+    console.log(checkInId)
+    console.log(path)
 
     const token = await SecureStore.getItemAsync('authToken')
 

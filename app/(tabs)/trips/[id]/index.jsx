@@ -17,7 +17,6 @@ export default function Index() {
 
   const { currentFlight, currentBooking, setOverBooking, currentFlightValidate } = useSelectedFlight()
   const [error, setError] = useState('')
-  console.log(currentFlightValidate)
 
   useEffect(() => {
     const fetchAndSetFlight = async () => {

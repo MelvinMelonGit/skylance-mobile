@@ -5,7 +5,7 @@ import { useAuth } from '@/context/AuthContext';
 import { useCheckedInFlights } from '@/context/CheckedInFlightsContext';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { color } from '@/styles/color';
-import { fetchCheckedInFlights } from '@/utils/checkInFlight';
+import { fetchCheckedInFlights } from '@/utils/fetchFlight';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
@@ -25,6 +25,10 @@ export default function Index() {
   useEffect(() => {
       const fetchCheckedInFlightsInfo = async () => {
         try {
+          console.log(`flightBookingId = ${currentFlight.flightBookingDetailId}, checkInId = ${checkedInFlightId}`)
+          console.log(checkedInFlights)
+          console.log(checkedInFlightId)
+          console.log(checkedInFlights.length)
           const data = await fetchCheckedInFlights(`/api/ConfirmFlight/${currentFlight.flightBookingDetailId}/boardingPass`, checkedInFlightId)
           setCheckedInFlights([...checkedInFlights, data])
         } catch (err) {
@@ -33,7 +37,7 @@ export default function Index() {
     }
   
     fetchCheckedInFlightsInfo ()
-  }, [])
+  }, [checkedInFlights, currentFlight])
 
   return (
       <SafeAreaView style={{ flex: 1}}>

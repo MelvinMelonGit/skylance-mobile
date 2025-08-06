@@ -47,6 +47,7 @@ export default function CheckIn() {
           overBooking.overbookingDetailId,
           overBooking.finalCompensationAmount
         )
+        console.log(data.checkInId)
         setCheckedInFlightId(data.checkInId)
       }
       else {
