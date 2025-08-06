@@ -36,7 +36,15 @@ export default function TabLayout() {
       })}
       >
         <Tabs.Screen name="index"
-            options={{ title: 'Home', headerShown: false }}
+          options={{
+            // title: 'Home',
+            headerTitle: `Hey ${ isLoggedIn ? currentUser : 'There' }!`,
+            headerBackVisible: false,
+            headerStyle: screenOptions.headerStyle,
+            headerTintColor: screenOptions.headerTintColor,
+            headerTitleStyle: screenOptions.headerTitleStyle,
+            headerTitleAlign: screenOptions.headerTitleAlign
+          }}
             listeners={{
               tabPress: (e) => {
               e.preventDefault() // Prevent default tab behavior
