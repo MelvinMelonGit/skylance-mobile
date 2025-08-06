@@ -37,7 +37,7 @@ export default function TabLayout() {
       >
         <Tabs.Screen name="index"
           options={{
-            // title: 'Home',
+            title: 'Home',
             headerTitle: `Hey ${ isLoggedIn ? currentUser : 'There' }!`,
             headerBackVisible: false,
             headerStyle: screenOptions.headerStyle,
