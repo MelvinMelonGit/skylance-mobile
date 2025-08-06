@@ -4,6 +4,7 @@ import FlightData from '@/components/FlightData';
 import { H3 } from '@/components/HeadingsView';
 import ModalView from '@/components/ModalView';
 import PassengerData from '@/components/PassengerData';
+import RebookingFlightData from '@/components/RebookingFlightData';
 import { useAuth } from '@/context/AuthContext';
 import { useCheckedInFlights } from '@/context/CheckedInFlightsContext';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
@@ -62,7 +63,10 @@ export default function CheckIn() {
       <SafeAreaView style={{ flex: 1}}>
         <View style={styles.container}>
           <PassengerData currentUser={currentUser} currentBooking={currentBooking}/>
-          <FlightData flight={currentFlight} />
+          { isRebooking ?
+          ( <RebookingFlightData flight={currentRebookedFlight} />) :
+          ( <FlightData flight={currentFlight} />)
+          }
           <H3 textColor={color.intermediate}>Please do not bring these items:</H3>
           <View style={styles.warnings}>
             <View style={styles.warningsInner}>

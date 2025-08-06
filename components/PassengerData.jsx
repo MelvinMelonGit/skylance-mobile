@@ -9,7 +9,7 @@ export default function PassengerData({currentUser, currentBooking}) {
             <H3 textColor={color.intermediate}>{currentUser}</H3>
         </View>
         <View style={styles.innerRightCol}>
-             <H3 textColor={color.intermediate}>#{currentBooking.bookingReferenceNumber}</H3>
+             <H3 textColor={color.intermediate}>Booking #{currentBooking.bookingReferenceNumber}</H3>
         </View>
     </View>
   )
