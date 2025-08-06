@@ -4,6 +4,7 @@ import FlightContainer from '@/components/FlightContainer';
 import { H3 } from '@/components/HeadingsView';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { useAuth } from '@/context/AuthContext';
+import { useCheckedInFlights } from '@/context/CheckedInFlightsContext';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
 import { color } from '@/styles/color';
 import { fetchData } from '@/utils/fetchData';
@@ -21,7 +22,9 @@ export default function Index() {
 
   const router = useRouter()
 
-  const { setCurrentFlight, setCurrentBooking, currentFlightValidate, setCurrentFlightValidate } = useSelectedFlight()
+  const { setCurrentFlight, setCurrentBooking, setCurrentFlightValidate } = useSelectedFlight()
+  const { checkedInFlights } = useCheckedInFlights()
+
 
   const [flights, setFlights] = useState([])
   const [error, setError] = useState('')
@@ -32,15 +35,13 @@ export default function Index() {
         .then(setFlights)
         .catch(err => setError(err.message))
     }
-  }, [activeTab, isLoggedIn])
+  }, [activeTab, checkedInFlights])
 
   async function handleSelection(item) {
     if (activeTab === 'UpcomingFlights') {
       setCurrentFlight(item)
       const data = await fetchFlight(`/Trip/${item.flightBookingDetailId}`)
       setCurrentBooking(data)
-      console.log("current booking")
-      console.log(data)
       const data2 = await fetchFlightValidate(`/Trip/${item.flightBookingDetailId}/checkin/validate`)
       setCurrentFlightValidate(data2)
       router.push(

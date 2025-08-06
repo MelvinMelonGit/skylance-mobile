@@ -36,7 +36,7 @@ export default function Index() {
     }
   
     fetchCheckedInFlightsInfo()
-  }, [isLoggedIn])
+  }, [isLoggedIn, checkedInFlightId])
 
   return (
       <SafeAreaView style={{ flex: 1}}>

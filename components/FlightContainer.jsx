@@ -14,14 +14,17 @@ export default function FlightContainer({flight, onPress}) {
                 <H3 textColor={color.intermediate}>
                     {flight.flightNumber} { flight.departureTime && `- ${formatDate(flight.departureTime)}`}
                 </H3>
-                <Text style={styles.text}>
+                { flight.departureTime && (
+                  <Text style={styles.text}>
                     Departure Time: {formatTime(flight.departureTime)}
-                </Text>
+                  </Text>
+                )}
                 <Text style={styles.text}>
                     - - - - - - - - - - - - - - - - - - - - - - - - - - - 
                 </Text>
             </View>
-            <View style={styles.innerRightCol}>
+            { flight.departureTime && (
+              <View style={styles.innerRightCol}>
             { flight.seatNumber === null ? (
               <View style={styles.pending}>
                 <Text style={styles.tag}>
@@ -36,6 +39,7 @@ export default function FlightContainer({flight, onPress}) {
               </View>
             )}
             </View>
+            ) }
         </View>
         <Text style={styles.text}>
            Origin: {flight.origin}
