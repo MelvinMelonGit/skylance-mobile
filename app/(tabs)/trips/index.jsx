@@ -1,9 +1,11 @@
 import ButtonView from '@/components/ButtonView';
 import CustomNavTabsView from '@/components/CustomNavTabsView';
 import FlightContainer from '@/components/FlightContainer';
+import { H3 } from '@/components/HeadingsView';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { useAuth } from '@/context/AuthContext';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
+import { color } from '@/styles/color';
 import { fetchData } from '@/utils/fetchData';
 import { fetchFlight, fetchFlightValidate } from '@/utils/fetchFlight';
 import { useRouter } from 'expo-router';
@@ -55,7 +57,7 @@ export default function Index() {
           { !flights && <LoadingSpinner /> }
           <View style={[styles.innerView, { paddingBottom: insets.bottom + 50}]}>
             { flights.length === 0 ?
-            (<Text>No flights here</Text>) : 
+            (<H3 textColor={color.intermediate}>No flights available!</H3>) : 
             ( 
               <FlatList
               data={flights}
