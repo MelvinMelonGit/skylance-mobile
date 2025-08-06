@@ -23,7 +23,7 @@ export default function CheckIn() {
   const router = useRouter()
 
   const { currentFlight, currentBooking, currentRebookedFlight, overBooking } = useSelectedFlight()
-  const { checkedInFlights, setCheckedInFlights, setCheckedInFlightId } = useCheckedInFlights()
+  const { setCheckedInFlightId } = useCheckedInFlights()
   const { currentUser, currentUserObj } = useAuth()
 
   const [modalVisible, setModalVisible] = useState(false)

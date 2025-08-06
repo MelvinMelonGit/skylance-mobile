@@ -44,7 +44,6 @@ export default function Index() {
         <View style={styles.container}>
           { isLoggedIn ? (
             <>
-            { /* Need to add a check with the current sessionId also */}
               { checkedInFlights.length === 0 ? (
                 <>
                   <H3 textColor={color.intermediate}>Check In to see your boarding pass!</H3>

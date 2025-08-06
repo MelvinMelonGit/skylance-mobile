@@ -24,5 +24,5 @@ export default function GradientText({ children, style }) {
         </Text>
       </LinearGradient>
     </MaskedView>
-  );
+  )
 }

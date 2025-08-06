@@ -29,7 +29,6 @@ export default function Index() {
         <GradientText style={{ fontSize: 32, fontWeight: 'bold' }}>
           <H1>Begin your adventure now!</H1>
         </GradientText>
-        {/* <LinkView href="/_modal/chooseOptionModal">Choose Options</LinkView> */}
       </View>
        <SectionList
         style={styles.list}

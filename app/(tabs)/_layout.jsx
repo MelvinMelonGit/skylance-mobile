@@ -47,8 +47,8 @@ export default function TabLayout() {
           }}
             listeners={{
               tabPress: (e) => {
-              e.preventDefault() // Prevent default tab behavior
-              router.push('/') // Always go to /index/index
+              e.preventDefault()
+              router.push('/') // /index
             },
           }}
         />
@@ -56,12 +56,11 @@ export default function TabLayout() {
             options={{ title: 'Trips', headerShown: false }}
             listeners={{
               tabPress: (e) => {
-              e.preventDefault() // Prevent default tab behavior
-              router.push('/trips') // Always go to /trips/index
+              e.preventDefault()
+              router.push('/trips') // /trips/index
             },
           }}
         />
-        {/* <Tabs.Screen name="otp" options={{ title: 'OTP', headerShown: false, href: null }}/> */}
         <Tabs.Screen
           name="boarding"
           options={{
@@ -70,8 +69,8 @@ export default function TabLayout() {
             }}
           listeners={{
               tabPress: (e) => {
-              e.preventDefault() // Prevent default tab behavior
-              router.push('/boarding') // Always go to /boarding/index
+              e.preventDefault()
+              router.push('/boarding') // /boarding/index
             },
           }}
          />
@@ -83,8 +82,8 @@ export default function TabLayout() {
             }}
             listeners={{
               tabPress: (e) => {
-              e.preventDefault() // Prevent default tab behavior
-              router.push('/login') // Always go to /login/index
+              e.preventDefault() 
+              router.push('/login') // /login/index
             },
         }}
       />

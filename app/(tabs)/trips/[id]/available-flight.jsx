@@ -16,7 +16,7 @@ export default function AvailableFlight() {
   
   const router = useRouter()
 
-  const { setCurrentBooking, setCurrentRebookedFlight } = useSelectedFlight()
+  const { setCurrentRebookedFlight } = useSelectedFlight()
 
   const [flights, setFlights] = useState([])
   const [error, setError] = useState('')

@@ -43,11 +43,6 @@ export default function Index() {
           <FlightData flight={currentFlight} />
           <FlightPathData currentBooking={currentBooking} />
           <View style={{ flexDirection: 'row', gap: 10 }}>
-            {/* <ButtonView
-              onPress={() => {
-                router.push(`/trips/${id}/manage-trip`)
-              }}
-              clear>Manage Trip</ButtonView> */}
             <ButtonView
               onPress={() => {
               if (currentFlightValidate.status === "Allowed")

@@ -94,9 +94,6 @@ export default function Index() {
                 {errors.password ? <Text style={{ color: color.red, marginBottom: 10 }}>{errors.password}</Text> : null}
             </View>
             <View style={{ flexDirection: 'row', gap: 10 }}>
-               {/* <ButtonView clear onPress={() => {
-                  router.push('/login/register')
-                }}>Sign Up</ButtonView> */}
                 <ButtonView onPress={() => {
                   handleSubmit()
                  }}>Login</ButtonView>

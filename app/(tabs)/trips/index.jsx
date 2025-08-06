@@ -64,7 +64,7 @@ export default function Index() {
             ( 
               <FlatList
               data={flights}
-              renderItem={({ item, index }) => {
+              renderItem={({ item }) => {
                 return (
                   <FlightContainer
                     flight={item}

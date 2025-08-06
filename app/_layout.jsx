@@ -1,11 +1,10 @@
 import AuthProvider from "@/context/AuthContext";
 import CheckedInFlightsProvider from "@/context/CheckedInFlightsContext";
 import SelectedFlightProvider from "@/context/SelectedFlightContext";
-import { Slot, useRouter, useSegments } from "expo-router";
+import { Slot, useSegments } from "expo-router";
 import { useEffect, useRef } from "react";
 
 export default function RootLayout() {
-  const router = useRouter()
   const segments = useSegments()
   const previousRoute = useRef(null)
 
