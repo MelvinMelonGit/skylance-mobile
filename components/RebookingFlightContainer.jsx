@@ -12,7 +12,7 @@ export default function RebookingFlightContainer({flight, onPress}) {
         <View style={styles.inner}>
             <View style={styles.innerLeftCol}>
                 <H3 textColor={color.intermediate}>
-                    {flight.aircraft.flightNumber}
+                    {flight.aircraft.flightNumber} { flight.departureTime && `- ${formatDate(flight.departureTime)}`}
                 </H3>
                 <Text style={styles.text}>
                     Departure Time: {formatTime(flight.departureTime)}
@@ -21,17 +21,6 @@ export default function RebookingFlightContainer({flight, onPress}) {
                     - - - - - - - - - - - - - - - - - - - - - - - - - - - 
                 </Text>
             </View>
-            { flight.departureTime && (
-              <View>
-                <Text style={styles.text}>
-                    {formatDate(flight.departureTime)}
-                </Text>
-                <Text style={styles.text}>
-                   Compensation: S${flight.compensation}
-                </Text>
-              </View>
-            )}
-            
         </View>
         <Text style={styles.text}>
            Origin: {flight.originAirport.name}
@@ -39,6 +28,13 @@ export default function RebookingFlightContainer({flight, onPress}) {
         <Text style={styles.text}>
           Destination: {flight.destinationAirport.name} 
         </Text>
+        { flight.departureTime && (
+          <View>
+            <Text style={styles.text}>
+              Compensation: S${flight.compensation}
+            </Text>
+          </View>
+        )}
     </TouchableOpacity>
   )
 }

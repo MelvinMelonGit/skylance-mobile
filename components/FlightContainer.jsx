@@ -12,7 +12,7 @@ export default function FlightContainer({flight, onPress}) {
         <View style={styles.inner}>
             <View style={styles.innerLeftCol}>
                 <H3 textColor={color.intermediate}>
-                    {flight.flightNumber}
+                    {flight.flightNumber} { flight.departureTime && `- ${formatDate(flight.departureTime)}`}
                 </H3>
                 <Text style={styles.text}>
                     Departure Time: {formatTime(flight.departureTime)}
@@ -21,14 +21,21 @@ export default function FlightContainer({flight, onPress}) {
                     - - - - - - - - - - - - - - - - - - - - - - - - - - - 
                 </Text>
             </View>
-            { flight.departureTime && (
-              <View>
-                <Text style={styles.text}>
-                    {formatDate(flight.departureTime)}
+            <View style={styles.innerRightCol}>
+            { flight.seatNumber === null ? (
+              <View style={styles.pending}>
+                <Text style={styles.tag}>
+                    Proceed to Check In
+                </Text>
+              </View>
+            ) : (
+              <View style={styles.completed}>
+                <Text style={styles.tag}>
+                    Completed Check In
                 </Text>
               </View>
             )}
-            
+            </View>
         </View>
         <Text style={styles.text}>
            Origin: {flight.origin}
@@ -56,29 +63,36 @@ const styles = StyleSheet.create({
   },
   inner: {
     flexDirection: 'row',
-    alignItems: 'baseline',
+    alignItems: 'center',
     justifyContent: 'space-between'
   },
   innerLeftCol: {
     alignItems: 'flex-start'
   },
+  innerRightCol: {
+    alignItems: 'flex-end'
+  },
   text: {
     color: color.gray
   },
-  overbooked: {
-    backgroundColor: color.red,
-    color: color.white,
+  completed: {
+    backgroundColor: color.green,
+    width: 100,
     fontWeight: 500,
     padding: 10,
     borderRadius: 5,
     marginTop: 10
   },
-  safe: {
-    backgroundColor: color.green,
-    color: color.white,
-    fontWeight: 500,
+  pending: {
+    backgroundColor: color.intermediate,
+    width: 100,
     padding: 10,
     borderRadius: 5,
     marginTop: 10
+  },
+  tag: {
+    color: color.white,
+    textAlign: 'center',
+    fontWeight: 500,
   }
 })

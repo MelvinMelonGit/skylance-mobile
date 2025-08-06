@@ -1,13 +1,25 @@
 import Constants from 'expo-constants';
 import * as SecureStore from 'expo-secure-store';
 
-export async function checkInFlight(path) {
+export async function checkInFlight(
+    path,
+    appUserId,
+    flightDetailId,
+) {
     const { apiUrl } = Constants.expoConfig.extra
     const token = await SecureStore.getItemAsync('authToken')
 
     try {
         const response = await fetch(`${apiUrl}${path}`, {
-            method: 'POST'
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json', 
+                // 'Session-Token': token 
+            },
+            body: JSON.stringify({
+                appUserId,
+                flightDetailId,
+            }),
         })
 
         if (!response.ok) {

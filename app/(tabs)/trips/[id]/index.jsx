@@ -36,9 +36,9 @@ export default function Index() {
         <View style={styles.container}>
           <FlightInfographic currentBooking={currentBooking} />
           { currentFlightValidate.status === "AlreadyCheckedIn" ? (
-            <H2>Flight Checked In #{currentBooking.flightNumber}</H2>
+            <H2>Completed Check In</H2>
           ) : (
-            <H2>Aircraft #{currentBooking.aircraftModel}</H2>
+            <H2>Proceed to Check In</H2>
           )}
           <FlightData flight={currentFlight} />
           <FlightPathData currentBooking={currentBooking} />

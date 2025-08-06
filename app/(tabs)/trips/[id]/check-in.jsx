@@ -41,17 +41,21 @@ export default function CheckIn() {
     try {
       if (isRebooking) {
         const data = await rebookingCheckInFlight(
-          `/api/ConfirmFlight/checkin/`,
+          `/api/ConfirmFlight/CheckinForRebooking/`,
           currentUserObj.user?.id,
           currentRebookedFlight.id,
           overBooking.overbookingDetailId,
           overBooking.finalCompensationAmount
         )
-        console.log(data.checkInId)
         setCheckedInFlightId(data.checkInId)
       }
       else {
-        const data2 = await checkInFlight(`/Trip/${currentFlight.flightBookingDetailId}/checkin/confirm`)
+        const data2 = await checkInFlight(
+          `/api/ConfirmFlight/NormalCheckIn`,
+          currentUserObj.user?.id,
+          currentFlight.flightBookingDetailId,
+        )
+        setCheckedInFlightId(data2.checkInId)
       }
 
       setModalVisible(true)
