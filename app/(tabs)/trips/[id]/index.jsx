@@ -12,7 +12,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Index() {
   const { id } = useLocalSearchParams()
-  // const isRebooking = rebooking?.toLowerCase() === 'true'
 
   const router = useRouter()
 

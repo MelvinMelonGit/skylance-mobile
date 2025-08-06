@@ -10,7 +10,7 @@ import { fetchData } from '@/utils/fetchData';
 import { fetchFlight, fetchFlightValidate } from '@/utils/fetchFlight';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function Index() {
@@ -79,7 +79,7 @@ export default function Index() {
         </>
       ) : (
         <View style={styles.centered}>
-          <Text>Login to see your trips!</Text>
+          <H3 textColor={color.intermediate}>Login to see your trips!</H3>
           <ButtonView onPress={() => {
               router.push('/login')
           }}>Login</ButtonView>

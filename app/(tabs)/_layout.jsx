@@ -36,19 +36,11 @@ export default function TabLayout() {
       })}
       >
         <Tabs.Screen name="index"
-          options={{
-            title: 'Home',
-            headerTitle: `Hey ${ isLoggedIn ? currentUser : 'There' }!`,
-            headerStyle: screenOptions.headerStyle,
-            headerTitleStyle: screenOptions.headerTitleStyle,
-            headerTintColor: screenOptions.headerTintColor, 
-            headerTitleAlign: screenOptions.headerTitleAlign ,
-            headerBackVisible: false, // <-- hide back button
-          }}
-          listeners={{
+            options={{ title: 'Home', headerShown: false }}
+            listeners={{
               tabPress: (e) => {
               e.preventDefault() // Prevent default tab behavior
-              router.push('/') // Always go to /login/index
+              router.push('/') // Always go to /index/index
             },
           }}
         />
@@ -57,25 +49,21 @@ export default function TabLayout() {
             listeners={{
               tabPress: (e) => {
               e.preventDefault() // Prevent default tab behavior
-              router.push('/trips') // Always go to /login/index
+              router.push('/trips') // Always go to /trips/index
             },
           }}
         />
         {/* <Tabs.Screen name="otp" options={{ title: 'OTP', headerShown: false, href: null }}/> */}
-        <Tabs.Screen name="boarding"
+        <Tabs.Screen
+          name="boarding"
           options={{
-            title: 'Boarding Pass',
-            headerTitle: 'Boarding Pass',
-            headerStyle: screenOptions.headerStyle,
-            headerTitleStyle: screenOptions.headerTitleStyle,
-            headerTintColor: screenOptions.headerTintColor, 
-            headerTitleAlign: screenOptions.headerTitleAlign ,
-            headerBackVisible: false, // <-- hide back button
-          }}
+              title: 'Boarding Pass',
+              headerShown: false,
+            }}
           listeners={{
               tabPress: (e) => {
               e.preventDefault() // Prevent default tab behavior
-              router.push('/boarding') // Always go to /login/index
+              router.push('/boarding') // Always go to /boarding/index
             },
           }}
          />

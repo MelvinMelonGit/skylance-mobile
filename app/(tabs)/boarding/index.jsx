@@ -1,15 +1,17 @@
 import BoardingPass from '@/components/BoardingPass';
 import ButtonView from '@/components/ButtonView';
+import { H3 } from '@/components/HeadingsView';
 import { useAuth } from '@/context/AuthContext';
 import { useCheckedInFlights } from '@/context/CheckedInFlightsContext';
 import { useSelectedFlight } from '@/context/SelectedFlightContext';
+import { color } from '@/styles/color';
 import { fetchCheckedInFlights } from '@/utils/checkInFlight';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function Boarding() {
+export default function Index() {
   const { currentUser, isLoggedIn } = useAuth()
 
   const { currentFlight } = useSelectedFlight()
@@ -41,7 +43,7 @@ export default function Boarding() {
             { /* Need to add a check with the current sessionId also */}
               { checkedInFlights.length === 0 ? (
                 <>
-                  <Text>No Boarding Pass!</Text>
+                  <H3 textColor={color.intermediate}>Check In to see your boarding pass!</H3>
                   <ButtonView onPress={() => {
                     router.push('/trips')
                   }}>Check In</ButtonView>
@@ -62,7 +64,7 @@ export default function Boarding() {
             </>
           ) : (
             <>
-              <Text>Login to see your boarding pass!</Text>
+              <H3 textColor={color.intermediate}>Login to see your boarding pass!</H3>
               <ButtonView onPress={() => {
                 router.push('/login')
               }}>Login</ButtonView>
