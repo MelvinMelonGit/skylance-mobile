@@ -59,7 +59,7 @@ export default function Index() {
                   keyExtractor={(item, index) => item + index}
                   renderItem={({ item, index }) => (
                     <View style={{ marginRight: index === checkedInFlights.length - 1 ? 0 : 20 }}>
-                      <BoardingPass boardingPass={checkedInFlights[index]}/>
+                      <BoardingPass boardingPass={item}/>
                     </View>
                   )}
                 />

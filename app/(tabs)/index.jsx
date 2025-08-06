@@ -6,20 +6,12 @@ import { FlatList, SectionList, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const DATA = [
-  { country: 'japan', price: 1000 },
-  { country: 'maldives', price: 1400 },
-  { country: 'shanghai', price: 500 },
-  { country: 'singapore', price: 2000 },
-  { country: 'thailand', price: 600 },
+  { country: 'japan', price: 1000, image: require('@/assets/images/promo/japan.jpg') },
+  { country: 'maldives', price: 1400, image: require('@/assets/images/promo/maldives.jpg') },
+  { country: 'shanghai', price: 500, image: require('@/assets/images/promo/shanghai.jpg') },
+  { country: 'singapore', price: 2000, image: require('@/assets/images/promo/singapore.jpg') },
+  { country: 'thailand', price: 600, image: require('@/assets/images/promo/thailand.jpg') },
 ]
-
-const promoImages = {
-  'japan' : require('@/assets/images/promo/japan.jpg'),
-  'maldives' : require('@/assets/images/promo/maldives.jpg'),
-  'shanghai' : require('@/assets/images/promo/shanghai.jpg'),
-  'singapore' : require('@/assets/images/promo/singapore.jpg'),
-  'thailand' : require('@/assets/images/promo/thailand.jpg')
-}
 
 export default function Index() {
   return (
@@ -47,7 +39,7 @@ export default function Index() {
               showsHorizontalScrollIndicator={false}
               keyExtractor={(item, index) => item.country + index}
               renderItem={({ item }) => (
-                <CardView item={item} image={promoImages[item.country]}/>
+                <CardView item={item} image={item.image}/>
               )}
             />
           </>
