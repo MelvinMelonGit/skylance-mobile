@@ -20,9 +20,10 @@ export default function Index() {
   const [error, setError] = useState('')
 
   useEffect(() => {
+    if (!isLoggedIn) return
       const fetchCheckedInFlightsInfo = async () => {
         try {
-          if (isLoggedIn && checkedInFlightId === '' ) {
+          if (checkedInFlightId === '' ) {
             const data = await fetchCheckedInFlights(`/api/BoardingPass/${currentUserObj.user?.id}`)
             setCheckedInFlights(data.boardingPasses)
           }
