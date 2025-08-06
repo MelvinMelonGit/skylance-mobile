@@ -22,7 +22,6 @@ export default function Index() {
   useEffect(() => {
     const fetchAndSetFlight = async () => {
       try {
-        console.log(currentFlight.flightBookingDetailId)
         const data2 = await fetchOverbooking(`/api/Overbooking/overbooking`, currentFlight.flightBookingDetailId)
         setOverBooking(data2)
       } catch (err) {
@@ -37,7 +36,11 @@ export default function Index() {
       <SafeAreaView style={{ flex: 1}}>
         <View style={styles.container}>
           <FlightInfographic currentBooking={currentBooking} />
-          <H2>Booking #{currentBooking.bookingReferenceNumber}</H2>
+          { currentFlightValidate.status === "AlreadyCheckedIn" ? (
+            <H2>Flight Checked In #{currentBooking.flightNumber}</H2>
+          ) : (
+            <H2>Booking #{currentBooking.bookingReferenceNumber}</H2>
+          )}
           <FlightData flight={currentFlight} />
           <FlightPathData currentBooking={currentBooking} />
           <View style={{ flexDirection: 'row', gap: 10 }}>

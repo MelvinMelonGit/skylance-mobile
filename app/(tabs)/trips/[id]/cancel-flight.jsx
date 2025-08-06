@@ -80,6 +80,7 @@ export default function CancelFlight() {
               setModalVisible(false)
               router.push('/')
             }}
+             title="Flight Successfully Cancelled!"
              content='You have successfully cancelled your flight and received a full compensation'
              btnContent='Ok'
           />

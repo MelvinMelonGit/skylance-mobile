@@ -3,7 +3,7 @@ import { color } from '@/styles/color';
 import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import ButtonView from './ButtonView';
 
-export default function ModalView({ visible, onClose, onPress, content, btnContent }) {
+export default function ModalView({ visible, onClose, onPress, title, content, btnContent }) {
   return (
     <Modal
       transparent
@@ -13,7 +13,7 @@ export default function ModalView({ visible, onClose, onPress, content, btnConte
     >
       <View style={styles.modalBackground}>
         <View style={styles.modalContent}>
-          <H3 textColor={color.intermediate}></H3>
+          <H3 textColor={color.intermediate}>{title}</H3>
           <Text style={styles.content}>{content}</Text>
           
           <View style={{ width: '100%', alignItems: 'center' }}>

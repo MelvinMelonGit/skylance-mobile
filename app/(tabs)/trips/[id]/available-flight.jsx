@@ -30,7 +30,6 @@ export default function AvailableFlight() {
   async function handleSelection(item) {
     setCurrentRebookedFlight(item)
     const data = await fetchFlight(`/api/RebookingFlights/${item.id}`)
-    // setCurrentBooking(data)
     router.push({
       pathname: `/trips/${item.aircraft.flightNumber}/check-in`,
       params: { rebooking: true }

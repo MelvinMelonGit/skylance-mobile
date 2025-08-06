@@ -46,13 +46,12 @@ export default function CheckIn() {
           overBooking.overbookingDetailId,
           overBooking.finalCompensationAmount
         )
+        setCheckedInFlightId(data.checkInId)
       }
       else {
-        console.log(currentFlight.flightBookingDetailId)
         const data2 = await checkInFlight(`/Trip/${currentFlight.flightBookingDetailId}/checkin/confirm`)
       }
-      
-      setCheckedInFlightId(data.checkInId)
+
       setModalVisible(true)
     } catch (err) {
       setError(err.message)
@@ -122,7 +121,8 @@ export default function CheckIn() {
               setModalVisible(false)
               router.push('/boarding')
             }}
-             content='You have successfully checked in!'
+             title="Check In Success!"
+             content='Congratulations! You have successfully checked in!'
              btnContent='Ok'
           />
         </View>
