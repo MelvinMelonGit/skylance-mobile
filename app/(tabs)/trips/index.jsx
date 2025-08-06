@@ -39,6 +39,8 @@ export default function Index() {
       setCurrentFlight(item)
       const data = await fetchFlight(`/Trip/${item.flightBookingDetailId}`)
       setCurrentBooking(data)
+      console.log("current booking")
+      console.log(data)
       const data2 = await fetchFlightValidate(`/Trip/${item.flightBookingDetailId}/checkin/validate`)
       setCurrentFlightValidate(data2)
       router.push(

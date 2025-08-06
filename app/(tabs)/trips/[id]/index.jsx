@@ -39,7 +39,7 @@ export default function Index() {
           { currentFlightValidate.status === "AlreadyCheckedIn" ? (
             <H2>Flight Checked In #{currentBooking.flightNumber}</H2>
           ) : (
-            <H2>Booking #{currentBooking.bookingReferenceNumber}</H2>
+            <H2>Aircraft #{currentBooking.aircraftModel}</H2>
           )}
           <FlightData flight={currentFlight} />
           <FlightPathData currentBooking={currentBooking} />

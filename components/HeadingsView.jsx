@@ -46,9 +46,13 @@ export function H3({children, textColor, textAlign, marginVertical}) {
 }
 
 
-export function P({children}) {
+export function P({children, textAlign}) {
   return (
-    <Text style={styles.p}>
+    <Text style={
+      [
+        styles.p,
+        { textAlign : textAlign ? textAlign : 'left'}
+      ]}>
         {children}
     </Text>
   )

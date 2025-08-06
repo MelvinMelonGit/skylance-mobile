@@ -55,10 +55,10 @@ export default function CancelFlight() {
         <View style={styles.container}>
           <FlightInfographic currentBooking={currentBooking}/>
           <H2>Flight #{id}</H2>
-          <H3>Full Compensation S${cancelledSelection.compensation}</H3>
-          <Text style={{color: color.red, fontSize: 18}}>This action is permanent and cannot be undone.</Text>
-          <H3>What's next?</H3>
-          <P>The compensation amount will be credited into your designated bank account within three weeks upon the cancellation.</P>
+          <H3 textColor={color.intermediate}>Full Compensation S${cancelledSelection.compensation}</H3>
+          <Text style={styles.warning}>This action is permanent and cannot be undone.</Text>
+          <H3 textColor={color.intermediate}>What's next?</H3>
+          <P textAlign="center">The compensation amount will be credited into your designated bank account within three weeks upon the cancellation.</P>
           <CheckBox
             checked={isAcknowledged}
             onChange={setIsAcknowledged}
@@ -96,8 +96,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  warning: {
+    color: color.red,
+    fontSize: 18,
+    textAlign: 'center',
+    marginVertical: 20
+  },
   text: {
     fontSize: 30,
-    fontWeight: 400
+    fontWeight: 400,
   }
 })
